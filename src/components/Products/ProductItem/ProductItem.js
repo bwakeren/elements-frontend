@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSpring, animated, config } from "react-spring";
 import classes from "./ProductItem.module.scss";
 
-export const ProductItem = ({ img, title }) => {
+export const ProductItem = ({ img, title, clicked }) => {
   const [action, setAction] = useState(false);
 
   const animation = useSpring({
@@ -12,16 +12,19 @@ export const ProductItem = ({ img, title }) => {
 
   return (
     <div className={classes.product__item}>
-      <img
-        src={img}
-        alt={title}
-        onMouseEnter={() => setAction(true)}
-        onMouseLeave={() => setAction(false)}
-      />
+      {img && (
+        <img
+          src={img}
+          alt={title}
+          onMouseEnter={() => setAction(true)}
+          onMouseLeave={() => setAction(false)}
+        />
+      )}
       <animated.button
         style={animation}
         onMouseEnter={() => setAction(true)}
         onMouseLeave={() => setAction(false)}
+        onClick={clicked}
       >
         <svg
           width="24"

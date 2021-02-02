@@ -1,9 +1,9 @@
 .content {
-  height: 33rem;
+  min-height: 33rem;
   width: calc(100% - 280px);
   @apply rounded-2xl bg-white flex items-center justify-center;
 
-  svg {
+  .svg__blank {
     @apply mx-auto mb-5;
   }
 

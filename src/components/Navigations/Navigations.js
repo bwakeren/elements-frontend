@@ -73,11 +73,9 @@ const datas = [
   },
 ];
 
-export const NavSidebar = () => {
+export const NavSidebar = ({ clicked }) => {
   const [openProduct, setOpenProduct] = useState(false);
   const [category, setCategory] = useState("");
-
-  console.log(category);
 
   return (
     <>
@@ -88,8 +86,10 @@ export const NavSidebar = () => {
             icon={data.icon}
             title={data.title}
             mouseEnter={() => {
-              setOpenProduct(true);
-              setCategory(data.title);
+              setTimeout(() => {
+                setOpenProduct(true);
+                setCategory(data.title);
+              }, [200]);
             }}
             mouseLeave={() => {
               setOpenProduct(false);
@@ -98,7 +98,9 @@ export const NavSidebar = () => {
         ))}
       </div>
       <Products
+        category={category.toLowerCase()}
         show={openProduct}
+        clicked={clicked}
         mouseEnter={() => {
           setOpenProduct(true);
         }}
