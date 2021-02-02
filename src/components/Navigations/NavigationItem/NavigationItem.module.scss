@@ -1,0 +1,26 @@
+.sidebar__item {
+  @apply flex items-center py-4 px-5 w-52 cursor-pointer rounded-xl relative mb-1 z-30;
+
+  svg {
+    @apply mr-4;
+  }
+
+  &:hover {
+    @apply bg-category;
+
+    svg {
+      path {
+        @apply fill-category;
+      }
+    }
+
+    p {
+      @apply text-categoryHover;
+    }
+  }
+
+  .backdrop {
+    @apply absolute top-0 bottom-0 left-3 w-64 bg-black;
+    background: transparent;
+  }
+}

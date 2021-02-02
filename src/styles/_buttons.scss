@@ -1,0 +1,7 @@
+button {
+  @apply outline-none border-none rounded-lg py-3 px-6 font-bold text-sm leading-5;
+
+  &:focus {
+    @apply outline-none;
+  }
+}

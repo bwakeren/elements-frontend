@@ -1,0 +1,12 @@
+.product__item {
+  @apply w-full rounded-2xl mb-5 bg-gray-400 relative;
+
+  img {
+    @apply w-full h-full rounded-2xl select-none;
+  }
+
+  button {
+    @apply absolute right-2 bottom-2 cursor-pointer p-2 bg-button-primary-hover;
+    border-radius: 50%;
+  }
+}

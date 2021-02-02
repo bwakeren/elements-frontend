@@ -1,0 +1,10 @@
+.products {
+  @apply p-8 fixed w-96 bg-white shadow-product rounded-2xl overflow-auto z-10;
+
+  max-height: 36rem;
+  left: calc(2.5rem + 280px);
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}

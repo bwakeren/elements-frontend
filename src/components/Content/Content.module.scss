@@ -1,0 +1,13 @@
+.content {
+  height: 33rem;
+  width: calc(100% - 280px);
+  @apply rounded-2xl bg-white flex items-center justify-center;
+
+  svg {
+    @apply mx-auto mb-5;
+  }
+
+  @media (max-width: 768px) {
+    @apply w-full;
+  }
+}

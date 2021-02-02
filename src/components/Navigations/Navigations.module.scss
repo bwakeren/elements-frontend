@@ -1,0 +1,24 @@
+.nav {
+  @apply flex justify-between items-center py-8 px-10;
+
+  button {
+    @apply bg-button-primary-orange text-white hover:bg-button-primary-hover;
+  }
+}
+
+.sidebar {
+  @apply py-10 px-5 bg-white rounded-2xl mr-5 fixed left-10 z-20;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: transparent;
+    left: 0;
+  }
+
+  @media (max-width: 768px) {
+    @apply shadow-product;
+  }
+}
