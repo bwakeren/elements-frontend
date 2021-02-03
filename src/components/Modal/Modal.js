@@ -54,9 +54,11 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
               <p>Copy Clipboard</p>
             </div>
           </CopyToClipboard>
-          <CopyToClipboard
-            text={html.join("")}
-            onCopy={html[1] !== "" && handlerCopy}
+          <a
+            href={`data:html/text;charset=utf-8,${encodeURIComponent(
+              html.join(" ")
+            )}`}
+            download="ElementsbyBWA.html"
           >
             <div>
               <svg
@@ -75,7 +77,7 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
               </svg>
               <p>Download HTML</p>
             </div>
-          </CopyToClipboard>
+          </a>
         </div>
       </animated.div>
       {open && <div className={classes.backdrop} onClick={close}></div>}

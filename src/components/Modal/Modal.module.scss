@@ -20,6 +20,14 @@
         border-bottom-right-radius: 1rem;
       }
     }
+    a {
+      @apply w-1/2;
+      border-bottom-right-radius: 1rem;
+      div {
+        @apply w-full;
+        border-bottom-left-radius: 0 !important;
+      }
+    }
   }
 }
 
