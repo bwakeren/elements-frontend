@@ -4,11 +4,11 @@ import { images } from "../../assets";
 import { SidebarItems } from "./NavigationItem/NavigationItem";
 import { Products } from "../Products/Products";
 
-export const Navigation = () => {
+export const Navigation = ({ clicked }) => {
   return (
     <nav className={classes.nav}>
       <img src={images.Logo} alt="Elements" />
-      <button>Download</button>
+      <button onClick={clicked}>Download</button>
     </nav>
   );
 };
@@ -73,7 +73,7 @@ const datas = [
   },
 ];
 
-export const NavSidebar = ({ clicked }) => {
+export const NavSidebar = () => {
   const [openProduct, setOpenProduct] = useState(false);
   const [category, setCategory] = useState("");
 
@@ -100,7 +100,6 @@ export const NavSidebar = ({ clicked }) => {
       <Products
         category={category.toLowerCase()}
         show={openProduct}
-        clicked={clicked}
         mouseEnter={() => {
           setOpenProduct(true);
         }}

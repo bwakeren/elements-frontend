@@ -11,3 +11,21 @@
     @apply w-full;
   }
 }
+
+.content_fill {
+  @apply w-full rounded-2xl relative hover:shadow-product;
+
+  .content_delete {
+    @apply absolute right-7 bottom-7 cursor-pointer hidden;
+  }
+
+  &:hover {
+    section {
+      transform: scale(1.02);
+      @apply rounded-2xl;
+    }
+    .content_delete {
+      @apply block;
+    }
+  }
+}

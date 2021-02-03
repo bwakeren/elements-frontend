@@ -7,7 +7,9 @@
 }
 
 .sidebar {
-  @apply py-10 px-5 bg-white rounded-2xl mr-5 fixed left-10 z-20;
+  @apply py-10 px-5 bg-white rounded-2xl mr-5 fixed left-10;
+
+  z-index: 150;
 
   &::after {
     content: "";

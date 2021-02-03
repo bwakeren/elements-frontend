@@ -1,0 +1,30 @@
+.modal_download {
+  width: 600px;
+  height: 500px;
+  z-index: 300;
+  transform: translate(500px, 0);
+  @apply fixed bg-white shadow-product flex flex-col
+    justify-around items-center rounded-2xl pb-28;
+
+  .button_wrapper {
+    @apply absolute bottom-0 flex left-0 w-full;
+
+    div {
+      @apply flex w-1/2 p-8 items-center justify-center cursor-pointer;
+      color: #fff;
+      &:first-child {
+        background: #ff7c57;
+        border-bottom-left-radius: 1rem;
+      }
+      &:last-child {
+        background: #1e1e1e;
+        border-bottom-right-radius: 1rem;
+      }
+    }
+  }
+}
+
+.backdrop {
+  z-index: 290;
+  @apply fixed top-0 left-0 right-0 bottom-0 bg-transparent opacity-60;
+}

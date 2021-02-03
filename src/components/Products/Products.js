@@ -1,23 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import classes from "./Products.module.scss";
 import { ProductItem } from "./ProductItem/ProductItem";
-import { images } from "../../assets";
 import { useSpring, animated, config } from "react-spring";
-
-const datas = [
-  {
-    category: "header",
-    content: [{ title: "Header 1", image: images.Header1 }],
-  },
-  {
-    category: "content",
-    content: [{ title: "Content 1", image: images.BG }],
-  },
-  {
-    category: "footer",
-    content: [{ title: "Footer 1", image: images.BG2 }],
-  },
-];
+import { useSelector, useDispatch } from "react-redux";
+import { initProduct } from "../../store/actions";
 
 export const Products = ({
   show,
@@ -26,18 +12,22 @@ export const Products = ({
   category,
   clicked,
 }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initProduct());
+  }, [dispatch]);
+
+  const datas = useSelector((state) =>
+    state.product.products.filter((product) => product.category === category)
+  );
+
   const props = useSpring({
     opacity: show ? 1 : 0,
     transform: show ? "translateX(0)" : "translateX(-200%)",
-    zIndex: 5,
+    zIndex: 100,
     config: config.gentle,
   });
-
-  const [contents, setContents] = useState([]);
-
-  useEffect(() => {
-    setContents(datas.filter((data) => data.category === category));
-  }, [category]);
 
   return (
     <>
@@ -47,12 +37,13 @@ export const Products = ({
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
       >
-        {contents.length !== 0 &&
-          contents[0].content.map((data) => (
+        {datas.length !== 0 &&
+          datas[0].content.map((data) => (
             <ProductItem
               key={data.title}
               img={data.image}
               title={data.title}
+              html={data.html}
               clicked={clicked}
             />
           ))}

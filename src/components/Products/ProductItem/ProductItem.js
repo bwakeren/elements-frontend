@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { useSpring, animated, config } from "react-spring";
 import classes from "./ProductItem.module.scss";
+import { useDispatch } from "react-redux";
+import { addContent } from "../../../store/actions";
 
-export const ProductItem = ({ img, title, clicked }) => {
+export const ProductItem = ({ img, title, html }) => {
   const [action, setAction] = useState(false);
+  const dispatch = useDispatch();
 
   const animation = useSpring({
     opacity: action ? 1 : 0,
     config: config.molasses,
   });
+
+  const addingContentHandler = () => {
+    dispatch(addContent(html));
+  };
 
   return (
     <div className={classes.product__item}>
@@ -24,7 +31,7 @@ export const ProductItem = ({ img, title, clicked }) => {
         style={animation}
         onMouseEnter={() => setAction(true)}
         onMouseLeave={() => setAction(false)}
-        onClick={clicked}
+        onClick={addingContentHandler}
       >
         <svg
           width="24"
