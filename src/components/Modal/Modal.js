@@ -14,7 +14,7 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
   ];
 
   const animation = useSpring({
-    transform: !open ? "translate(500px, -200%)" : "translate(500px, 0)",
+    transform: !open ? "translate(-50%, -200%)" : "translate(-50%, -50%)",
     opacity: open ? 1 : 0,
     config: config.gentle,
   });
@@ -73,7 +73,7 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
                   d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
                 ></path>
               </svg>
-              <p>Copy HTML</p>
+              <p>Download HTML</p>
             </div>
           </CopyToClipboard>
         </div>
