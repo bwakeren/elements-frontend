@@ -6,14 +6,15 @@ import { useSpring, animated, config } from "react-spring";
 
 export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
   const contents = useSelector((state) => state.content.contents);
+  let dataHTML = "";
+
+  contents.forEach((content) => {
+    dataHTML += content.html;
+  });
 
   const html = [
     '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Elements by BuildWith Angga</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" /> <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer ></script> </head><body>',
-    contents.length !== 0
-      ? contents.length === 1
-        ? contents[0].html
-        : contents.reduce((a, b) => a.html + b.html)
-      : "",
+    dataHTML,
     "</body></html>",
   ];
 
@@ -37,13 +38,7 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
         )}
         <div className={classes.button_wrapper}>
           <CopyToClipboard
-            text={
-              contents.length !== 0
-                ? contents.length === 1
-                  ? contents[0].html
-                  : contents.reduce((a, b) => a.html + b.html)
-                : ""
-            }
+            text={dataHTML}
             onCopy={contents.length !== 0 && handlerCopy}
           >
             <div>
