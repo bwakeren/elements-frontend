@@ -23,10 +23,7 @@ export const Content = ({ clicked }) => {
                 index === contents.length - 1 ? classes.last : "",
               ].join(" ")}
             >
-              <div
-                dangerouslySetInnerHTML={{ __html: content }}
-                className="w-full"
-              ></div>
+              <img src={content.img} alt={`gambar-${index}`} />
               <svg
                 width="55"
                 height="55"
@@ -98,3 +95,12 @@ export const Content = ({ clicked }) => {
     </div>
   );
 };
+
+/**
+ * * Ini Code HTML in DIV
+ */
+
+//       <div
+//         dangerouslySetInnerHTML={{ __html: content }}
+//         className="w-full"
+//       ></div>

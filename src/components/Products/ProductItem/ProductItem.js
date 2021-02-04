@@ -14,7 +14,11 @@ export const ProductItem = ({ img, title, html }) => {
   });
 
   const addingContentHandler = () => {
-    dispatch(addContent(html));
+    const data = {
+      img,
+      html,
+    };
+    dispatch(addContent(data));
   };
 
   return (

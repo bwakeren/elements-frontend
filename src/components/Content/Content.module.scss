@@ -16,12 +16,12 @@
   @apply w-full rounded-2xl relative hover:shadow-product;
 
   &.first {
-    section {
+    img {
       border-radius: 1rem 1rem 0 0;
     }
   }
   &.last {
-    section {
+    img {
       @apply rounded-b-2xl rounded-bl-2xl;
     }
   }
@@ -31,11 +31,11 @@
   }
 
   &:hover {
-    // @apply transform scale-105 transition-all duration-500 z-30;
+    @apply transform scale-105 transition-all duration-500 z-30;
 
-    // section {
-    //   @apply rounded-2xl;
-    // }
+    img {
+      @apply rounded-2xl;
+    }
     .content_delete {
       @apply block;
     }
