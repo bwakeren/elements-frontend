@@ -89,7 +89,7 @@ export const NavSidebar = () => {
               setTimeout(() => {
                 setOpenProduct(true);
                 setCategory(data.title);
-              }, [200]);
+              }, [100]);
             }}
             mouseLeave={() => {
               setOpenProduct(false);

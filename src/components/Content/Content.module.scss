@@ -31,11 +31,11 @@
   }
 
   &:hover {
-    @apply transform scale-105 transition-all duration-500 z-30;
+    // @apply transform scale-105 transition-all duration-500 z-30;
 
-    section {
-      @apply rounded-2xl;
-    }
+    // section {
+    //   @apply rounded-2xl;
+    // }
     .content_delete {
       @apply block;
     }
