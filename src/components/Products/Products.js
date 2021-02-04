@@ -48,6 +48,9 @@ export const Products = ({
             />
           ))}
       </animated.div>
+      {show && (
+        <div className={classes.backdrop} onMouseEnter={mouseLeave}></div>
+      )}
     </>
   );
 };

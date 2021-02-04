@@ -8,3 +8,12 @@
     width: 0;
   }
 }
+
+.backdrop {
+  width: 46%;
+  height: 100%;
+  background: transparent;
+  position: fixed;
+  left: 0;
+  top: 108px;
+}
