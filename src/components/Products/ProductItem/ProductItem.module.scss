@@ -1,5 +1,6 @@
 .product__item {
   @apply w-full rounded-2xl mb-5 relative;
+  border: 1px solid #e7eaf4;
 
   img {
     @apply w-full h-full rounded-2xl select-none;
