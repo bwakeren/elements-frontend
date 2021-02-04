@@ -8,6 +8,7 @@ import Footer1 from "./images/Footer1.svg";
 import CatFooter from "./icons/cat_footer.svg";
 import CatContent from "./icons/cat_content.svg";
 import CatHeader from "./icons/cat_header.svg";
+import Success from "./icons/success.svg";
 import Downloading from "./icons/Downloading.svg";
 import Fav16 from "./favicon/favicon-16x16.png";
 import Fav32 from "./favicon/favicon-32x32.png";
@@ -27,6 +28,7 @@ export const icons = {
   CatContent,
   CatHeader,
   Downloading,
+  Success,
 };
 
 export const favicon = {

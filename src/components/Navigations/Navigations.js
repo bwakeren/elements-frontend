@@ -4,11 +4,13 @@ import { images } from "../../assets";
 import { SidebarItems } from "./NavigationItem/NavigationItem";
 import { Products } from "../Products/Products";
 
-export const Navigation = ({ clicked }) => {
+export const Navigation = ({ clicked, disabled }) => {
   return (
     <nav className={classes.nav}>
       <img src={images.Logo} alt="Elements" />
-      <button onClick={clicked}>Download</button>
+      <button onClick={clicked} disabled={disabled}>
+        Download
+      </button>
     </nav>
   );
 };

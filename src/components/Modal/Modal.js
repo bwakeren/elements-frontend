@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { icons } from "../../assets";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useSpring, animated, config } from "react-spring";
+import { Link } from "react-router-dom";
 
 export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
   const contents = useSelector((state) => state.content.contents);
@@ -110,5 +111,19 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
       </animated.div>
       {open && <div className={classes.backdrop} onClick={close}></div>}
     </>
+  );
+};
+
+export const ModalSuccess = () => {
+  return (
+    <div className={classes.success}>
+      <img src={icons.Success} alt="Download" className="w-52 h-52" />
+      <h1>Success Download!</h1>
+      <p>Gunakanlah design asset sebijaksana mungkin and Goodluck!</p>
+      <div>
+        <Link to="/">See Credit</Link>
+        <Link to="/">New Design</Link>
+      </div>
+    </div>
   );
 };
