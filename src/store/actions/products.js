@@ -19,3 +19,22 @@ export const initProduct = () => {
     dispatch(fetchProductSuccess(datas));
   };
 };
+
+export const productStart = () => ({
+  type: actionTypes.PRODUCTS_START,
+});
+export const productSuccess = (product) => ({
+  type: actionTypes.PRODUCTS_SUCCESS,
+  product,
+});
+export const productFail = (error) => ({
+  type: actionTypes.PRODUCTS_FAIL,
+  error,
+});
+
+export const used = (used) => {
+  return (dispatch) => {
+    dispatch(productStart());
+    dispatch(productSuccess(datas));
+  };
+};

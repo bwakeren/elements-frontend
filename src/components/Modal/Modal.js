@@ -9,7 +9,11 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
 
   const html = [
     '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Elements by BuildWith Angga</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" /> <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer ></script> </head><body>',
-    contents.join(""),
+    contents.length !== 0
+      ? contents.length === 1
+        ? contents[0].html
+        : contents.reduce((a, b) => a.html + b.html)
+      : "",
     "</body></html>",
   ];
 
@@ -33,7 +37,13 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
         )}
         <div className={classes.button_wrapper}>
           <CopyToClipboard
-            text={contents.join(" ")}
+            text={
+              contents.length !== 0
+                ? contents.length === 1
+                  ? contents[0].html
+                  : contents.reduce((a, b) => a.html + b.html)
+                : ""
+            }
             onCopy={contents.length !== 0 && handlerCopy}
           >
             <div>
@@ -54,30 +64,53 @@ export const ModalDownload = ({ open, close, copied, handlerCopy }) => {
               <p>Copy Clipboard</p>
             </div>
           </CopyToClipboard>
-          <a
-            href={`data:html/text;charset=utf-8,${encodeURIComponent(
-              html.join(" ")
-            )}`}
-            download="ElementsbyBWA.html"
-          >
-            <div>
-              <svg
-                class="w-6 h-6 mr-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                ></path>
-              </svg>
-              <p>Download HTML</p>
-            </div>
-          </a>
+          {contents.length !== 0 ? (
+            <a
+              href={`data:html/text;charset=utf-8,${encodeURIComponent(
+                html.join(" ")
+              )}`}
+              download="ElementsbyBWA.html"
+              className={classes.download}
+            >
+              <div>
+                <svg
+                  class="w-6 h-6 mr-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  ></path>
+                </svg>
+                <p>Export to HTML</p>
+              </div>
+            </a>
+          ) : (
+            <span className={classes.download}>
+              <div>
+                <svg
+                  class="w-6 h-6 mr-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  ></path>
+                </svg>
+                <p>Export to HTML</p>
+              </div>
+            </span>
+          )}
         </div>
       </animated.div>
       {open && <div className={classes.backdrop} onClick={close}></div>}

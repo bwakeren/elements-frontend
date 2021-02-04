@@ -18,6 +18,15 @@ const reducer = (state = initState, action) => {
         products: action.product,
         loading: false,
       });
+    case actionTypes.PRODUCTS_START:
+      return updateObject(state, {
+        loading: true,
+      });
+    case actionTypes.PRODUCTS_SUCCESS:
+      return updateObject(state, {
+        loading: false,
+        products: state.products.concat(action.product),
+      });
     default:
       return state;
   }

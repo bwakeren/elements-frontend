@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useSpring, animated, config } from "react-spring";
 import classes from "./ProductItem.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContent } from "../../../store/actions";
 
-export const ProductItem = ({ img, title, html }) => {
+export const ProductItem = ({ img, title, html, disabled }) => {
   const [action, setAction] = useState(false);
   const dispatch = useDispatch();
+
+  const contents = useSelector((state) =>
+    state.content.contents.filter((content) => content.title === title)
+  );
 
   const animation = useSpring({
     opacity: action ? 1 : 0,
@@ -15,9 +19,11 @@ export const ProductItem = ({ img, title, html }) => {
 
   const addingContentHandler = () => {
     const data = {
-      img,
+      title,
       html,
+      img,
     };
+
     dispatch(addContent(data));
   };
 
@@ -31,7 +37,8 @@ export const ProductItem = ({ img, title, html }) => {
           onMouseLeave={() => setAction(false)}
         />
       )}
-      <animated.button
+      <animated.a
+        href={`#element-${title}`}
         style={animation}
         onMouseEnter={() => setAction(true)}
         onMouseLeave={() => setAction(false)}
@@ -57,7 +64,7 @@ export const ProductItem = ({ img, title, html }) => {
             fill="white"
           />
         </svg>
-      </animated.button>
+      </animated.a>
     </div>
   );
 };
