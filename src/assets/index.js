@@ -2,6 +2,9 @@ import Logo from "./images/Logo.svg";
 import Header1 from "./images/header-1(small).svg";
 import BG from "./images/bg.png";
 import BG2 from "./images/bg2.png";
+import Content1 from "./images/Content1.svg";
+import Footer1Color from "./images/Footer1-Color.svg";
+import Footer1 from "./images/Footer1.svg";
 import CatFooter from "./icons/cat_footer.svg";
 import CatContent from "./icons/cat_content.svg";
 import CatHeader from "./icons/cat_header.svg";
@@ -14,6 +17,9 @@ export const images = {
   BG,
   BG2,
   Header1,
+  Content1,
+  Footer1Color,
+  Footer1,
 };
 
 export const icons = {

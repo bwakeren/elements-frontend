@@ -20,8 +20,9 @@
   }
 
   &:hover {
+    @apply transform scale-105 transition-all duration-500 z-30;
+
     section {
-      transform: scale(1.02);
       @apply rounded-2xl;
     }
     .content_delete {
