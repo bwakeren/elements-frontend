@@ -4,6 +4,21 @@
   button {
     @apply bg-button-primary-orange text-white hover:bg-button-primary-hover;
   }
+  a {
+    border-radius: 0.5rem;
+    border-style: none;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    line-height: 1.25rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    @apply bg-button-primary-orange text-white hover:bg-button-primary-hover;
+  }
 }
 
 .sidebar {

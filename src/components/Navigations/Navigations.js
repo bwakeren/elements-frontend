@@ -3,14 +3,26 @@ import classes from "./Navigations.module.scss";
 import { images } from "../../assets";
 import { SidebarItems } from "./NavigationItem/NavigationItem";
 import { Products } from "../Products/Products";
+import { Link } from "react-router-dom";
 
-export const Navigation = ({ clicked, disabled }) => {
+export const Navigation = ({ clicked, disabled, html }) => {
   return (
     <nav className={classes.nav}>
       <img src={images.Logo} alt="Elements" />
-      <button onClick={clicked} disabled={disabled}>
-        Download
-      </button>
+      {disabled ? (
+        <button>Download</button>
+      ) : (
+        <Link
+          href={`data:html/text;charset=utf-8,${encodeURIComponent(
+            html.join(" ")
+          )}`}
+          to="/goodluck"
+          target="_blank"
+          onClick={clicked}
+        >
+          Download
+        </Link>
+      )}
     </nav>
   );
 };

@@ -23,17 +23,16 @@ export const Header = () => {
       `data:html/text;charset=utf-8,${encodeURIComponent(html.join(" "))}`
     );
     element.setAttribute("download", "ElementsbyBWA.html");
-    const win = window.open("/goodluck", "_blank");
     element.click();
-    win.focus();
   };
 
   return (
     <>
       <header className={classes.header}>
         <Navigation
-          clicked={HandlerOpenModalDownload}
           disabled={dataHTML === ""}
+          html={html}
+          clicked={HandlerOpenModalDownload}
         />
       </header>
     </>
