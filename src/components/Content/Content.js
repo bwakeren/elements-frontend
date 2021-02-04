@@ -15,7 +15,14 @@ export const Content = ({ clicked }) => {
       {contents.length !== 0 ? (
         <div className="w-full flex flex-col">
           {contents.map((content, index) => (
-            <div key={index} className={classes.content_fill}>
+            <div
+              key={index}
+              className={[
+                classes.content_fill,
+                index === 0 ? classes.first : "",
+                index === contents.length - 1 ? classes.last : "",
+              ].join(" ")}
+            >
               <div
                 dangerouslySetInnerHTML={{ __html: content }}
                 className="w-full"

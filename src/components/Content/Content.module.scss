@@ -15,6 +15,17 @@
 .content_fill {
   @apply w-full rounded-2xl relative hover:shadow-product;
 
+  &.first {
+    section {
+      border-radius: 1rem 1rem 0 0;
+    }
+  }
+  &.last {
+    section {
+      @apply rounded-b-2xl rounded-bl-2xl;
+    }
+  }
+
   .content_delete {
     @apply absolute right-7 bottom-7 cursor-pointer hidden;
   }
