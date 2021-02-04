@@ -26,18 +26,23 @@
     }
   }
 
+  img {
+    user-select: none;
+  }
+
   .content_delete {
     @apply absolute right-7 bottom-7 cursor-pointer hidden;
   }
 
   &:hover {
-    @apply transform scale-105 transition-all duration-500 z-30;
+    // transform: scale()
+    // @apply transform scale-105 transition-all duration-500 z-30;
 
-    img {
-      @apply rounded-2xl;
-    }
+    // img {
+    //   border-radius: 1rem;
+    // }
     .content_delete {
-      @apply block;
+      display: block;
     }
   }
 }
