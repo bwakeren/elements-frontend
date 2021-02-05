@@ -2,7 +2,7 @@ import { Navigation } from "../Navigations/Navigations";
 import classes from "./Header.module.scss";
 import { useSelector } from "react-redux";
 
-export const Header = () => {
+export const Header = ({ button, navigation }) => {
   const contents = useSelector((state) => state.content.contents);
   let dataHTML = "";
 
@@ -33,6 +33,8 @@ export const Header = () => {
           disabled={dataHTML === ""}
           html={html}
           clicked={HandlerOpenModalDownload}
+          button={button}
+          navigation={navigation}
         />
       </header>
     </>

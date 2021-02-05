@@ -5,12 +5,12 @@ import { SidebarItems } from "./NavigationItem/NavigationItem";
 import { Products } from "../Products/Products";
 import { Link } from "react-router-dom";
 
-export const Navigation = ({ clicked, disabled, html }) => {
+export const Navigation = ({ clicked, disabled, html, button, navigation }) => {
   return (
     <nav className={classes.nav}>
       <img src={images.Logo} alt="Elements" />
       {disabled ? (
-        <button>Download</button>
+        button && <Link to={navigation}>{button}</Link>
       ) : (
         <Link
           href={`data:html/text;charset=utf-8,${encodeURIComponent(
@@ -20,7 +20,7 @@ export const Navigation = ({ clicked, disabled, html }) => {
           target="_blank"
           onClick={clicked}
         >
-          Download
+          {button}
         </Link>
       )}
     </nav>

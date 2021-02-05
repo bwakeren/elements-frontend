@@ -6,6 +6,8 @@ module.exports = {
       textColor: {
         category: "#808191",
         categoryHover: "#1657FF",
+        primary: "#121212",
+        secondary: "#5B5B5B",
       },
       colors: {
         button: {
@@ -16,6 +18,7 @@ module.exports = {
         },
         main: "#F6F8FE",
         category: "rgba(108, 93, 211, 0.05)",
+        blue: "#7993E1",
       },
       fontFamily: {
         primary: ["Nunito", "sans-serif"],

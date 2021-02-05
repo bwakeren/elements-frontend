@@ -1,11 +1,11 @@
 import { Header } from "../../components";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, button, navigation }) => {
   return (
     <>
-      <Header />
+      <Header button={button} navigation={navigation} />
       {children}
-      <footer></footer>
+      {/* <footer></footer> */}
     </>
   );
 };
