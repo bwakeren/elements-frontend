@@ -1,4 +1,5 @@
 import { useSpring, animated } from "react-spring";
+import classes from "./TeamItem.module.scss";
 
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 20,
@@ -34,7 +35,9 @@ export const TeamItem = ({ name, job, illustration, socialMedia }) => {
             href={social.link}
             target="_blank"
             rel="noreferrer"
-            className="mx-2"
+            className={
+              social.title === "Tiktok" ? classes.tiktok : classes.socialmedia
+            }
             key={social.title}
           >
             {social.icon}
