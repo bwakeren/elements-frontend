@@ -86,7 +86,7 @@ export const ProductItem = ({ img, title, html, disabled }) => {
     <div className={classes.product__item}>
       {img && (
         <img
-          src={img}
+          src={`https://api.elements.buildwithangga.com/storage/${img}`}
           alt={title}
           onMouseEnter={() => setAction(true)}
           onMouseLeave={() => setAction(false)}

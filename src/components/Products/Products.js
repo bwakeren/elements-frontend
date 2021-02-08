@@ -19,7 +19,9 @@ export const Products = ({
   }, [dispatch]);
 
   const datas = useSelector((state) =>
-    state.product.products.filter((product) => product.category === category)
+    state.product.products.filter(
+      (product) => product.categories_id === category
+    )
   );
 
   const props = useSpring({
@@ -38,12 +40,12 @@ export const Products = ({
         onMouseLeave={mouseLeave}
       >
         {datas.length !== 0 &&
-          datas[0].content.map((data) => (
+          datas.map((data) => (
             <ProductItem
-              key={data.title}
-              img={data.image}
+              key={data.id}
+              img={data.thumbnails}
               title={data.title}
-              html={data.html}
+              html={data.code}
               clicked={clicked}
             />
           ))}

@@ -39,3 +39,24 @@
     @apply shadow-product;
   }
 }
+
+.dropdown {
+  @apply flex flex-col absolute z-50 mt-4 right-10;
+
+  a {
+    @apply flex rounded-none py-7 items-center;
+    background: #1e1e1e;
+
+    img {
+      @apply mr-4;
+    }
+
+    &:first-child {
+      @apply rounded-t-2xl;
+    }
+    &:last-child {
+      @apply rounded-b-2xl;
+      border-top: 0.5px solid #fff;
+    }
+  }
+}

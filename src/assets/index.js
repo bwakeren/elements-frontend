@@ -12,6 +12,8 @@ import Success from "./icons/success.svg";
 import Downloading from "./icons/Downloading.svg";
 import Fav16 from "./favicon/favicon-16x16.png";
 import Fav32 from "./favicon/favicon-32x32.png";
+import logoBootstrap from "./icons/bootstrap.png";
+import logoTailwinds from "./icons/logo_Tailwinds.png";
 
 export const images = {
   Logo,
@@ -29,6 +31,8 @@ export const icons = {
   CatHeader,
   Downloading,
   Success,
+  logoBootstrap,
+  logoTailwinds,
 };
 
 export const favicon = {

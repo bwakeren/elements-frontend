@@ -1,0 +1,44 @@
+.success {
+  @apply bg-white w-11/12 mx-auto mt-10 rounded-2xl flex flex-col items-center py-16;
+  top: 130px;
+}
+
+.success img {
+  margin-bottom: 30px;
+}
+
+.success h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 48px;
+  text-align: center;
+  color: #1657ff;
+  @apply mb-4;
+}
+
+.success p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 50px;
+}
+
+.success a {
+  padding: 12px 24px;
+  border-radius: 10px;
+  color: #fff;
+  margin: 0 5px;
+}
+
+.success a:first-child {
+  background: #1e1e1e;
+}
+
+.success a:last-child {
+  @apply bg-button-primary-orange;
+}
+/*# sourceMappingURL=Goodluck.module.css.map */
