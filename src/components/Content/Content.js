@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import classes from "./Content.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteContent } from "../../store/actions";
@@ -6,8 +5,6 @@ import { deleteContent } from "../../store/actions";
 export const Content = ({ clicked }) => {
   const contents = useSelector((state) => state.content.contents);
   const dispatch = useDispatch();
-  const refContent = useRef();
-  const container = useRef();
 
   const handlerRemoveContent = (e, index) => {
     dispatch(deleteContent(index));
@@ -16,7 +13,7 @@ export const Content = ({ clicked }) => {
   return (
     <div className={classes.content}>
       {contents.length !== 0 ? (
-        <div className="w-full flex flex-col" ref={container}>
+        <div className="w-full flex flex-col">
           {contents.map((content, index) => (
             <div
               key={index}
@@ -31,7 +28,6 @@ export const Content = ({ clicked }) => {
                 dangerouslySetInnerHTML={{
                   __html: content.html,
                 }}
-                ref={refContent}
                 className="w-full h-auto"
               ></div>
               <svg
