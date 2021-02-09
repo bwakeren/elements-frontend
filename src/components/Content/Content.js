@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import classes from "./Content.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteContent } from "../../store/actions";
@@ -5,60 +6,63 @@ import { deleteContent } from "../../store/actions";
 export const Content = ({ clicked }) => {
   const contents = useSelector((state) => state.content.contents);
   const dispatch = useDispatch();
+  const refContent = useRef();
+  const container = useRef();
 
   const handlerRemoveContent = (e, index) => {
     dispatch(deleteContent(index));
   };
 
-  let cont = contents.map((content, index) => (
-    <div
-      key={index}
-      className={[
-        classes.content_fill,
-        index === 0 ? classes.first : "",
-        index === contents.length - 1 ? classes.last : "",
-      ].join(" ")}
-      id={`element-${content.title}`}
-    >
-      <div
-        dangerouslySetInnerHTML={{
-          __html: content.html,
-        }}
-        className="w-full"
-      ></div>
-      <svg
-        width="55"
-        height="55"
-        viewBox="0 0 55 55"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={classes.content_delete}
-        onClick={(e) => handlerRemoveContent(e, index)}
-      >
-        {" "}
-        <circle cx="27.5" cy="27.5" r="27.5" fill="white" />{" "}
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M15 22C15 21.4477 15.4477 21 16 21H40C40.5523 21 41 21.4477 41 22C41 22.5523 40.5523 23 40 23H38.3333V37C38.3333 39.2091 36.5425 41 34.3333 41H21.6667C19.4575 41 17.6667 39.2091 17.6667 37V23H16C15.4477 23 15 22.5523 15 22ZM19.6667 23V37C19.6667 38.1046 20.5621 39 21.6667 39H34.3333C35.4379 39 36.3333 38.1046 36.3333 37V23H19.6667Z"
-          fill="#FF3F6D"
-        />{" "}
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M26 15C24.8954 15 24 15.8954 24 17V18C24 18.5523 23.5523 19 23 19C22.4477 19 22 18.5523 22 18V17C22 14.7909 23.7909 13 26 13H30C32.2091 13 34 14.7909 34 17V18C34 18.5523 33.5523 19 33 19C32.4477 19 32 18.5523 32 18V17C32 15.8954 31.1046 15 30 15H26Z"
-          fill="#FF3F6D"
-        />{" "}
-      </svg>
-    </div>
-  ));
-
   return (
     <div className={classes.content}>
       {contents.length !== 0 ? (
-        <div className="w-full flex flex-col">{cont}</div>
+        <div className="w-full flex flex-col" ref={container}>
+          {contents.map((content, index) => (
+            <div
+              key={index}
+              className={[
+                classes.content_fill,
+                index === 0 ? classes.first : "",
+                index === contents.length - 1 ? classes.last : "",
+              ].join(" ")}
+              id={`element-${content.title}`}
+            >
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: content.html,
+                }}
+                ref={refContent}
+                className="w-full h-auto"
+              ></div>
+              <svg
+                width="55"
+                height="55"
+                viewBox="0 0 55 55"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={classes.content_delete}
+                onClick={(e) => handlerRemoveContent(e, index)}
+              >
+                {" "}
+                <circle cx="27.5" cy="27.5" r="27.5" fill="white" />{" "}
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M15 22C15 21.4477 15.4477 21 16 21H40C40.5523 21 41 21.4477 41 22C41 22.5523 40.5523 23 40 23H38.3333V37C38.3333 39.2091 36.5425 41 34.3333 41H21.6667C19.4575 41 17.6667 39.2091 17.6667 37V23H16C15.4477 23 15 22.5523 15 22ZM19.6667 23V37C19.6667 38.1046 20.5621 39 21.6667 39H34.3333C35.4379 39 36.3333 38.1046 36.3333 37V23H19.6667Z"
+                  fill="#FF3F6D"
+                />{" "}
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M26 15C24.8954 15 24 15.8954 24 17V18C24 18.5523 23.5523 19 23 19C22.4477 19 22 18.5523 22 18V17C22 14.7909 23.7909 13 26 13H30C32.2091 13 34 14.7909 34 17V18C34 18.5523 33.5523 19 33 19C32.4477 19 32 18.5523 32 18V17C32 15.8954 31.1046 15 30 15H26Z"
+                  fill="#FF3F6D"
+                />{" "}
+              </svg>
+            </div>
+          ))}
+        </div>
       ) : (
-        <div>
+        <div className="w-full">
           <svg
             width="32"
             height="32"

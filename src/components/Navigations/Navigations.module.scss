@@ -22,7 +22,7 @@
 }
 
 .sidebar {
-  @apply py-10 px-5 bg-white rounded-2xl mr-5 fixed left-10;
+  @apply py-10 px-5 bg-white rounded-2xl mr-5 fixed left-10 shadow-product;
 
   z-index: 150;
 

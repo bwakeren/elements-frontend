@@ -43,6 +43,7 @@ export const Products = ({
           datas.map((data) => (
             <ProductItem
               key={data.id}
+              idProd={data.id}
               img={data.thumbnails}
               title={data.title}
               html={data.code}
