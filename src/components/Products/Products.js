@@ -4,6 +4,7 @@ import { ProductItem } from "./ProductItem/ProductItem";
 import { useSpring, animated, config } from "react-spring";
 import { useSelector, useDispatch } from "react-redux";
 import { initProduct } from "../../store/actions";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export const Products = ({
   show,
@@ -23,6 +24,7 @@ export const Products = ({
       (product) => product.categories_id === category
     )
   );
+  const loading = useSelector((state) => state.product.loading);
 
   const props = useSpring({
     opacity: show ? 1 : 0,
@@ -39,7 +41,17 @@ export const Products = ({
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
       >
-        {datas.length !== 0 &&
+        {loading ? (
+          <SkeletonTheme color="lightGray">
+            <Skeleton
+              reactangle={true}
+              height={150}
+              width={318}
+              count={5}
+              style={{ marginBottom: "1.25rem", borderRadius: "1rem" }}
+            />
+          </SkeletonTheme>
+        ) : (
           datas.map((data) => (
             <ProductItem
               key={data.id}
@@ -50,7 +62,8 @@ export const Products = ({
               htmlBootstrap={data.code_bootstrap}
               clicked={clicked}
             />
-          ))}
+          ))
+        )}
       </animated.div>
       {show && (
         <div className={classes.backdrop} onMouseEnter={mouseLeave}></div>

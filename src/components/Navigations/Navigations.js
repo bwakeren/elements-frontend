@@ -82,6 +82,7 @@ export const NavSidebar = () => {
   }, [dispatch]);
 
   const categories = useSelector((state) => state.category.categories);
+  const loading = useSelector((state) => state.category.loading);
 
   return (
     <>
@@ -101,6 +102,7 @@ export const NavSidebar = () => {
               setOpenProduct(false);
             }}
             openProduct={openProduct}
+            loading={loading}
           />
         ))}
       </div>
