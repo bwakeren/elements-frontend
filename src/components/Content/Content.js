@@ -22,7 +22,7 @@ export const Content = ({ clicked }) => {
                 index === 0 ? classes.first : "",
                 index === contents.length - 1 ? classes.last : "",
               ].join(" ")}
-              id={`element-${content.title}`}
+              id={`element-${content.idProd}`}
             >
               <div
                 dangerouslySetInnerHTML={{

@@ -38,7 +38,7 @@ export const ProductItem = ({
 
   const plus = (
     <animated.a
-      href={`#element-${title}`}
+      href={`#element-${idProd}`}
       style={animation}
       onMouseEnter={() => setAction(true)}
       onMouseLeave={() => setAction(false)}
@@ -70,7 +70,7 @@ export const ProductItem = ({
 
   const checklist = (
     <animated.a
-      href={`#element-${title}`}
+      href={`#element-${idProd}`}
       style={animation}
       onMouseEnter={() => setAction(true)}
       onMouseLeave={() => setAction(false)}
