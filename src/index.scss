@@ -19,3 +19,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+*::selection {
+  background: #ff7c57;
+  color: #fff;
+}
+
+img {
+  user-select: none;
+}
