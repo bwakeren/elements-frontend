@@ -12,7 +12,7 @@
 }
 
 .content_fill {
-  @apply w-full rounded-2xl relative hover:shadow-product;
+  @apply w-full rounded-2xl relative;
 
   &.first {
     section {
@@ -29,6 +29,10 @@
     @apply transform scale-100;
   }
 
+  .content_fill__content {
+    @apply w-full h-auto;
+  }
+
   .content_delete {
     @apply absolute right-7 bottom-7 cursor-pointer hidden;
   }
@@ -42,6 +46,10 @@
     // }
     .content_delete {
       display: block;
+    }
+
+    section {
+      @apply shadow-product;
     }
   }
 }

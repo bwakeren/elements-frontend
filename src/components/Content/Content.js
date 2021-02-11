@@ -28,7 +28,7 @@ export const Content = ({ clicked }) => {
                 dangerouslySetInnerHTML={{
                   __html: content.html,
                 }}
-                className="w-full h-auto"
+                className={classes.content_fill__content}
               ></div>
               <svg
                 width="55"

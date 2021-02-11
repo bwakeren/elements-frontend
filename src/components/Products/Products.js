@@ -47,6 +47,7 @@ export const Products = ({
               img={data.thumbnails}
               title={data.title}
               html={data.code}
+              htmlBootstrap={data.code_bootstrap}
               clicked={clicked}
             />
           ))}

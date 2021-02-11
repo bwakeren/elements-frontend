@@ -7,8 +7,15 @@ import { Link } from "react-router-dom";
 import { fetchCategory } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
+import { STORAGE } from "../../shared/utility";
 
-export const Navigation = ({ clicked, disabled, html, button, navigation }) => {
+export const Navigation = ({
+  clicked,
+  disabled,
+  clickedBootstrap,
+  button,
+  navigation,
+}) => {
   const [dropwDown, setDropDown] = useState(false);
 
   const animation = useSpring({
@@ -20,18 +27,11 @@ export const Navigation = ({ clicked, disabled, html, button, navigation }) => {
 
   const dropdwon = (
     <animated.div style={animation} className={classes.dropdown}>
-      <Link
-        href={`data:html/text;charset=utf-8,${encodeURIComponent(
-          html.join(" ")
-        )}`}
-        to="/goodluck"
-        target="_blank"
-        onClick={clicked}
-      >
+      <Link to="/goodluck" target="_blank" onClick={clicked}>
         <img src={icons.logoTailwinds} alt="bootstrap" />
         <p>Export to Tailwinds</p>
       </Link>
-      <Link>
+      <Link to="/goodluck" target="_blank" onClick={clickedBootstrap}>
         <img src={icons.logoBootstrap} alt="bootstrap" />
         <p>Export to Bootstrap</p>
       </Link>
@@ -89,7 +89,7 @@ export const NavSidebar = () => {
         {categories.map((data) => (
           <SidebarItems
             key={data.id}
-            icon={data.id}
+            icon={STORAGE.toString() + data.icon}
             title={data.categories_name}
             mouseEnter={() => {
               setTimeout(() => {
@@ -100,6 +100,7 @@ export const NavSidebar = () => {
             mouseLeave={() => {
               setOpenProduct(false);
             }}
+            openProduct={openProduct}
           />
         ))}
       </div>

@@ -4,7 +4,14 @@ import classes from "./ProductItem.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addContent } from "../../../store/actions";
 
-export const ProductItem = ({ img, title, html, idProd, disabled }) => {
+export const ProductItem = ({
+  img,
+  title,
+  html,
+  idProd,
+  disabled,
+  htmlBootstrap,
+}) => {
   const [action, setAction] = useState(false);
   const dispatch = useDispatch();
 
@@ -22,6 +29,7 @@ export const ProductItem = ({ img, title, html, idProd, disabled }) => {
       idProd,
       title,
       html,
+      htmlBootstrap,
       img,
     };
 
