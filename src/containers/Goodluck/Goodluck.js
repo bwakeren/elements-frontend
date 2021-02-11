@@ -7,7 +7,7 @@ import Layout from "../../hoc/Layout/Layout";
 const Main = () => {
   return (
     <Layout>
-      <Head title="Goodluck | Elements" />
+      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
       <div className={classes.success}>
         <img src={icons.Success} alt="Download" className="w-52 h-52" />
         <h1>Success Download!</h1>
