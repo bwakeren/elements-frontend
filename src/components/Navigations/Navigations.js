@@ -123,6 +123,7 @@ export const NavSidebar = () => {
               key={data.id}
               icon={STORAGE.toString() + data.icon}
               title={data.categories_name}
+              loading={loading}
               mouseEnter={() => {
                 setTimeout(() => {
                   setOpenProduct(true);
