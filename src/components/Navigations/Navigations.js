@@ -8,6 +8,7 @@ import { fetchCategory } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
 import { STORAGE } from "../../shared/utility";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 export const Navigation = ({
   clicked,
@@ -87,24 +88,54 @@ export const NavSidebar = () => {
   return (
     <>
       <div className={classes.sidebar}>
-        {categories.map((data) => (
-          <SidebarItems
-            key={data.id}
-            icon={STORAGE.toString() + data.icon}
-            title={data.categories_name}
-            mouseEnter={() => {
-              setTimeout(() => {
-                setOpenProduct(true);
-                setCategory(data.id);
-              }, [100]);
-            }}
-            mouseLeave={() => {
-              setOpenProduct(false);
-            }}
-            openProduct={openProduct}
-            loading={loading}
-          />
-        ))}
+        {loading ? (
+          <SkeletonTheme color="lightGray">
+            <div className="flex flex-col">
+              <Skeleton
+                reactangle={true}
+                height={24}
+                width={24}
+                style={{ margin: "1.25rem" }}
+              />
+              <Skeleton
+                reactangle={true}
+                height={24}
+                width={24}
+                style={{ margin: "1.25rem" }}
+              />
+              <Skeleton
+                reactangle={true}
+                height={24}
+                width={24}
+                style={{ margin: "1.25rem" }}
+              />
+              <Skeleton
+                reactangle={true}
+                height={24}
+                width={24}
+                style={{ margin: "1.25rem" }}
+              />
+            </div>
+          </SkeletonTheme>
+        ) : (
+          categories.map((data) => (
+            <SidebarItems
+              key={data.id}
+              icon={STORAGE.toString() + data.icon}
+              title={data.categories_name}
+              mouseEnter={() => {
+                setTimeout(() => {
+                  setOpenProduct(true);
+                  setCategory(data.id);
+                }, [100]);
+              }}
+              mouseLeave={() => {
+                setOpenProduct(false);
+              }}
+              openProduct={openProduct}
+            />
+          ))
+        )}
       </div>
       <Products
         category={category.toString()}
