@@ -32,7 +32,7 @@ export const Navigation = ({
         <img src={icons.logoTailwinds} alt="bootstrap" />
         <p>Export to Tailwinds</p>
       </Link>
-      <Link to="/goodluck" target="_blank" onClick={clickedBootstrap}>
+      <Link >
         <img src={icons.logoBootstrap} alt="bootstrap" />
         <p>Export to Bootstrap</p>
       </Link>
