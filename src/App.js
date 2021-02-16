@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
-import { Switch, Route, Redirect } from "react-router";
+import { Switch, Route } from "react-router";
 import { Loading } from "./components";
+import Landing from "./containers/Landing/Landing";
 
 const Main = lazy(() => import("./containers/Main/Main"));
 const Goodluck = lazy(() => import("./containers/Goodluck/Goodluck"));
@@ -12,8 +13,9 @@ function App() {
       <Switch>
         <Route path="/heroes" render={(props) => <Heroes {...props} />} />
         <Route path="/goodluck" render={(props) => <Goodluck {...props} />} />
-        <Route path="/create" exact render={(props) => <Main {...props} />} />
-        <Redirect to="/create" />
+        <Route path="/create" render={(props) => <Main {...props} />} />
+        <Route path="/" exact component={Landing} />
+        <Route path="*" component={Landing} />
       </Switch>
     </Suspense>
   );
