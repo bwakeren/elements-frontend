@@ -1,5 +1,5 @@
 .header {
-  @apply bg-white bg-top lg:h-screen lg:bg-bottom w-full transition-all;
+  @apply bg-white bg-top lg:h-screen lg:bg-bottom w-full;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -7,10 +7,10 @@
     @apply px-3 py-8 flex items-center justify-between mb-12 md:px-12 w-full relative;
 
     ul {
-      @apply flex items-start list-none flex-col lg:flex-row lg:items-center;
+      @apply flex items-center list-none;
 
       li {
-        @apply mx-0 my-4 lg:mx-5 lg:my-0;
+        @apply mx-5;
 
         a {
           font-family: "Fivo Sans";
@@ -28,7 +28,7 @@
     }
 
     button {
-      @apply bg-button-primary-orange text-white hover:bg-button-primary-hover flex items-center bottom-0 left-3 md:left-12 lg:left-0;
+      @apply bg-button-primary-orange text-white hover:bg-button-primary-hover flex items-center;
       svg {
         @apply mr-2;
       }
@@ -36,7 +36,7 @@
 
     ul,
     button {
-      @apply absolute lg:relative;
+      @apply hidden lg:flex;
     }
   }
 
@@ -444,5 +444,33 @@
         }
       }
     }
+  }
+}
+
+.modalnav {
+  @apply w-10/12 h-full fixed px-3 md:px-12 top-0 right-0 py-12 list-none bg-white flex flex-col items-center justify-between z-50;
+
+  li {
+    @apply my-4;
+
+    a {
+      font-family: "Fivo Sans";
+      color: #00262b;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+
+    button {
+      @apply bg-button-primary-orange text-white hover:bg-button-primary-hover flex items-center;
+      svg {
+        @apply mr-2;
+      }
+    }
+  }
+
+  .close {
+    @apply absolute top-4 right-3 md:right-12;
   }
 }
