@@ -67,19 +67,19 @@ const Landing = () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
     },
     2: {
-      isActive: true,
+      isActive: false,
       title: "Lorem ipsom dolor set amet ?",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
     },
     3: {
-      isActive: true,
+      isActive: false,
       title: "Lorem ipsom dolor set amet ?",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
     },
     4: {
-      isActive: true,
+      isActive: false,
       title: "Lorem ipsom dolor set amet ?",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
@@ -329,11 +329,11 @@ const Landing = () => {
         >
           <h2>Why Elements ?</h2>
           <div>
-            <p>Easy to Use</p>
+            <p>Beginners Friendly</p>
             <span></span>
-            <p>Free to Use</p>
+            <p>Start at $0</p>
             <span></span>
-            <p>Add to Element</p>
+            <p>Less Effort</p>
           </div>
           <img src={images.whyLaptop} alt="Laptop" />
         </section>
@@ -359,9 +359,6 @@ const Landing = () => {
               )}
             </div>
           ))}
-          <div>
-            <a href="/">And many more</a>
-          </div>
         </section>
         <section
           className={classes.knowledge}
@@ -401,7 +398,7 @@ const Landing = () => {
           style={{ backgroundImage: `url(${images.faqLanding})` }}
         >
           <h2>Frequently Asked Questions</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8">
             {dataFAQArray.map((data) => (
               <div key={data.id} className={classes.faq_component}>
                 <h6

@@ -52,9 +52,9 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 24px;
-        letter-spacing: 2px;
+        letter-spacing: 0.1px;
         color: #ffffff;
-        @apply w-11/12;
+        @apply w-11/12 sm:w-9/12;
       }
 
       h1 {
@@ -236,7 +236,7 @@
   }
 
   .knowledge_component {
-    @apply w-full mb-8 lg:w-2/6;
+    @apply w-full mb-8 lg:w-2/6 mx-0 lg:mx-4;
 
     img {
       @apply mb-9;
@@ -259,7 +259,6 @@
       font-size: 16px;
       line-height: 30px;
       color: #121212;
-      @apply mr-12;
     }
   }
 }
@@ -289,7 +288,7 @@
       font-family: "Fivo Sans", sans-serif;
       font-style: normal;
       font-weight: 450;
-      font-size: 16px;
+      font-size: 26px;
       line-height: 30px;
       color: #171046;
       @apply w-full h-28 px-8 py-9 flex items-center justify-between bg-white rounded-t-3xl;
@@ -303,7 +302,7 @@
       font-family: "Fivo Sans", sans-serif;
       font-style: normal;
       font-weight: normal;
-      font-size: 16px;
+      font-size: 24px;
       line-height: 150%;
       color: #121212;
       @apply w-full pl-8 pr-14 py-5 transition-all rounded-b-3xl;
@@ -398,6 +397,9 @@
               font-size: 14px;
               line-height: 24px;
               color: #7c7c7c;
+              &:hover {
+                color: #ff7c57;
+              }
             }
             .active {
               color: #eeeff4;
@@ -438,6 +440,9 @@
           line-height: 150%;
           letter-spacing: 0.5px;
           color: #7c7c7c;
+          &:hover {
+            color: #ff7c57;
+          }
         }
         .active {
           color: #eeeff4;

@@ -20,7 +20,7 @@ import logoTailwinds from "./icons/logo_Tailwinds.png";
 import headerBack from "./images/header-landing-back.svg";
 import headerHero from "./images/hero-landing-back.svg";
 import logoWhite from "./icons/logo-white.svg";
-import whyLaptop from "./images/why-laptop.svg";
+import whyLaptop from "./images/why-laptop.png";
 import whyBack from "./images/why-back.svg";
 import customBack from "./images/custom-back.svg";
 import customHeader from "./images/custom-header.svg";
