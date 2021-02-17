@@ -287,8 +287,8 @@
     h6 {
       font-family: "Fivo Sans", sans-serif;
       font-style: normal;
-      font-weight: bold;
-      font-size: 26px;
+      font-weight: 600;
+      font-size: 24px;
       line-height: 30px;
       color: #171046;
       @apply w-full h-28 px-8 py-9 flex items-center justify-between bg-white rounded-t-3xl;
@@ -302,8 +302,8 @@
       font-family: "Fivo Sans", sans-serif;
       font-style: normal;
       font-weight: normal;
-      font-size: 24px;
-      line-height: 150%;
+      font-size: 16px;
+      line-height: 180%;
       color: #121212;
       @apply w-full pl-8 pr-14 py-5 transition-all rounded-b-3xl;
     }
