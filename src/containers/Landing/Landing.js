@@ -5,6 +5,7 @@ import { images, icons } from "../../assets";
 import { NavLink, useHistory } from "react-router-dom";
 import { Head } from "../../components";
 import { useSpring, animated } from "react-spring";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const linksFooter = [
   {
@@ -67,7 +68,7 @@ const Landing = () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
     },
     2: {
-      isActive: false,
+      isActive: true,
       title: "Lorem ipsom dolor set amet ?",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
@@ -89,6 +90,7 @@ const Landing = () => {
   const history = useHistory();
 
   const [openNavigation, setOpenNavigation] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handlerClickCustom = (event, id) => {
     setDataCustom(
@@ -107,6 +109,10 @@ const Landing = () => {
         }),
       })
     );
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 300);
   };
 
   const switchHandlerFAQ = (e, id) => {
@@ -354,7 +360,18 @@ const Landing = () => {
               <p>{data.data.content}</p>
               {data.data.isActive && (
                 <div className={classes.img}>
-                  <img src={data.data.img} alt={data.data.title} />
+                  {!loading ? (
+                    <img src={data.data.img} alt={data.data.title} />
+                  ) : (
+                    <SkeletonTheme color="#eee">
+                      <Skeleton
+                        reactangle={true}
+                        width={676}
+                        height={300}
+                        className="hidden lg:block"
+                      />
+                    </SkeletonTheme>
+                  )}
                 </div>
               )}
             </div>
@@ -398,7 +415,7 @@ const Landing = () => {
           style={{ backgroundImage: `url(${images.faqLanding})` }}
         >
           <h2>Frequently Asked Questions</h2>
-          <div className="grid grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {dataFAQArray.map((data) => (
               <div key={data.id} className={classes.faq_component}>
                 <h6
