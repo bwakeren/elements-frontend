@@ -1,15 +1,28 @@
+import { useEffect } from "react";
 import { Navigation } from "../Navigations/Navigations";
 import classes from "./Header.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchGeolocation, postDownload } from "../../store/actions";
 
 export const Header = ({ button, navigation }) => {
   const contents = useSelector((state) => state.content.contents);
   let dataHTML = "";
   let dataHTMLBootstrap = "";
+  const idContent = [];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchGeolocation());
+  }, [dispatch]);
+
+  const geolocation = useSelector((state) => state.download.geolocation);
 
   contents.forEach((content) => {
     dataHTML += content.html;
     dataHTMLBootstrap += content.htmlBootstrap;
+    if (content.idProd) {
+      idContent.push(content.idProd);
+    }
   });
 
   const html = [
@@ -25,6 +38,15 @@ export const Header = ({ button, navigation }) => {
   ];
 
   const handlerDownloadTailwinds = () => {
+    idContent.forEach((data) => {
+      const download = {
+        components_id: data,
+        downloaded_id: 1,
+        ip: geolocation.IPv4,
+        region: geolocation.city,
+      };
+      dispatch(postDownload(download));
+    });
     const element = document.createElement("a");
     element.setAttribute(
       "href",
@@ -35,6 +57,15 @@ export const Header = ({ button, navigation }) => {
   };
 
   const handlerDownloadBootstrap = () => {
+    idContent.forEach((data) => {
+      const download = {
+        components_id: data,
+        downloaded_id: 2,
+        ip: geolocation.IPv4,
+        region: geolocation.city,
+      };
+      dispatch(postDownload(download));
+    });
     const element = document.createElement("a");
     element.setAttribute(
       "href",

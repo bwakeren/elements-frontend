@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import productsReducer from "./store/reducers/products";
 import contentsReducer from "./store/reducers/contents";
 import categoriesReducer from "./store/reducers/categories";
+import downloadReducer from "./store/reducers/download";
 
 const composeEnhancers =
   process.env.NODE_ENV === "development"
@@ -21,6 +22,7 @@ const reducers = combineReducers({
   product: productsReducer,
   content: contentsReducer,
   category: categoriesReducer,
+  download: downloadReducer,
 });
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
