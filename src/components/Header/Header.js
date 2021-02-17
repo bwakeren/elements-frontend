@@ -42,8 +42,12 @@ export const Header = ({ button, navigation }) => {
       const download = {
         components_id: data,
         downloaded_id: 1,
-        ip: geolocation.IPv4,
-        region: geolocation.city,
+        ip:
+          Object.keys(geolocation).length === 0
+            ? "255.255.255.255"
+            : geolocation.IPv4,
+        region:
+          Object.keys(geolocation).length === 0 ? "Jakarta" : geolocation.city,
       };
       dispatch(postDownload(download));
     });
@@ -61,8 +65,12 @@ export const Header = ({ button, navigation }) => {
       const download = {
         components_id: data,
         downloaded_id: 2,
-        ip: geolocation.IPv4,
-        region: geolocation.city,
+        ip:
+          Object.keys(geolocation).length === 0
+            ? "255.255.255.255"
+            : geolocation.IPv4,
+        region:
+          Object.keys(geolocation).length === 0 ? "Jakarta" : geolocation.city,
       };
       dispatch(postDownload(download));
     });
