@@ -404,7 +404,7 @@ const Landing = () => {
                 <h6
                   onClick={(e) => switchHandlerFAQ(e, data.id)}
                   className={
-                    !data.data.isActive ? "rounded-3xl" : "rounded-t-3xl"
+                    !data.data.isActive ? "rounded-2xl" : "rounded-t-2xl"
                   }
                 >
                   {data.data.title}{" "}

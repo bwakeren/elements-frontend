@@ -69,7 +69,7 @@
       }
 
       button {
-        @apply bg-button-primary-orange text-white hover:bg-button-primary-hover flex items-center px-12 py-5 mt-12;
+        @apply bg-button-primary-orange text-white text-xl hover:bg-button-primary-hover flex items-center px-12 py-5 mt-10;
       }
     }
 
@@ -291,7 +291,7 @@
       font-size: 24px;
       line-height: 30px;
       color: #171046;
-      @apply w-full h-28 px-8 py-9 flex items-center justify-between bg-white rounded-t-3xl;
+      @apply w-full h-20 px-8 py-9 flex items-center justify-between bg-white rounded-t-2xl;
 
       span {
         @apply cursor-pointer;
@@ -305,7 +305,7 @@
       font-size: 16px;
       line-height: 180%;
       color: #121212;
-      @apply w-full pl-8 pr-14 py-5 transition-all rounded-b-3xl;
+      @apply w-full pl-8 pr-14 pb-8 pt-4 transition-all rounded-b-2xl;
     }
   }
 }
@@ -339,7 +339,7 @@
   }
 
   button {
-    @apply bg-button-primary-orange text-white hover:bg-button-primary-hover mt-16 py-5 px-12;
+    @apply bg-button-primary-orange text-white hover:bg-button-primary-hover mt-16 py-5 px-12 text-xl;
   }
 }
 
