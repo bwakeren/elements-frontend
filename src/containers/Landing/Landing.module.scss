@@ -224,6 +224,10 @@
   background-size: cover;
   background-repeat: no-repeat;
 
+  img {
+    @apply mb-3;
+  }
+
   h2 {
     @apply mb-24;
     font-style: normal;
@@ -233,6 +237,7 @@
     letter-spacing: -1px;
     text-transform: capitalize;
     color: #171046;
+    @apply mb-2;
   }
 
   .knowledge_component {
