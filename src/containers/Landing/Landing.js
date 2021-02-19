@@ -185,23 +185,6 @@ const Landing = () => {
           Our Team
         </NavLink>
       </li>
-      <li>
-        <button onClick={gotoCreate}>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9.1665 9.16675V5.83342H10.8332V9.16675H14.1665V10.8334H10.8332V14.1667H9.1665V10.8334H5.83317V9.16675H9.1665ZM9.99984 18.3334C5.39734 18.3334 1.6665 14.6026 1.6665 10.0001C1.6665 5.39758 5.39734 1.66675 9.99984 1.66675C14.6023 1.66675 18.3332 5.39758 18.3332 10.0001C18.3332 14.6026 14.6023 18.3334 9.99984 18.3334ZM9.99984 16.6667C11.7679 16.6667 13.4636 15.9644 14.7139 14.7141C15.9641 13.4639 16.6665 11.7682 16.6665 10.0001C16.6665 8.23197 15.9641 6.53628 14.7139 5.28604C13.4636 4.03579 11.7679 3.33341 9.99984 3.33341C8.23173 3.33341 6.53604 4.03579 5.28579 5.28604C4.03555 6.53628 3.33317 8.23197 3.33317 10.0001C3.33317 11.7682 4.03555 13.4639 5.28579 14.7141C6.53604 15.9644 8.23173 16.6667 9.99984 16.6667Z"
-              fill="white"
-            />
-          </svg>
-          Create
-        </button>
-      </li>
       <li
         className={classes.close}
         onClick={() => setOpenNavigation(!openNavigation)}
@@ -233,45 +216,27 @@ const Landing = () => {
         style={{ backgroundImage: `url(${images.headerBack})` }}
       >
         <nav>
-          <div className="flex items-center">
-            <NavLink to="/" className="mr-10">
-              <img src={icons.logoWhite} alt="Logo Elements" />
-            </NavLink>
-
-            <ul>
-              <li>
-                <NavLink to="/" activeClassName={classes.active} exact>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <a href="#why-elements">Why Elements?</a>
-              </li>
-              <li>
-                <a href="#knowledge-base">Knowledge Base</a>
-              </li>
-              <li>
-                <NavLink to="/heroes" activeClassName={classes.active}>
-                  Our Team
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-          <button onClick={gotoCreate}>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9.1665 9.16675V5.83342H10.8332V9.16675H14.1665V10.8334H10.8332V14.1667H9.1665V10.8334H5.83317V9.16675H9.1665ZM9.99984 18.3334C5.39734 18.3334 1.6665 14.6026 1.6665 10.0001C1.6665 5.39758 5.39734 1.66675 9.99984 1.66675C14.6023 1.66675 18.3332 5.39758 18.3332 10.0001C18.3332 14.6026 14.6023 18.3334 9.99984 18.3334ZM9.99984 16.6667C11.7679 16.6667 13.4636 15.9644 14.7139 14.7141C15.9641 13.4639 16.6665 11.7682 16.6665 10.0001C16.6665 8.23197 15.9641 6.53628 14.7139 5.28604C13.4636 4.03579 11.7679 3.33341 9.99984 3.33341C8.23173 3.33341 6.53604 4.03579 5.28579 5.28604C4.03555 6.53628 3.33317 8.23197 3.33317 10.0001C3.33317 11.7682 4.03555 13.4639 5.28579 14.7141C6.53604 15.9644 8.23173 16.6667 9.99984 16.6667Z"
-                fill="white"
-              />
-            </svg>
-            Create
-          </button>
+          <NavLink to="/" className="mr-10">
+            <img src={icons.logoWhite} alt="Logo Elements" />
+          </NavLink>
+          <ul>
+            <li>
+              <NavLink to="/" activeClassName={classes.active} exact>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <a href="#why-elements">Why Elements?</a>
+            </li>
+            <li>
+              <a href="#knowledge-base">Knowledge Base</a>
+            </li>
+            <li>
+              <NavLink to="/heroes" activeClassName={classes.active}>
+                Our Team
+              </NavLink>
+            </li>
+          </ul>
           {openNavigation ? (
             <svg
               onClick={() => setOpenNavigation(!openNavigation)}
@@ -310,18 +275,17 @@ const Landing = () => {
         </nav>
         <div className={classes.hero}>
           <div>
-            <p>CSS TAILWIND & BOOSTRAP</p>
+            <p>MOST FRIENDLY BUILDER</p>
             <h1>
-              Design Better,
-              <br /> Faster Building <br />
-              Website
+              The New Way to <br />
+              Design Your Website <br />
+              Faster and Better
             </h1>
             <p>
-              Design websites and page in minutes with our intuitive interface.
-              With over 100+ components to help you look pretty for your
-              customer.
+              Design a promising website to scale your business better and
+              bigger. Elements is here to provide all you need.
             </p>
-            <button onClick={gotoCreate}>Launch App</button>
+            <button onClick={gotoCreate}>Try it free</button>
           </div>
           <img src={images.headerHero} alt="HeroImage" />
         </div>
@@ -438,11 +402,11 @@ const Landing = () => {
                 <p
                   className={
                     !data.data.isActive
-                      ? "bg-transparent h-0 invisible"
-                      : "bg-white h-auto visible"
+                      ? "bg-transparent h-0"
+                      : "bg-white h-auto"
                   }
                 >
-                  {data.data.text}
+                  {data.data.isActive ? data.data.text : ""}
                 </p>
               </div>
             ))}

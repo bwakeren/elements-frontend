@@ -15,6 +15,7 @@ import Fav32 from "./favicon/favicon-32x32.png";
 import ico from "./favicon/favicon.ico";
 import logoBootstrap from "./icons/bootstrap.png";
 import logoTailwinds from "./icons/logo_Tailwinds.png";
+import IcTrash from "./icons/Ic_trash.svg";
 
 // Landing Page
 import headerBack from "./images/header-landing-back.svg";
@@ -64,6 +65,7 @@ export const icons = {
   knowCommercial,
   knowCustom,
   knowDeveloper,
+  IcTrash,
 };
 
 export const favicon = {

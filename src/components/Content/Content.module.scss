@@ -34,7 +34,8 @@
   }
 
   .content_delete {
-    @apply absolute right-7 bottom-7 cursor-pointer hidden;
+    z-index: 9999;
+    @apply absolute left-1/2 transform translate-x-1/2 bottom-7 cursor-pointer hidden;
   }
 
   &:hover {
