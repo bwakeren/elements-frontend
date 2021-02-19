@@ -6,6 +6,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HelmetProvider } from "react-helmet-async";
 import { compose, combineReducers, createStore, applyMiddleware } from "redux";
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import productsReducer from "./store/reducers/products";
@@ -26,6 +28,16 @@ const reducers = combineReducers({
 });
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
+
+Sentry.init({
+  dsn:
+    "https://2e2b169bbf6b4507baf937d2292a229d@o287030.ingest.sentry.io/5643626",
+  integrations: [new Integrations.BrowserTracing()],
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0,
+});
 
 ReactDOM.render(
   <React.StrictMode>
