@@ -138,6 +138,7 @@ export const NavSidebar = () => {
                   }, 500);
                 }
               }}
+              active={data.id === category}
               openProduct={openProduct}
             />
           ))
@@ -149,6 +150,9 @@ export const NavSidebar = () => {
           className={classes.backdrop}
           onClick={() => {
             setOpenProduct(false);
+            setTimeout(() => {
+              setCategory(0);
+            }, 500);
           }}
         />
       )}

@@ -2,7 +2,14 @@ import classes from "./NavigationItem.module.scss";
 import { useSpring, animated, config } from "react-spring";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export const SidebarItems = ({ title, icon, openProduct, loading, click }) => {
+export const SidebarItems = ({
+  title,
+  icon,
+  openProduct,
+  loading,
+  click,
+  active,
+}) => {
   const animation = useSpring({
     opacity: openProduct ? 1 : 0,
     display: openProduct ? "inline" : "none",
@@ -11,7 +18,7 @@ export const SidebarItems = ({ title, icon, openProduct, loading, click }) => {
 
   return (
     <div
-      className={classes.sidebar__item}
+      className={[classes.sidebar__item, active ? classes.activ : ""].join(" ")}
       onClick={click}
       style={{ width: openProduct && "13rem" }}
     >

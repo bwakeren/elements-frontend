@@ -5,15 +5,9 @@
 
   &:hover {
     @apply bg-category;
-
-    svg {
-      path {
-        @apply fill-category;
-      }
-    }
-
-    p {
-      @apply text-categoryHover;
-    }
   }
+}
+
+.activ {
+  @apply bg-category;
 }
