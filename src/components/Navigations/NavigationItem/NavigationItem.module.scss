@@ -5,9 +5,17 @@
 
   &:hover {
     @apply bg-category;
+
+    p {
+      color: #5383ff;
+    }
   }
 }
 
 .activ {
-  @apply bg-category;
+  p {
+    color: #5383ff;
+  }
+
+  @apply bg-category transition-all;
 }
