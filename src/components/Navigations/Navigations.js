@@ -124,30 +124,34 @@ export const NavSidebar = () => {
               icon={STORAGE.toString() + data.icon}
               title={data.categories_name}
               loading={loading}
-              mouseEnter={() => {
-                setTimeout(() => {
-                  setOpenProduct(true);
-                  setCategory(data.id);
-                }, [100]);
-              }}
-              mouseLeave={() => {
-                setOpenProduct(false);
+              click={() => {
+                if (openProduct) {
+                  setOpenProduct(false);
+                  setTimeout(() => {
+                    setOpenProduct(true);
+                    setCategory(data.id);
+                  }, 500);
+                } else {
+                  setTimeout(() => {
+                    setOpenProduct(!openProduct);
+                    setCategory(data.id);
+                  }, 500);
+                }
               }}
               openProduct={openProduct}
             />
           ))
         )}
       </div>
-      <Products
-        category={category.toString()}
-        show={openProduct}
-        mouseEnter={() => {
-          setOpenProduct(true);
-        }}
-        mouseLeave={() => {
-          setOpenProduct(false);
-        }}
-      />
+      <Products category={category.toString()} show={openProduct} />
+      {openProduct && (
+        <div
+          className={classes.backdrop}
+          onClick={() => {
+            setOpenProduct(false);
+          }}
+        />
+      )}
     </>
   );
 };

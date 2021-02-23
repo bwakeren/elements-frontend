@@ -6,13 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { initProduct } from "../../store/actions";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export const Products = ({
-  show,
-  mouseEnter,
-  mouseLeave,
-  category,
-  clicked,
-}) => {
+export const Products = ({ show, category, clicked }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,12 +29,7 @@ export const Products = ({
 
   return (
     <>
-      <animated.div
-        style={props}
-        className={classes.products}
-        onMouseEnter={mouseEnter}
-        onMouseLeave={mouseLeave}
-      >
+      <animated.div style={props} className={classes.products}>
         {loading ? (
           <SkeletonTheme color="lightGray">
             <Skeleton
@@ -65,9 +54,6 @@ export const Products = ({
           ))
         )}
       </animated.div>
-      {show && (
-        <div className={classes.backdrop} onMouseEnter={mouseLeave}></div>
-      )}
     </>
   );
 };

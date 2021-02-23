@@ -2,15 +2,7 @@ import classes from "./NavigationItem.module.scss";
 import { useSpring, animated, config } from "react-spring";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export const SidebarItems = ({
-  title,
-  icon,
-  mouseEnter,
-  mouseLeave,
-  mouseOver,
-  openProduct,
-  loading,
-}) => {
+export const SidebarItems = ({ title, icon, openProduct, loading, click }) => {
   const animation = useSpring({
     opacity: openProduct ? 1 : 0,
     display: openProduct ? "inline" : "none",
@@ -20,9 +12,7 @@ export const SidebarItems = ({
   return (
     <div
       className={classes.sidebar__item}
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
-      onMouseOver={mouseOver}
+      onClick={click}
       style={{ width: openProduct && "13rem" }}
     >
       {loading ? (
@@ -47,11 +37,6 @@ export const SidebarItems = ({
       >
         {title}
       </animated.p>
-      <div
-        onMouseEnter={mouseEnter}
-        onMouseLeave={mouseLeave}
-        className={classes.backdrop}
-      ></div>
     </div>
   );
 };

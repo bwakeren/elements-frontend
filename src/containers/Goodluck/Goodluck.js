@@ -14,7 +14,7 @@ const Main = () => {
         <p>Gunakanlah design asset sebijaksana mungkin and Goodluck!</p>
         <div>
           <Link to="/heroes">Our Team</Link>
-          <Link to="/">New Design</Link>
+          <Link to="/create">New Design</Link>
         </div>
       </div>
     </Layout>
