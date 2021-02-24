@@ -16,6 +16,7 @@ import ico from "./favicon/favicon.ico";
 import logoBootstrap from "./icons/bootstrap.png";
 import logoTailwinds from "./icons/logo_Tailwinds.png";
 import IcTrash from "./icons/Ic_trash.svg";
+import noPhone from "./images/no_phone.png";
 
 // Landing Page
 import headerBack from "./images/header-landing-back.svg";
@@ -51,6 +52,7 @@ export const images = {
   customContent,
   knowledgeBase,
   faqLanding,
+  noPhone,
 };
 
 export const icons = {

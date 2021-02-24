@@ -1,0 +1,42 @@
+.nosupport {
+  @apply h-screen w-full flex flex-col items-center justify-center bg-white;
+
+  h1 {
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+    color: #171046;
+    max-width: 484px;
+  }
+
+  p {
+    font-family: "Fivo Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #6b7280;
+    max-width: 500px;
+    margin-top: 1rem;
+  }
+
+  button {
+    @apply bg-button-primary-orange text-white hover:bg-button-primary-hover mt-12;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 20px;
+      line-height: 36px;
+      max-width: 347px;
+    }
+
+    p {
+      max-width: 308px;
+    }
+  }
+}
