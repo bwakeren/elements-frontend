@@ -1,6 +1,7 @@
 .success {
-  @apply bg-white w-11/12 mx-auto mt-10 rounded-2xl flex flex-col items-center py-16;
+  @apply bg-white mx-auto mt-6 rounded-2xl flex flex-col items-center py-16;
   top: 130px;
+  width: 98%;
 
   img {
     margin-bottom: 30px;
@@ -12,11 +13,11 @@
     font-size: 32px;
     line-height: 48px;
     text-align: center;
-    color: #1657ff;
+    color: #171046;
     @apply mb-4;
   }
 
-  p {
+  .description {
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -24,19 +25,130 @@
     text-align: center;
     color: #6b7280;
     margin-bottom: 50px;
+    max-width: 500px;
   }
 
-  a {
-    padding: 12px 24px;
-    border-radius: 10px;
+  button {
+    padding: 12px 32px;
+    border-radius: 8px;
     color: #fff;
     margin: 0 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+    @apply bg-button-primary-orange mt-14;
 
-    &:first-child {
-      background: #1e1e1e;
+    &:hover {
+      @apply bg-button-primary-hover;
     }
-    &:last-child {
-      @apply bg-button-primary-orange;
+
+    &:disabled {
+      cursor: not-allowed;
+      @apply bg-gray-500;
+    }
+  }
+
+  .rating {
+    @apply flex;
+    input {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    .star_group {
+      @apply w-16 h-16 relative mx-0 sm:mx-2;
+
+      label {
+        top: 5px;
+        left: 4px;
+        position: absolute;
+
+        svg {
+          path {
+            transition: all 0.5s ease-out;
+          }
+        }
+      }
+
+      .rating_label_half {
+        z-index: 1;
+      }
+    }
+  }
+
+  .active {
+    path {
+      fill: #ffd850;
+      animation: activeRate 0.5s ease-in-out forwards;
+    }
+  }
+
+  .nonactive {
+    path {
+      fill: #ffd850;
+      animation: nonActiveRate 0.5s ease-in-out forwards;
+    }
+  }
+
+  @keyframes activeRate {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes nonActiveRate {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  form {
+    @apply mt-16 flex flex-col items-center;
+
+    input,
+    textarea {
+      width: 524px;
+      padding: 18px;
+      outline: none;
+      font-family: "Fivo Sans", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 24px;
+      color: #afb2b7;
+      border-bottom: 2px solid #ff7c57;
+      margin-top: 12px;
+      resize: none;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #ff7c57;
+      }
+    }
+
+    @media (max-width: 648px) {
+      width: 100%;
+
+      input,
+      textarea {
+        width: 90%;
+      }
     }
   }
 }

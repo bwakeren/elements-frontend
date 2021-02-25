@@ -1,5 +1,10 @@
 .nosupport {
-  @apply h-screen w-full flex flex-col items-center justify-center bg-white;
+  @apply h-screen w-full flex flex-col items-center justify-center bg-white py-10;
+
+  img {
+    height: 50%;
+    margin: 0 auto;
+  }
 
   h1 {
     font-family: "Nunito", sans-serif;
@@ -37,6 +42,10 @@
 
     p {
       max-width: 308px;
+    }
+
+    img {
+      height: 40%;
     }
   }
 }
