@@ -1,0 +1,108 @@
+.footer {
+  background: #00262b;
+  @apply px-3 pt-20 pb-10 md:px-32 w-full;
+
+  .footer_top {
+    @apply flex justify-between items-start mb-28 flex-col lg:flex-row;
+
+    .top_left {
+      width: 300px;
+      @apply mb-8 lg:mb-0;
+
+      p {
+        font-family: "Fivo Sans", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.5px;
+        color: #ffffff;
+        @apply mt-10;
+      }
+    }
+
+    .top_right {
+      @apply flex items-start flex-col sm:flex-row;
+
+      div {
+        &:nth-child(2) {
+          @apply mx-0 sm:mx-16;
+        }
+
+        @apply my-2 sm:my-0;
+
+        h5 {
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 28px;
+          color: #f4f5f7;
+          @apply mb-6;
+        }
+
+        ul {
+          @apply list-none;
+
+          li {
+            @apply mb-3;
+            a {
+              font-family: "Fivo Sans", sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 14px;
+              line-height: 24px;
+              color: #7c7c7c;
+              &:hover {
+                color: #ff7c57;
+              }
+            }
+            .active {
+              color: #ff7c57;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer_bottom {
+    @apply flex justify-between items-center flex-col sm:flex-row;
+
+    p {
+      font-family: "Fivo Sans", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 150%;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      @apply text-center sm:text-left;
+    }
+
+    ul {
+      @apply flex items-center list-none;
+
+      li {
+        &:first-child {
+          @apply mr-10;
+        }
+
+        a {
+          font-family: "Fivo Sans", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 150%;
+          letter-spacing: 0.5px;
+          color: #7c7c7c;
+          &:hover {
+            color: #ff7c57;
+          }
+        }
+        .active {
+          color: #eeeff4;
+        }
+      }
+    }
+  }
+}

@@ -34,6 +34,11 @@ import knowCustom from "./icons/know-custom.svg";
 import knowDeveloper from "./icons/know-developer.svg";
 import faqLanding from "./images/faq-landing.svg";
 
+// Pricing Page
+import backgroundPricing from "./images/bg-pricing.png";
+import pricingFree from "./images/pricing-free.png";
+import pricingPremium from "./images/pricing-premium.png";
+
 export const images = {
   Logo,
   BG,
@@ -53,6 +58,9 @@ export const images = {
   knowledgeBase,
   faqLanding,
   noPhone,
+  backgroundPricing,
+  pricingFree,
+  pricingPremium,
 };
 
 export const icons = {

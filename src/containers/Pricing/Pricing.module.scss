@@ -1,0 +1,186 @@
+.pricing_container {
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 168px;
+
+  nav {
+    @apply px-3 py-8 flex items-center justify-between mb-12 md:px-12 w-full relative;
+
+    ul {
+      @apply flex items-center list-none;
+
+      li {
+        @apply mx-5;
+
+        a {
+          font-family: "Fivo Sans";
+          color: #fff;
+        }
+
+        .active {
+          font-weight: bold;
+        }
+      }
+
+      .header_logo {
+        @apply ml-0 mr-7;
+      }
+    }
+
+    ul {
+      @apply hidden lg:flex;
+    }
+  }
+
+  h1 {
+    font-family: "Nunito", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 76px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    margin: 0 0 16px 0;
+  }
+
+  p {
+    font-family: "Fivo Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #ffffff;
+    max-width: 385px;
+    margin: 0 auto 50px auto;
+  }
+
+  .pricing_cat {
+    @apply flex items-start flex-col justify-center lg:flex-row;
+
+    .card {
+      @apply mx-8 py-8 px-11 bg-white rounded-xl my-8 lg:my-0;
+
+      h3 {
+        font-family: "Nunito", sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 44px;
+        text-align: center;
+        letter-spacing: -1px;
+        color: #171046;
+        margin-bottom: 12px;
+      }
+
+      h6 {
+        font-family: "Nunito", sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 49px;
+        text-align: center;
+        color: #ff7c57;
+        margin-bottom: 24px;
+
+        span {
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 22px;
+          letter-spacing: 0.5px;
+          color: #7f8c8d;
+        }
+      }
+
+      ul {
+        li {
+          @apply flex items-center justify-start mb-6;
+
+          svg {
+            @apply mr-3;
+          }
+
+          span {
+            font-family: "Fivo Sans", sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 17px;
+            letter-spacing: 0.5px;
+            color: #121212;
+          }
+        }
+      }
+
+      .btn_free,
+      .btn_premium {
+        border: 1px solid #ff7c57;
+        box-sizing: border-box;
+        border-radius: 10px;
+        font-family: Fivo Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 17px;
+        letter-spacing: 0.5px;
+        color: #ff7c57;
+        width: 100%;
+        z-index: 2;
+        @apply py-5 mt-16 relative;
+
+        &:hover {
+          color: #fff;
+          &::before {
+            content: "";
+            display: block;
+            width: 101%;
+            height: 100%;
+            background: #ff5525;
+            position: absolute;
+            top: 0;
+            right: -1px;
+            z-index: -1;
+            border-radius: 10px;
+            animation: fullloading 0.5s linear;
+          }
+        }
+      }
+      .btn_premium {
+        color: #fff;
+        background: #ff7c57;
+      }
+
+      &:first-child {
+        animation: popup 0.5s ease-out;
+      }
+
+      &:last-child {
+        animation: popup 1.2s ease-out;
+      }
+    }
+  }
+
+  @keyframes fullloading {
+    0% {
+      opacity: 0;
+      width: 0;
+    }
+    100% {
+      opacity: 1;
+      width: 101%;
+    }
+  }
+  @keyframes popup {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
 import { STORAGE } from "../../shared/utility";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { NavLink } from "react-router-dom";
 
 export const Navigation = ({
   clicked,
@@ -156,6 +157,120 @@ export const NavSidebar = () => {
           }}
         />
       )}
+    </>
+  );
+};
+
+export const NavigationHome = () => {
+  const [openNavigation, setOpenNavigation] = useState(false);
+
+  const animation = useSpring({
+    opacity: openNavigation ? 1 : 0,
+    transform: openNavigation ? "translateX(0)" : "translateX(200%)",
+  });
+
+  const ModalNavigation = (
+    <animated.ul style={animation} className={classes.modalnav}>
+      <li>
+        <NavLink to="/" activeClassName={classes.active} exact>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <a href="#why-elements">Why Elements?</a>
+      </li>
+      <li>
+        <a href="#knowledge-base">Knowledge Base</a>
+      </li>
+      <li>
+        <NavLink to="/heroes" activeClassName={classes.active}>
+          Our Team
+        </NavLink>
+      </li>
+      <li
+        className={classes.close}
+        onClick={() => setOpenNavigation(!openNavigation)}
+      >
+        <svg
+          className="w-6 h-6 block lg:hidden cursor-pointer"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+            color="#00262b"
+          ></path>
+        </svg>
+      </li>
+    </animated.ul>
+  );
+
+  return (
+    <>
+      <nav>
+        <NavLink to="/" className="mr-10">
+          <img src={icons.logoWhite} alt="Logo Elements" />
+        </NavLink>
+        <ul>
+          <li>
+            <NavLink to="/" activeClassName={classes.active} exact>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <a href="#why-elements">Why Elements?</a>
+          </li>
+          <li>
+            <a href="#knowledge-base">Knowledge Base</a>
+          </li>
+          <li>
+            <NavLink to="/heroes" activeClassName={classes.active}>
+              Our Team
+            </NavLink>
+          </li>
+        </ul>
+        {openNavigation ? (
+          <svg
+            onClick={() => setOpenNavigation(!openNavigation)}
+            className="w-6 h-6 block lg:hidden cursor-pointer"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+              color="#00262b"
+            ></path>
+          </svg>
+        ) : (
+          <svg
+            onClick={() => setOpenNavigation(!openNavigation)}
+            className="w-6 h-6 block lg:hidden cursor-pointer"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+              color="#fff"
+            ></path>
+          </svg>
+        )}
+      </nav>
+      {ModalNavigation}
     </>
   );
 };

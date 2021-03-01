@@ -64,3 +64,31 @@
 .backdrop {
   @apply w-full h-full bg-transparent fixed top-0 left-0 z-10;
 }
+
+.modalnav {
+  @apply w-10/12 h-full fixed px-3 md:px-12 top-0 right-0 py-24 list-none bg-white flex flex-col items-center justify-between z-50;
+
+  li {
+    @apply my-4;
+
+    a {
+      font-family: "Fivo Sans";
+      color: #00262b;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+
+    button {
+      @apply bg-button-primary-orange text-white hover:bg-button-primary-hover flex items-center;
+      svg {
+        @apply mr-2;
+      }
+    }
+  }
+
+  .close {
+    @apply absolute top-4 right-3 md:right-12;
+  }
+}
