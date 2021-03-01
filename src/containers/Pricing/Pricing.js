@@ -1,8 +1,11 @@
 import classes from "./Pricing.module.scss";
 import { Head, Footer, NavigationHome } from "../../components";
 import { images } from "../../assets";
+import { useHistory } from "react-router-dom";
 
 const Pricing = () => {
+  const history = useHistory();
+
   const checklist = (
     <svg
       width="20"
@@ -81,7 +84,12 @@ const Pricing = () => {
                 {xlist} <span>Private Group (Consultation)</span>
               </li>
             </ul>
-            <button className={classes.btn_free}>Get Started</button>
+            <button
+              onClick={() => history.push("/create")}
+              className={classes.btn_free}
+            >
+              Get Started
+            </button>
           </div>
           <div className={classes.card}>
             <h3>Premium</h3>
@@ -106,7 +114,12 @@ const Pricing = () => {
                 {checklist} <span>Private Group (Consultation)</span>
               </li>
             </ul>
-            <button className={classes.btn_premium}>Subscribe</button>
+            <button
+              onClick={() => history.push("/create")}
+              className={classes.btn_premium}
+            >
+              Subscribe
+            </button>
           </div>
         </div>
       </main>
