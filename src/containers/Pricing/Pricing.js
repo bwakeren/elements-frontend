@@ -66,7 +66,7 @@ const Pricing = () => {
           <div className={classes.card}>
             <h3>Starter</h3>
             <h6>Free</h6>
-            <img src={images.pricingFree} alt="Free" className="mb-8" />
+            <img src={images.pricingFree} alt="Free" className="mb-8 w-72" />
             <ul>
               <li>
                 {checklist} <span>Ready to Use</span>
@@ -96,7 +96,7 @@ const Pricing = () => {
             <h6>
               IDR 150.000<span>/bulan</span>
             </h6>
-            <img src={images.pricingPremium} alt="Free" className="mb-8" />
+            <img src={images.pricingPremium} alt="Free" className="mb-8 w-72" />
             <ul>
               <li>
                 {checklist} <span>Ready to Use</span>
