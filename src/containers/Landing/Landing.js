@@ -33,9 +33,9 @@ const Landing = () => {
   const [dataFAQ, setDataFAQ] = useState({
     1: {
       isActive: true,
-      title: "Lorem ipsom dolor set amet ?",
+      title: "Kenapa Elements bagus untuk bisnis?",
       text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
+        "Dengan menggunakan Elements maka kita tidak perlu menghabiskan banyak uang, tenaga, dan juga waktu berharga. Semua bagian dari website yang professional telah kami sediakan dan bisa digunakan dengan instan.",
     },
     2: {
       isActive: true,

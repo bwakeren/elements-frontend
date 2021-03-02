@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
 import { STORAGE } from "../../shared/utility";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 export const Navigation = ({
   clicked,
@@ -33,16 +33,23 @@ export const Navigation = ({
         <img src={icons.logoTailwinds} alt="bootstrap" />
         <p>Export to Tailwinds</p>
       </Link>
-      {/* <Link to="/goodluck" target="_blank" onClick={clickedBootstrap}>
+      <Link to="/goodluck" target="_blank" onClick={clickedBootstrap}>
         <img src={icons.logoBootstrap} alt="bootstrap" />
         <p>Export to Bootstrap</p>
-      </Link> */}
+      </Link>
     </animated.div>
   );
 
+  const history = useHistory();
+
   return (
     <nav className={classes.nav}>
-      <img src={images.Logo} alt="Elements" />
+      <img
+        onClick={() => history.push("/")}
+        style={{ cursor: "pointer" }}
+        src={images.Logo}
+        alt="Elements"
+      />
       {disabled ? (
         button && <Link to={navigation}>{button}</Link>
       ) : (
@@ -60,19 +67,6 @@ export const Navigation = ({
     </nav>
   );
 };
-
-// {
-//   /* <Link
-//           href={`data:html/text;charset=utf-8,${encodeURIComponent(
-//             html.join(" ")
-//           )}`}
-//           to="/goodluck"
-//           target="_blank"
-//           onClick={clicked}
-//         >
-//           {button}
-//         </Link> */
-// }
 
 export const NavSidebar = () => {
   const [openProduct, setOpenProduct] = useState(false);
@@ -183,9 +177,10 @@ export const NavigationHome = () => {
         <a href="#knowledge-base">Knowledge Base</a>
       </li>
       <li>
-        <NavLink to="/heroes" activeClassName={classes.active}>
-          Our Team
-        </NavLink>
+        <a href="/pricing">Price</a>
+      </li>
+      <li>
+        <a href="/heroes">Our Team</a>
       </li>
       <li
         className={classes.close}
@@ -229,9 +224,10 @@ export const NavigationHome = () => {
             <a href="#knowledge-base">Knowledge Base</a>
           </li>
           <li>
-            <NavLink to="/heroes" activeClassName={classes.active}>
-              Our Team
-            </NavLink>
+            <a href="/pricing">Price</a>
+          </li>
+          <li>
+            <a href="/heroes">Our Team</a>
           </li>
         </ul>
         {openNavigation ? (
