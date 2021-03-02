@@ -4,14 +4,7 @@ import classes from "./ProductItem.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addContent } from "../../../store/actions";
 
-export const ProductItem = ({
-  img,
-  title,
-  html,
-  idProd,
-  disabled,
-  htmlBootstrap,
-}) => {
+export const ProductItem = ({ img, title, html, idProd, htmlBootstrap }) => {
   const [action, setAction] = useState(false);
   const dispatch = useDispatch();
 

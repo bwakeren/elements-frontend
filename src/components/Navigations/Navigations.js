@@ -113,30 +113,32 @@ export const NavSidebar = () => {
             </div>
           </SkeletonTheme>
         ) : (
-          categories.map((data) => (
-            <SidebarItems
-              key={data.id}
-              icon={STORAGE.toString() + data.icon}
-              title={data.categories_name}
-              loading={loading}
-              click={() => {
-                if (openProduct) {
-                  setOpenProduct(false);
-                  setTimeout(() => {
-                    setOpenProduct(true);
-                    setCategory(data.id);
-                  }, 500);
-                } else {
-                  setTimeout(() => {
-                    setOpenProduct(!openProduct);
-                    setCategory(data.id);
-                  }, 500);
-                }
-              }}
-              active={data.id === category}
-              openProduct={openProduct}
-            />
-          ))
+          categories
+            .sort((a, b) => a.position - b.position)
+            .map((data) => (
+              <SidebarItems
+                key={data.id}
+                icon={STORAGE.toString() + data.icon}
+                title={data.categories_name}
+                loading={loading}
+                click={() => {
+                  if (openProduct) {
+                    setOpenProduct(false);
+                    setTimeout(() => {
+                      setOpenProduct(true);
+                      setCategory(data.id);
+                    }, 500);
+                  } else {
+                    setTimeout(() => {
+                      setOpenProduct(!openProduct);
+                      setCategory(data.id);
+                    }, 500);
+                  }
+                }}
+                active={data.id === category}
+                openProduct={openProduct}
+              />
+            ))
         )}
       </div>
       <Products category={category.toString()} show={openProduct} />
