@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Head } from "../../components";
 import { icons } from "../../assets";
 import classes from "./Goodluck.module.scss";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Layout from "../../hoc/Layout/Layout";
 import axios from "../../axios_db";
 
@@ -18,6 +18,7 @@ const Main = () => {
   });
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState(false);
+  const params = useParams();
 
   const starSvgOutline = (
     <svg
@@ -129,6 +130,7 @@ const Main = () => {
               message: feedback.text.value,
               rate: rating,
               status: 1,
+              is_framework: params.isframework === "tailwinds" ? 1 : 2,
             };
             axios
               .post("/api/feedback/store", data)

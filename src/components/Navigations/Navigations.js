@@ -29,11 +29,11 @@ export const Navigation = ({
 
   const dropdwon = (
     <animated.div style={animation} className={classes.dropdown}>
-      <Link to="/goodluck" target="_blank" onClick={clicked}>
+      <Link to="/goodluck/tailwinds" target="_blank" onClick={clicked}>
         <img src={icons.logoTailwinds} alt="bootstrap" />
         <p>Export to Tailwinds</p>
       </Link>
-      <Link to="/goodluck" target="_blank" onClick={clickedBootstrap}>
+      <Link to="/goodluck/bootstrap" target="_blank" onClick={clickedBootstrap}>
         <img src={icons.logoBootstrap} alt="bootstrap" />
         <p>Export to Bootstrap</p>
       </Link>
