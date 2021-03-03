@@ -50,6 +50,7 @@ export const Products = ({ show, category, clicked }) => {
               html={data.code}
               htmlBootstrap={data.code_bootstrap}
               clicked={clicked}
+              premium={data.type === "premium"}
             />
           ))
         )}

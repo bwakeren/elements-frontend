@@ -4,7 +4,14 @@ import classes from "./ProductItem.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addContent } from "../../../store/actions";
 
-export const ProductItem = ({ img, title, html, idProd, htmlBootstrap }) => {
+export const ProductItem = ({
+  img,
+  title,
+  html,
+  idProd,
+  premium,
+  htmlBootstrap,
+}) => {
   const [action, setAction] = useState(false);
   const dispatch = useDispatch();
 
@@ -84,6 +91,37 @@ export const ProductItem = ({ img, title, html, idProd, htmlBootstrap }) => {
     </animated.a>
   );
 
+  const block = (
+    <animated.a
+      href={`#element`}
+      style={(animation, { cursor: "not-allowed" })}
+    >
+      <svg
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="18" cy="18" r="18" fill="#FF3F6D" />
+        <path
+          d="M22.3333 17.25H14.1667C13.5223 17.25 13 17.7723 13 18.4167V22.5C13 23.1443 13.5223 23.6667 14.1667 23.6667H22.3333C22.9777 23.6667 23.5 23.1443 23.5 22.5V18.4167C23.5 17.7723 22.9777 17.25 22.3333 17.25Z"
+          stroke="#FFF8F8"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M15.3335 17.25V14.9167C15.3335 14.1431 15.6408 13.4013 16.1878 12.8543C16.7347 12.3073 17.4766 12 18.2502 12C19.0237 12 19.7656 12.3073 20.3126 12.8543C20.8595 13.4013 21.1668 14.1431 21.1668 14.9167V17.25"
+          stroke="#FFF8F8"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </animated.a>
+  );
+
   return (
     <div className={classes.product__item}>
       {img && (
@@ -94,7 +132,9 @@ export const ProductItem = ({ img, title, html, idProd, htmlBootstrap }) => {
           onMouseLeave={() => setAction(false)}
         />
       )}
-      {contents.length !== 0
+      {premium
+        ? block
+        : contents.length !== 0
         ? contents[0].title !== title
           ? plus
           : checklist
