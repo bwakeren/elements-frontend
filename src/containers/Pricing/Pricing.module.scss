@@ -62,7 +62,7 @@
     @apply flex items-center lg:items-start flex-col justify-center lg:flex-row;
 
     .card {
-      @apply mx-8 py-8 px-11 bg-white rounded-xl my-8 lg:my-0;
+      @apply mx-8 py-8 px-7 lg:px-11 bg-white rounded-xl my-8 lg:my-0;
 
       h3 {
         font-family: "Nunito", sans-serif;
@@ -97,10 +97,11 @@
 
       ul {
         li {
-          @apply flex items-center justify-start mb-6;
+          @apply grid mb-6;
+          grid-template-columns: 32px 1fr;
 
           svg {
-            @apply mr-3;
+            @apply w-5 h-5;
           }
 
           span {
@@ -111,6 +112,8 @@
             line-height: 17px;
             letter-spacing: 0.5px;
             color: #121212;
+            text-align: left;
+            align-self: center;
           }
         }
       }
