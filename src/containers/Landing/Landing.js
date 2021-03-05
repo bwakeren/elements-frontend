@@ -39,15 +39,15 @@ const Landing = () => {
     },
     2: {
       isActive: true,
-      title: "Lorem ipsom dolor set amet ?",
+      title: "Elements dibangun untuk siapa saja?",
       text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
+        "Kami membangun Elements untuk semua kalangan yang ingin memiliki website dengan design menarik dan professional tanpa harus memiliki background IT terutama di bidang programming.",
     },
     3: {
       isActive: false,
-      title: "Lorem ipsom dolor set amet ?",
+      title: "Apakah bisa mendapatkan bantuan khusus?",
       text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
+        "Tim developer kami siap membantu Anda apabila ada kesulitan dalam mengubah konten pada design website yang telah Anda buat menggunakan Elements sebelumnya. Pelayanan ini hanya tersedia pada paket Premium.",
     },
     4: {
       isActive: false,
@@ -279,15 +279,18 @@ const Landing = () => {
         </section>
         <section className={classes.bottom}>
           <h2>
-            Create now your beautiful
+            Start your website project
             <br />
-            website with Elements
+            and execute your ideas.
           </h2>
-          <p>
-            Don't waste time, we are here to provide various unique and
-            beautiful websites
-          </p>
-          <button onClick={gotoCreate}>Launch App</button>
+          <div>
+            <p>Beginners Friendly</p>
+            <span></span>
+            <p>Start at $0</p>
+            <span></span>
+            <p>Less Effort</p>
+          </div>
+          <button onClick={gotoCreate}>Try Elements</button>
         </section>
       </main>
       <Footer />

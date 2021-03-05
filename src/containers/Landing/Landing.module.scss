@@ -335,4 +335,31 @@
   button {
     @apply bg-button-primary-orange text-white hover:bg-button-primary-hover mt-16 py-5 px-12 text-xl;
   }
+
+  div {
+    @apply flex items-center mb-9 flex-col sm:flex-row;
+
+    p {
+      font-family: Fivo Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      letter-spacing: 0.5px;
+      color: #121212;
+    }
+
+    span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff7c57;
+    }
+
+    p,
+    span {
+      @apply my-3 mx-0 sm:my-0 sm:mx-3;
+    }
+  }
 }

@@ -57,10 +57,10 @@ const Pricing = () => {
         style={{ backgroundImage: `url(${images.backgroundPricing})` }}
       >
         <NavigationHome />
-        <h1>Cheap and Simple</h1>
+        <h1>Simple Pricing for Everyone</h1>
         <p>
-          Choose one of our friendly prices that are suitable so that your
-          business grows bigger
+          Upgrade ke akun Premium dan unlock semua benefit yang telah kami
+          sediakan
         </p>
         <div className={classes.pricing_cat}>
           <div className={classes.card}>

@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
 import { STORAGE } from "../../shared/utility";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 
 export const Navigation = ({
   clicked,
@@ -159,6 +159,8 @@ export const NavSidebar = () => {
 
 export const NavigationHome = () => {
   const [openNavigation, setOpenNavigation] = useState(false);
+  const location = useLocation();
+  const { pathname } = location;
 
   const animation = useSpring({
     opacity: openNavigation ? 1 : 0,
@@ -173,13 +175,17 @@ export const NavigationHome = () => {
         </NavLink>
       </li>
       <li>
-        <a href="#why-elements">Why Elements?</a>
+        <a href={pathname !== "/" ? "/#why-elements" : "#why-elements"}>
+          Why Elements?
+        </a>
       </li>
       <li>
-        <a href="#knowledge-base">Knowledge Base</a>
+        <a href={pathname !== "/" ? "/#knowledge-base" : "#knowledge-base"}>
+          Knowledge Base
+        </a>
       </li>
       <li>
-        <a href="/pricing">Price</a>
+        <a href="/pricing">Pricing</a>
       </li>
       <li>
         <a href="/heroes">Our Team</a>
@@ -220,13 +226,17 @@ export const NavigationHome = () => {
             </NavLink>
           </li>
           <li>
-            <a href="#why-elements">Why Elements?</a>
+            <a href={pathname !== "/" ? "/#why-elements" : "#why-elements"}>
+              Why Elements?
+            </a>
           </li>
           <li>
-            <a href="#knowledge-base">Knowledge Base</a>
+            <a href={pathname !== "/" ? "/#knowledge-base" : "#knowledge-base"}>
+              Knowledge Base
+            </a>
           </li>
           <li>
-            <a href="/pricing">Price</a>
+            <a href="/pricing">Pricing</a>
           </li>
           <li>
             <a href="/heroes">Our Team</a>
