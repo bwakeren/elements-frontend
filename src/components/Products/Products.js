@@ -10,14 +10,10 @@ export const Products = ({ show, category, clicked }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initProduct());
-  }, [dispatch]);
+    dispatch(initProduct(category));
+  }, [dispatch, category]);
 
-  const datas = useSelector((state) =>
-    state.product.products.filter(
-      (product) => product.categories_id === category
-    )
-  );
+  const datas = useSelector((state) => state.product.products);
   const loading = useSelector((state) => state.product.loading);
 
   const props = useSpring({

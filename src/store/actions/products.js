@@ -13,11 +13,11 @@ export const fetchProductFail = (error) => ({
   error,
 });
 
-export const initProduct = () => {
+export const initProduct = (id) => {
   return (dispatch) => {
     dispatch(fetchProductStart());
     axios
-      .get("/api/components/show")
+      .get(`/api/components/show_cat/${id}`)
       .then((response) => {
         dispatch(fetchProductSuccess(response.data.data));
       })
@@ -26,22 +26,3 @@ export const initProduct = () => {
       });
   };
 };
-
-// export const productStart = () => ({
-//   type: actionTypes.PRODUCTS_START,
-// });
-// export const productSuccess = (product) => ({
-//   type: actionTypes.PRODUCTS_SUCCESS,
-//   product,
-// });
-// export const productFail = (error) => ({
-//   type: actionTypes.PRODUCTS_FAIL,
-//   error,
-// });
-
-// export const used = (used) => {
-//   return (dispatch) => {
-//     dispatch(productStart());
-//     dispatch(productSuccess(datas));
-//   };
-// };
