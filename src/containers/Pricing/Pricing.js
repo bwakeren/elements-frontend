@@ -186,14 +186,20 @@ const Pricing = () => {
                 {checklist} <span>Free Consultation</span>
               </li>
             </ul>
-            <button className={classes.btn_premium}>
-              <a
-                href="https://wa.me/6289604535310?text=Saya+tertarik+upgrade+akun+Elements+ke+Premium+Bagaimana+Caranya?+Terima+kasih."
-                target="_blank"
-                rel="noreferrer"
-              >
-                Subscribe
-              </a>
+            <button
+              className={classes.btn_premium}
+              onClick={() => {
+                const element = document.createElement("a");
+                element.setAttribute(
+                  "href",
+                  "https://wa.me/6289604535310?text=Saya+tertarik+upgrade+akun+Elements+ke+Premium+Bagaimana+Caranya?+Terima+kasih."
+                );
+                element.setAttribute("target", "_blank");
+                element.setAttribute("rel", "noreferrer");
+                element.click();
+              }}
+            >
+              Subscribe
             </button>
           </div>
         </div>
