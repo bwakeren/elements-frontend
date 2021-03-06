@@ -69,9 +69,6 @@ const Pricing = () => {
             <img src={images.pricingFree} alt="Free" className="mb-8 w-72" />
             <ul>
               <li>
-                {xlist} <span>Unlock 1,000+ Design</span>
-              </li>
-              <li>
                 {checklist} <span>Customizable</span>
               </li>
               <li>
@@ -99,9 +96,6 @@ const Pricing = () => {
                 {checklist} <span>Responsive Design Limited</span>
               </li>
               <li>
-                {xlist} <span>Mobile-First Design</span>
-              </li>
-              <li>
                 {checklist} <span>Clean Code</span>
               </li>
               <li>
@@ -109,6 +103,12 @@ const Pricing = () => {
               </li>
               <li>
                 {checklist} <span>SEO Ready</span>
+              </li>
+              <li>
+                {xlist} <span>Unlock 1,000+ Design</span>
+              </li>
+              <li>
+                {xlist} <span>Mobile-First Design</span>
               </li>
               <li>
                 {xlist} <span>Private Group</span>
@@ -186,11 +186,14 @@ const Pricing = () => {
                 {checklist} <span>Free Consultation</span>
               </li>
             </ul>
-            <button
-              onClick={() => history.push("/create")}
-              className={classes.btn_premium}
-            >
-              Subscribe
+            <button className={classes.btn_premium}>
+              <a
+                href="https://wa.me/6289604535310?text=Saya+tertarik+upgrade+akun+Elements+ke+Premium+Bagaimana+Caranya?+Terima+kasih."
+                target="_blank"
+                rel="noreferrer"
+              >
+                Subscribe
+              </a>
             </button>
           </div>
         </div>
