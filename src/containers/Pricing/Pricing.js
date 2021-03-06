@@ -69,19 +69,55 @@ const Pricing = () => {
             <img src={images.pricingFree} alt="Free" className="mb-8 w-72" />
             <ul>
               <li>
+                {xlist} <span>Unlock 1,000+ Design</span>
+              </li>
+              <li>
+                {checklist} <span>Customizable</span>
+              </li>
+              <li>
+                {checklist} <span>Navbar Sections Limited</span>
+              </li>
+              <li>
+                {checklist} <span>Header Sections Limited</span>
+              </li>
+              <li>
+                {checklist} <span>Content Sections Limited</span>
+              </li>
+              <li>
+                {checklist} <span>Footer Sections Limited</span>
+              </li>
+              <li>
+                {checklist} <span>Empty State Sections Limited</span>
+              </li>
+              <li>
+                {checklist} <span>Export to Bootstrap Limited</span>
+              </li>
+              <li>
+                {checklist} <span>Export to Tailwind Limited</span>
+              </li>
+              <li>
+                {checklist} <span>Responsive Design Limited</span>
+              </li>
+              <li>
+                {xlist} <span>Mobile-First Design</span>
+              </li>
+              <li>
+                {checklist} <span>Clean Code</span>
+              </li>
+              <li>
                 {checklist} <span>Ready to Use</span>
               </li>
               <li>
-                {checklist} <span>300+ Component Design</span>
+                {checklist} <span>SEO Ready</span>
               </li>
               <li>
-                {xlist} <span>Illustration Design</span>
+                {xlist} <span>Private Group</span>
               </li>
               <li>
                 {xlist} <span>Free Design Update</span>
               </li>
               <li>
-                {xlist} <span>Private Group (Consultation)</span>
+                {xlist} <span>Free Consultation</span>
               </li>
             </ul>
             <button
@@ -99,19 +135,55 @@ const Pricing = () => {
             <img src={images.pricingPremium} alt="Free" className="mb-8 w-72" />
             <ul>
               <li>
+                {checklist} <span>Unlock 1,000+ Design</span>
+              </li>
+              <li>
+                {checklist} <span>Customizable</span>
+              </li>
+              <li>
+                {checklist} <span>Navbar Sections</span>
+              </li>
+              <li>
+                {checklist} <span>Header Sections</span>
+              </li>
+              <li>
+                {checklist} <span>Content Sections</span>
+              </li>
+              <li>
+                {checklist} <span>Footer Sections</span>
+              </li>
+              <li>
+                {checklist} <span>Empty State Sections</span>
+              </li>
+              <li>
+                {checklist} <span>Export to Bootstrap</span>
+              </li>
+              <li>
+                {checklist} <span>Export to Tailwind</span>
+              </li>
+              <li>
+                {checklist} <span>Responsive Design</span>
+              </li>
+              <li>
+                {checklist} <span>Mobile-First Design</span>
+              </li>
+              <li>
+                {checklist} <span>Clean Code</span>
+              </li>
+              <li>
                 {checklist} <span>Ready to Use</span>
               </li>
               <li>
-                {checklist} <span>300+ Component Design</span>
+                {checklist} <span>SEO Ready</span>
               </li>
               <li>
-                {checklist} <span>Illustration Design</span>
+                {checklist} <span>Private Group</span>
               </li>
               <li>
                 {checklist} <span>Free Design Update</span>
               </li>
               <li>
-                {checklist} <span>Private Group (Consultation)</span>
+                {checklist} <span>Free Consultation</span>
               </li>
             </ul>
             <button

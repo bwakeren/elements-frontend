@@ -51,9 +51,9 @@ const Landing = () => {
     },
     4: {
       isActive: false,
-      title: "Lorem ipsom dolor set amet ?",
+      title: "Apakah bisa dijual kembali?",
       text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At sit ut pretium habitant massa faucibus libero. Ut mi consectetur placerat nibh hendrerit faucibus. Nullam nulla orci lectus enim pharetra, massa, tortor. Sit vel at nibh lorem bibendum.",
+        "Kami mengizinkan seluruh pengguna kami untuk menggunakan Elements dalam membangun sebuah website. Kami juga memperbolehkan pengguna kami untuk menjual kembali hasil template dari Elements (free commercial use).",
     },
   });
 
