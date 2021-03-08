@@ -73,7 +73,6 @@ export const SidebarItems = ({
   title,
   icon,
   openProduct,
-  setOpenProduct,
   loading,
   click,
   active,
@@ -195,20 +194,8 @@ export const SidebarItems = ({
                     ].join(" ")}
                     key={sub.id}
                     onClick={() => {
-                      if (openProduct) {
-                        setOpenProduct(false);
-                        setTimeout(() => {
-                          setOpenProduct(true);
-                          setSubCat(sub.id);
-                          setCategory(id);
-                        }, 500);
-                      } else {
-                        setTimeout(() => {
-                          setOpenProduct(!openProduct);
-                          setSubCat(sub.id);
-                          setCategory(id);
-                        }, 500);
-                      }
+                      setSubCat(sub.id);
+                      setCategory(id);
                     }}
                   >
                     {svg[0].svg}

@@ -150,7 +150,6 @@ export const NavSidebar = () => {
                 click={(event) => handlerOpen(event, data.id)}
                 active={data.id === category}
                 openProduct={openProduct}
-                setOpenProduct={setOpenProduct}
                 subCategories={subCategory.filter(
                   (d) => d.categories_id.toString() === data.id.toString()
                 )}
