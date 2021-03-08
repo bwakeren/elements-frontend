@@ -1,49 +1,224 @@
+import { useState } from "react";
 import classes from "./NavigationItem.module.scss";
 import { useSpring, animated, config } from "react-spring";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
+const icons = [
+  {
+    name: "Business",
+    svg: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M4.77481 5.60538C5.55069 5.50106 6.57165 5.5 8 5.5H16C17.4283 5.5 18.4493 5.50106 19.2252 5.60538C19.9867 5.70776 20.4368 5.90128 20.7678 6.23223C21.0987 6.56319 21.2922 7.01331 21.3946 7.77481C21.4989 8.55069 21.5 9.57165 21.5 11V14H2.5V11C2.5 9.57165 2.50106 8.55069 2.60538 7.77481C2.70776 7.01331 2.90128 6.56319 3.23223 6.23223C3.56319 5.90128 4.01331 5.70776 4.77481 5.60538ZM19.3584 4.61429C18.5977 4.51201 17.6464 4.50126 16.4646 4.50013C16.222 2.80392 14.7633 1.5 13 1.5H11C9.23672 1.5 7.77798 2.80392 7.53543 4.50013C6.35361 4.50126 5.40232 4.51201 4.64156 4.61429C3.76918 4.73158 3.07285 4.9774 2.52513 5.52513C1.9774 6.07285 1.73158 6.76918 1.61429 7.64156C1.49998 8.49179 1.49999 9.58001 1.5 10.962V14.038C1.49999 15.42 1.49998 16.5082 1.61429 17.3584C1.73158 18.2308 1.9774 18.9272 2.52513 19.4749C3.07285 20.0226 3.76918 20.2684 4.64156 20.3857C5.4918 20.5 6.58002 20.5 7.96205 20.5H16.038C17.42 20.5 18.5082 20.5 19.3584 20.3857C20.2308 20.2684 20.9271 20.0226 21.4749 19.4749C22.0226 18.9272 22.2684 18.2308 22.3857 17.3584C22.5 16.5082 22.5 15.42 22.5 14.038V10.962C22.5 9.58 22.5 8.49179 22.3857 7.64156C22.2684 6.76918 22.0226 6.07285 21.4749 5.52513C20.9271 4.9774 20.2308 4.73158 19.3584 4.61429ZM13 2.5C14.2095 2.5 15.2184 3.35888 15.45 4.5H8.55001C8.78164 3.35888 9.79052 2.5 11 2.5H13ZM2.50181 15C2.50702 15.9249 2.52721 16.6438 2.60538 17.2252C2.70776 17.9867 2.90128 18.4368 3.23223 18.7678C3.56319 19.0987 4.01331 19.2922 4.77481 19.3946C5.55069 19.4989 6.57165 19.5 8 19.5H16C17.4283 19.5 18.4493 19.4989 19.2252 19.3946C19.9867 19.2922 20.4368 19.0987 20.7678 18.7678C21.0987 18.4368 21.2922 17.9867 21.3946 17.2252C21.4728 16.6438 21.493 15.9249 21.4982 15H2.50181ZM11.5 11C11.5 10.7239 11.7239 10.5 12 10.5C12.2761 10.5 12.5 10.7239 12.5 11C12.5 11.2761 12.2761 11.5 12 11.5C11.7239 11.5 11.5 11.2761 11.5 11ZM12 9.5C11.1716 9.5 10.5 10.1716 10.5 11C10.5 11.8284 11.1716 12.5 12 12.5C12.8284 12.5 13.5 11.8284 13.5 11C13.5 10.1716 12.8284 9.5 12 9.5Z"
+          fill="#808191"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Health",
+    svg: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M6 2.5C5.17157 2.5 4.5 3.17157 4.5 4V7C4.5 9.48528 6.51472 11.5 9 11.5C11.4853 11.5 13.5 9.48528 13.5 7V4C13.5 3.17157 12.8284 2.5 12 2.5V1.5C13.3807 1.5 14.5 2.61929 14.5 4V7C14.5 9.86902 12.3033 12.225 9.5 12.4776V16.5C9.5 18.7091 11.2909 20.5 13.5 20.5C15.7091 20.5 17.5 18.7091 17.5 16.5V10.937C16.6374 10.715 16 9.93192 16 9C16 7.89543 16.8954 7 18 7C19.1046 7 20 7.89543 20 9C20 9.93192 19.3626 10.715 18.5 10.937V16.5C18.5 19.2614 16.2614 21.5 13.5 21.5C10.7386 21.5 8.5 19.2614 8.5 16.5V12.4776C5.69675 12.225 3.5 9.86902 3.5 7V4C3.5 2.61929 4.61929 1.5 6 1.5V2.5ZM18 10C18.5523 10 19 9.55228 19 9C19 8.44772 18.5523 8 18 8C17.4477 8 17 8.44772 17 9C17 9.55228 17.4477 10 18 10Z"
+          fill="#808191"
+        />
+      </svg>
+    ),
+  },
+  {
+    name: "Travel",
+    svg: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M8.27714 4.53806C8.20662 4.50885 8.12113 4.5 7.67158 4.5H6.43427L10.916 11.2227C11.0062 11.3579 11.025 11.5286 10.9664 11.6803C10.9077 11.832 10.779 11.9456 10.6213 11.9851L6.62128 12.9851C6.45089 13.0277 6.27065 12.9777 6.14646 12.8536L3.74438 10.4515L2.81202 10.2184L3.03449 10.7968C3.49872 12.0038 3.83065 12.8642 4.16944 13.492C4.50146 14.1073 4.80997 14.44 5.19633 14.6374C5.58269 14.8348 6.03304 14.8899 6.7262 14.7985C7.43348 14.7053 8.32518 14.4702 9.5753 14.1393L19.5933 11.4875C20.1617 11.337 20.4271 10.6836 20.1246 10.1795C19.9168 9.8331 19.5005 9.67188 19.1136 9.78795L15.1437 10.9789C14.9675 11.0318 14.7765 10.9836 14.6465 10.8536L8.73224 4.93934C8.41436 4.62146 8.34766 4.56727 8.27714 4.53806ZM7.74099 3.49993C8.0804 3.49941 8.38162 3.49895 8.65982 3.61418C8.93802 3.72942 9.15069 3.94274 9.39032 4.18311C9.40653 4.19937 9.42286 4.21575 9.43935 4.23224L15.1424 9.93527L18.8262 8.83012C19.6512 8.58263 20.5389 8.9264 20.9821 9.66496C21.6271 10.74 21.0612 12.1334 19.8492 12.4542L9.79682 15.1151C8.58872 15.4349 7.63521 15.6873 6.85693 15.79C6.05717 15.8954 5.37756 15.853 4.74129 15.5279C4.10501 15.2027 3.67248 14.6768 3.28939 13.9669C2.9166 13.276 2.56253 12.3554 2.11392 11.189L1.53334 9.67949C1.46636 9.50536 1.50191 9.30843 1.62553 9.1687C1.74915 9.02897 1.94028 8.96968 2.12128 9.01493L4.12128 9.51493C4.20919 9.53691 4.28948 9.58237 4.35356 9.64645L6.65338 11.9463L9.69042 11.187L5.08398 4.27735C4.9817 4.12392 4.97216 3.92665 5.05917 3.76407C5.14618 3.60149 5.31561 3.5 5.50001 3.5H7.67158C7.6949 3.5 7.71803 3.49997 7.74099 3.49993Z"
+          fill="#808191"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M3.5 20C3.5 19.7239 3.72386 19.5 4 19.5H20C20.2761 19.5 20.5 19.7239 20.5 20C20.5 20.2761 20.2761 20.5 20 20.5H4C3.72386 20.5 3.5 20.2761 3.5 20Z"
+          fill="#808191"
+        />
+      </svg>
+    ),
+  },
+];
 
 export const SidebarItems = ({
   title,
   icon,
   openProduct,
+  setOpenProduct,
   loading,
   click,
   active,
+  subCategories,
+  subCat,
+  setSubCat,
+  id,
+  setCategory,
 }) => {
+  const [openDrop, setOpenDrop] = useState(false);
+
   const animation = useSpring({
     opacity: openProduct ? 1 : 0,
     display: openProduct ? "inline" : "none",
     config: config.gentle,
   });
 
-  return (
-    <div
-      className={[classes.sidebar__item, active ? classes.activ : ""].join(" ")}
-      onClick={click}
-      style={{ width: openProduct && "13rem" }}
+  const close = (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onClick={() => {
+        setOpenDrop(true);
+        setCategory(id);
+      }}
     >
-      {loading ? (
-        <SkeletonTheme color="lightGray">
-          <Skeleton
-            reactangle={true}
-            height={24}
-            width={24}
-            style={{ marginRight: openProduct && "1rem" }}
-          />
-        </SkeletonTheme>
-      ) : (
-        <img
-          src={icon}
-          alt={title}
-          style={{ marginRight: openProduct && "1rem" }}
-        />
-      )}
-      <animated.p
-        style={animation}
-        className="text-category text-sm font-semibold leading-5"
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.74283 20.4287C8.50604 20.2866 8.42925 19.9795 8.57133 19.7427L14.417 12L8.57133 4.2572C8.42925 4.02041 8.50604 3.71328 8.74283 3.57121C8.97962 3.42913 9.28675 3.50592 9.42882 3.74271L15.4288 11.7427C15.5238 11.901 15.5238 12.0989 15.4288 12.2572L9.42882 20.2572C9.28675 20.494 8.97962 20.5708 8.74283 20.4287Z"
+        fill="#808191"
+      />
+    </svg>
+  );
+
+  const open = (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onClick={() => {
+        setOpenDrop(false);
+        setSubCat(0);
+      }}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3.57133 8.74277C3.7134 8.50598 4.02053 8.42919 4.25732 8.57127L12.0001 14.4169L19.7428 8.57127C19.9796 8.42919 20.2867 8.50598 20.4288 8.74277C20.5709 8.97956 20.4941 9.28669 20.2573 9.42876L12.2573 15.4288C12.099 15.5238 11.9012 15.5238 11.7428 15.4288L3.74283 9.42876C3.50604 9.28669 3.42926 8.97956 3.57133 8.74277Z"
+        fill="#171046"
+      />
+    </svg>
+  );
+
+  return (
+    <>
+      <div
+        className={[classes.sidebar__item, active ? classes.activ : ""].join(
+          " "
+        )}
+        style={{
+          width: openProduct && "13rem",
+          paddingRight: openProduct ? "20px" : "0",
+          background: openDrop && "transparent",
+        }}
       >
-        {title}
-      </animated.p>
-    </div>
+        <div
+          className="flex w-full h-full items-center"
+          onClick={click}
+          style={{
+            paddingRight: !openProduct ? "20px" : "0",
+          }}
+        >
+          {loading ? (
+            <SkeletonTheme color="lightGray">
+              <Skeleton
+                reactangle={true}
+                height={24}
+                width={24}
+                style={{ marginRight: openProduct && "1rem" }}
+              />
+            </SkeletonTheme>
+          ) : (
+            <img
+              src={icon}
+              alt={title}
+              style={{ marginRight: openProduct && "1rem" }}
+            />
+          )}
+          <animated.p
+            style={{
+              ...animation,
+              color: openDrop && "#171046",
+              fontWeight: openDrop && "bold",
+            }}
+            className="text-category text-sm font-semibold leading-5"
+          >
+            {title}
+          </animated.p>
+        </div>
+        {openProduct ? (openDrop ? open : close) : null}
+      </div>
+      {openProduct
+        ? openDrop && (
+            <ul>
+              {subCategories.map((sub) => {
+                const svg = icons.filter((ic) => ic.name === sub.style_name);
+
+                return (
+                  <li
+                    className={[
+                      classes.subscategory,
+                      subCat === sub.id ? classes.activ : "",
+                    ].join(" ")}
+                    key={sub.id}
+                    onClick={() => {
+                      if (openProduct) {
+                        setOpenProduct(false);
+                        setTimeout(() => {
+                          setOpenProduct(true);
+                          setSubCat(sub.id);
+                          setCategory(id);
+                        }, 500);
+                      } else {
+                        setTimeout(() => {
+                          setOpenProduct(!openProduct);
+                          setSubCat(sub.id);
+                          setCategory(id);
+                        }, 500);
+                      }
+                    }}
+                  >
+                    {svg[0].svg}
+                    <p>{sub.style_name}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          )
+        : null}
+    </>
   );
 };

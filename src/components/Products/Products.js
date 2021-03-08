@@ -6,14 +6,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { initProduct } from "../../store/actions";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export const Products = ({ show, category, clicked }) => {
+export const Products = ({ show, category, clicked, subCategory }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(initProduct(category));
   }, [dispatch, category]);
 
-  const datas = useSelector((state) => state.product.products);
+  const datas = useSelector((state) =>
+    subCategory !== 0
+      ? state.product.products.filter(
+          (product) => product.style_id === subCategory.toString()
+        )
+      : state.product.products
+  );
   const loading = useSelector((state) => state.product.loading);
 
   const props = useSpring({

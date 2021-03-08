@@ -1,13 +1,44 @@
 .sidebar__item {
-  @apply flex items-center py-5 px-5 cursor-pointer rounded-xl relative mb-1 transition;
-
+  @apply relative mb-1 rounded-xl cursor-pointer;
   z-index: 999999;
+
+  div {
+    @apply flex items-center py-5 pl-5 transition;
+  }
+
+  &:hover {
+    background: rgba(108, 93, 211, 0.05);
+    backdrop-filter: blur(50px);
+
+    p {
+      color: #171046;
+      font-weight: bold;
+    }
+  }
+
+  svg {
+    @apply absolute right-5 top-1/2 transform -translate-y-1/2 z-50;
+  }
+}
+
+.subscategory {
+  @apply flex items-center py-5 pl-11 w-full cursor-pointer rounded-xl relative mb-1 transition;
+
+  svg {
+    @apply mr-4;
+  }
 
   &:hover {
     @apply bg-category;
 
     p {
       color: #5383ff;
+    }
+
+    svg {
+      path {
+        fill: #5383ff;
+      }
     }
   }
 }
@@ -17,5 +48,12 @@
     color: #5383ff;
   }
 
-  @apply bg-category transition-all;
+  svg {
+    path {
+      fill: #5383ff;
+    }
+  }
+
+  background: rgba(108, 93, 211, 0.05);
+  backdrop-filter: blur(50px);
 }

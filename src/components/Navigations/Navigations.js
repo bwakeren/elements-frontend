@@ -10,6 +10,7 @@ import { useSpring, animated, config } from "react-spring";
 import { STORAGE } from "../../shared/utility";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
+import axios from "../../axios_db";
 
 export const Navigation = ({
   clicked,
@@ -71,14 +72,39 @@ export const Navigation = ({
 export const NavSidebar = () => {
   const [openProduct, setOpenProduct] = useState(false);
   const [category, setCategory] = useState(0);
+  const [subCat, setSubCat] = useState(0);
+  const [subCategory, setSubCategory] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCategory());
+    axios
+      .get("/api/style/show")
+      .then((response) => {
+        setSubCategory(response.data.data);
+      })
+      .catch((err) => {});
   }, [dispatch]);
 
   const categories = useSelector((state) => state.category.categories);
   const loading = useSelector((state) => state.category.loading);
+
+  const handlerOpen = (e, id) => {
+    if (openProduct) {
+      setOpenProduct(false);
+      setTimeout(() => {
+        setOpenProduct(true);
+        setCategory(id);
+        setSubCat(0);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setOpenProduct(!openProduct);
+        setCategory(id);
+        setSubCat(0);
+      }, 500);
+    }
+  };
 
   return (
     <>
@@ -121,27 +147,26 @@ export const NavSidebar = () => {
                 icon={STORAGE.toString() + data.icon}
                 title={data.categories_name}
                 loading={loading}
-                click={() => {
-                  if (openProduct) {
-                    setOpenProduct(false);
-                    setTimeout(() => {
-                      setOpenProduct(true);
-                      setCategory(data.id);
-                    }, 500);
-                  } else {
-                    setTimeout(() => {
-                      setOpenProduct(!openProduct);
-                      setCategory(data.id);
-                    }, 500);
-                  }
-                }}
+                click={(event) => handlerOpen(event, data.id)}
                 active={data.id === category}
                 openProduct={openProduct}
+                setOpenProduct={setOpenProduct}
+                subCategories={subCategory.filter(
+                  (d) => d.categories_id.toString() === data.id.toString()
+                )}
+                subCat={subCat}
+                setSubCat={setSubCat}
+                setCategory={setCategory}
+                id={data.id}
               />
             ))
         )}
       </div>
-      <Products category={category.toString()} show={openProduct} />
+      <Products
+        category={category.toString()}
+        subCategory={subCat}
+        show={openProduct}
+      />
       {openProduct && (
         <div
           className={classes.backdrop}
