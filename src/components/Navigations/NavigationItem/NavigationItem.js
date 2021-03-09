@@ -192,9 +192,3 @@ export const SidebarItems = ({
     </>
   );
 };
-
-// {
-//   openProduct ? (
-
-//   ) : null;
-// }

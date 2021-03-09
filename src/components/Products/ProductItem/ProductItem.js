@@ -94,7 +94,9 @@ export const ProductItem = ({
   const block = (
     <animated.a
       href={`#element`}
-      style={(animation, { cursor: "not-allowed" })}
+      style={{ ...animation, cursor: "not-allowed" }}
+      onMouseEnter={() => setAction(true)}
+      onMouseLeave={() => setAction(false)}
     >
       <svg
         width="36"
@@ -123,13 +125,16 @@ export const ProductItem = ({
   );
 
   const crown = (
-    <svg
+    <animated.svg
       className={classes.crown}
       width="36"
       height="36"
       viewBox="0 0 36 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={animation}
+      onMouseEnter={() => setAction(true)}
+      onMouseLeave={() => setAction(false)}
     >
       <circle cx="18" cy="18" r="18" fill="white" />
       <path
@@ -148,7 +153,7 @@ export const ProductItem = ({
         d="M10.1801 10.6356C9.93529 10.4642 9.61209 10.4545 9.35745 10.611C9.10281 10.7674 8.96534 11.0601 9.00754 11.3559L10.5053 21.8559C10.558 22.2255 10.8745 22.5 11.2478 22.5H24.75C25.0774 22.5 25.3669 22.2877 25.4653 21.9755C25.5637 21.6633 25.4483 21.3233 25.1801 21.1356L10.1801 10.6356Z"
         fill="#FFCC47"
       />
-    </svg>
+    </animated.svg>
   );
 
   return (
