@@ -22,7 +22,13 @@ export const fetchCategory = () => {
     axios
       .get("/api/categories/show")
       .then((response) => {
-        dispatch(categorySuccess(response.data.data));
+        const data = response.data.data.map((data) => {
+          return {
+            ...data,
+            openSubC: false,
+          };
+        });
+        dispatch(categorySuccess(data));
       })
       .catch((error) => {
         dispatch(categoryFail(error));

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import classes from "./NavigationItem.module.scss";
 import { useSpring, animated, config } from "react-spring";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -72,18 +71,16 @@ const icons = [
 export const SidebarItems = ({
   title,
   icon,
+  id,
   openProduct,
   loading,
   click,
   active,
-  subCategories,
-  subCat,
+  subC,
+  openDropDown,
   setSubCat,
-  id,
-  setCategory,
+  subCat,
 }) => {
-  const [openDrop, setOpenDrop] = useState(false);
-
   const animation = useSpring({
     opacity: openProduct ? 1 : 0,
     display: openProduct ? "inline" : "none",
@@ -97,10 +94,6 @@ export const SidebarItems = ({
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      onClick={() => {
-        setOpenDrop(true);
-        setCategory(id);
-      }}
     >
       <path
         fillRule="evenodd"
@@ -118,10 +111,6 @@ export const SidebarItems = ({
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      onClick={() => {
-        setOpenDrop(false);
-        setSubCat(0);
-      }}
     >
       <path
         fillRule="evenodd"
@@ -135,13 +124,12 @@ export const SidebarItems = ({
   return (
     <>
       <div
-        className={[classes.sidebar__item, active ? classes.activ : ""].join(
+        className={[classes.sidebar__item, active ? classes.active : ""].join(
           " "
         )}
         style={{
           width: openProduct && "13rem",
           paddingRight: openProduct ? "20px" : "0",
-          background: openDrop && "transparent",
         }}
       >
         <div
@@ -170,42 +158,43 @@ export const SidebarItems = ({
           <animated.p
             style={{
               ...animation,
-              color: openDrop && "#171046",
-              fontWeight: openDrop && "bold",
             }}
             className="text-category text-sm font-semibold leading-5"
           >
             {title}
           </animated.p>
         </div>
-        {openProduct ? (openDrop ? open : close) : null}
+        {openProduct ? (active ? open : close) : null}
       </div>
-      {openProduct
-        ? openDrop && (
-            <ul>
-              {subCategories.map((sub) => {
-                const svg = icons.filter((ic) => ic.name === sub.style_name);
+      {openProduct && openDropDown && (
+        <ul>
+          {subC
+            .filter((data) => data.categories_id.toString() === id.toString())
+            .map((data) => {
+              const svg = icons.filter((ic) => ic.name === data.style_name);
 
-                return (
-                  <li
-                    className={[
-                      classes.subscategory,
-                      subCat === sub.id ? classes.activ : "",
-                    ].join(" ")}
-                    key={sub.id}
-                    onClick={() => {
-                      setSubCat(sub.id);
-                      setCategory(id);
-                    }}
-                  >
-                    {svg[0].svg}
-                    <p>{sub.style_name}</p>
-                  </li>
-                );
-              })}
-            </ul>
-          )
-        : null}
+              return (
+                <li
+                  className={[
+                    classes.subscategory,
+                    data.id === subCat ? classes.active_subs : "",
+                  ].join(" ")}
+                  key={data.id}
+                  onClick={() => setSubCat(data.id)}
+                >
+                  {svg[0].svg}
+                  <p>{data.style_name}</p>
+                </li>
+              );
+            })}
+        </ul>
+      )}
     </>
   );
 };
+
+// {
+//   openProduct ? (
+
+//   ) : null;
+// }

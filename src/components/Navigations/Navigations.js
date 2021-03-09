@@ -4,7 +4,7 @@ import { images, icons } from "../../assets";
 import { SidebarItems } from "./NavigationItem/NavigationItem";
 import { Products } from "../Products/Products";
 import { Link } from "react-router-dom";
-import { fetchCategory } from "../../store/actions";
+import { fetchCategory, categorySuccess } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
 import { STORAGE } from "../../shared/utility";
@@ -104,7 +104,18 @@ export const NavSidebar = () => {
         setSubCat(0);
       }, 500);
     }
+
+    const index = categories.findIndex((el) => el.id === id);
+    const data = categories.map((data, i) => {
+      return {
+        ...data,
+        openSubC: index === i ? true : false,
+      };
+    });
+    dispatch(categorySuccess(data));
   };
+
+  console.log(subCat);
 
   return (
     <>
@@ -144,19 +155,17 @@ export const NavSidebar = () => {
             .map((data) => (
               <SidebarItems
                 key={data.id}
+                id={data.id}
                 icon={STORAGE.toString() + data.icon}
                 title={data.categories_name}
                 loading={loading}
                 click={(event) => handlerOpen(event, data.id)}
                 active={data.id === category}
                 openProduct={openProduct}
-                subCategories={subCategory.filter(
-                  (d) => d.categories_id.toString() === data.id.toString()
-                )}
-                subCat={subCat}
+                subC={subCategory}
+                openDropDown={data.openSubC}
                 setSubCat={setSubCat}
-                setCategory={setCategory}
-                id={data.id}
+                subCat={subCat}
               />
             ))
         )}

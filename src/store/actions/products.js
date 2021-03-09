@@ -17,9 +17,16 @@ export const initProduct = (id) => {
   return (dispatch) => {
     dispatch(fetchProductStart());
     axios
-      .get(`/api/components/show_cat/${id}`)
+      .get(`/api/components/by_cat/${id}`)
       .then((response) => {
-        dispatch(fetchProductSuccess(response.data.data));
+        const data = response.data.data.map((data) => {
+          return {
+            ...data,
+            id: data.id_components,
+          };
+        });
+
+        dispatch(fetchProductSuccess(data));
       })
       .catch((error) => {
         dispatch(fetchProductFail(error));

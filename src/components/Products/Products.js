@@ -16,10 +16,11 @@ export const Products = ({ show, category, clicked, subCategory }) => {
   const datas = useSelector((state) =>
     subCategory !== 0
       ? state.product.products.filter(
-          (product) => product.style_id === subCategory.toString()
+          (product) => product.style_id.toString() === subCategory.toString()
         )
       : state.product.products
   );
+
   const loading = useSelector((state) => state.product.loading);
 
   const props = useSpring({

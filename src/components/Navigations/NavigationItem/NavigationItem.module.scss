@@ -43,7 +43,23 @@
   }
 }
 
-.activ {
+.active {
+  p {
+    color: #171046;
+    font-weight: bold;
+  }
+
+  svg {
+    path {
+      fill: #5383ff;
+    }
+  }
+}
+
+.active_subs {
+  background: rgba(108, 93, 211, 0.05);
+  backdrop-filter: blur(50px);
+
   p {
     color: #5383ff;
   }
@@ -53,7 +69,4 @@
       fill: #5383ff;
     }
   }
-
-  background: rgba(108, 93, 211, 0.05);
-  backdrop-filter: blur(50px);
 }
