@@ -94,6 +94,7 @@ export const SidebarItems = ({
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={click}
     >
       <path
         fillRule="evenodd"
@@ -111,6 +112,7 @@ export const SidebarItems = ({
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={click}
     >
       <path
         fillRule="evenodd"
@@ -118,6 +120,25 @@ export const SidebarItems = ({
         d="M3.57133 8.74277C3.7134 8.50598 4.02053 8.42919 4.25732 8.57127L12.0001 14.4169L19.7428 8.57127C19.9796 8.42919 20.2867 8.50598 20.4288 8.74277C20.5709 8.97956 20.4941 9.28669 20.2573 9.42876L12.2573 15.4288C12.099 15.5238 11.9012 15.5238 11.7428 15.4288L3.74283 9.42876C3.50604 9.28669 3.42926 8.97956 3.57133 8.74277Z"
         fill="#171046"
       />
+    </svg>
+  );
+
+  const all = (
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ color: subCat === 0 ? "#5383ff" : "#808191" }}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M13 10V3L4 14h7v7l9-11h-7z"
+        style={{ fill: subCat === 0 && "transparent" }}
+      ></path>
     </svg>
   );
 
@@ -168,6 +189,16 @@ export const SidebarItems = ({
       </div>
       {openProduct && openDropDown && (
         <ul>
+          <li
+            className={[
+              classes.subscategory,
+              subCat === 0 ? classes.active_subs : "",
+            ].join(" ")}
+            onClick={() => setSubCat(0)}
+          >
+            {all}
+            <p>All</p>
+          </li>
           {subC
             .filter((data) => data.categories_id.toString() === id.toString())
             .map((data) => {

@@ -115,8 +115,6 @@ export const NavSidebar = () => {
     dispatch(categorySuccess(data));
   };
 
-  console.log(subCat);
-
   return (
     <>
       <div className={classes.sidebar}>

@@ -127,16 +127,16 @@ export const ProductItem = ({
   const crown = (
     <animated.svg
       className={classes.crown}
+      style={animation}
+      onMouseEnter={() => setAction(true)}
+      onMouseLeave={() => setAction(false)}
       width="36"
       height="36"
       viewBox="0 0 36 36"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={animation}
-      onMouseEnter={() => setAction(true)}
-      onMouseLeave={() => setAction(false)}
     >
-      <circle cx="18" cy="18" r="18" fill="white" />
+      <circle cx="18" cy="18" r="18" fill="#3D2DFF" />
       <path
         d="M11.25 24C10.8358 24 10.5 24.3358 10.5 24.75V25.5C10.5 25.9142 10.8358 26.25 11.25 26.25H24.75C25.1642 26.25 25.5 25.9142 25.5 25.5V24.75C25.5 24.3358 25.1642 24 24.75 24H11.25Z"
         fill="#F1A81B"
