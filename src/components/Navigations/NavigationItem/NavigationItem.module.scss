@@ -28,6 +28,17 @@
     @apply mr-4;
   }
 
+  &:first-child {
+    &:hover {
+      svg {
+        color: #5383ff !important;
+        path {
+          fill: transparent;
+        }
+      }
+    }
+  }
+
   &:hover {
     @apply bg-category;
 
