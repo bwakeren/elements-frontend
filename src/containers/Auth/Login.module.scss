@@ -1,0 +1,63 @@
+.login {
+  grid-template-columns: 60% 40%;
+  gap: 40px;
+  @apply h-screen grid -mt-36;
+
+  iframe {
+    svg {
+      width: 100%;
+    }
+  }
+
+  div {
+    width: 100%;
+
+    h1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 33px;
+      color: #121155;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 30px;
+      color: #121212;
+      max-width: 300px;
+    }
+
+    button {
+      @apply flex items-center justify-center py-4 mt-8;
+      background: #131a42;
+      width: 65%;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+      color: #ffffff;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 986px) {
+    grid-template-columns: 50% 50%;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    div {
+      align-items: center;
+      text-align: center;
+      margin-top: -250px;
+    }
+  }
+}

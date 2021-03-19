@@ -3,7 +3,7 @@ import Layout from "../../hoc/Layout/Layout";
 
 const Main = () => {
   return (
-    <Layout button="Create New Design" navigation="/create">
+    <Layout button="Try it Free" navigation="/create">
       <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
       <main className="py-9 px-10 flex items-center flex-col">
         <h1

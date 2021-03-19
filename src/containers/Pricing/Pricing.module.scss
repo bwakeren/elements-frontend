@@ -4,35 +4,6 @@
   background-repeat: no-repeat;
   padding-bottom: 168px;
 
-  nav {
-    @apply px-3 py-8 flex items-center justify-between mb-12 md:px-12 w-full relative;
-
-    ul {
-      @apply flex items-center list-none;
-
-      li {
-        @apply mx-5;
-
-        a {
-          font-family: "Fivo Sans";
-          color: #fff;
-        }
-
-        .active {
-          font-weight: bold;
-        }
-      }
-
-      .header_logo {
-        @apply ml-0 mr-7;
-      }
-    }
-
-    ul {
-      @apply hidden lg:flex;
-    }
-  }
-
   h1 {
     font-family: "Nunito", sans-serif;
     font-style: normal;

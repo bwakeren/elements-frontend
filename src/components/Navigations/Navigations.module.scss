@@ -87,3 +87,63 @@
     @apply absolute top-4 right-3 md:right-12;
   }
 }
+
+.button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  color: #fff !important;
+  @apply bg-button-primary-orange;
+
+  &:hover {
+    @apply bg-button-primary-hover;
+  }
+}
+
+.navigation_home {
+  @apply px-3 py-8 flex items-center justify-between mb-12 md:px-12 w-full relative;
+
+  ul {
+    @apply flex items-center list-none;
+
+    li {
+      @apply mx-5;
+
+      a {
+        font-family: "Fivo Sans";
+        color: #fff;
+      }
+
+      .active {
+        font-weight: bold;
+      }
+    }
+
+    .header_logo {
+      @apply ml-0 mr-7;
+    }
+  }
+
+  ul {
+    @apply hidden lg:flex;
+  }
+
+  .active {
+    font-weight: bold;
+  }
+
+  &.whitebg {
+    ul {
+      li {
+        a {
+          color: #121155;
+        }
+      }
+    }
+
+    svg {
+      path {
+        color: #121155;
+      }
+    }
+  }
+}

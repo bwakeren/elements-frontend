@@ -7,11 +7,13 @@ const Main = lazy(() => import("./containers/Main/Main"));
 const Goodluck = lazy(() => import("./containers/Goodluck/Goodluck"));
 const Heroes = lazy(() => import("./containers/Heroes/Heroes"));
 const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
+const Login = lazy(() => import("./containers/Auth/Login"));
 
 function App() {
   return (
     <Suspense fallback={<Loading />}>
       <Switch>
+        <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/pricing" render={(props) => <Pricing {...props} />} />
         <Route path="/heroes" render={(props) => <Heroes {...props} />} />
         <Route

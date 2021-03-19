@@ -188,7 +188,30 @@ export const NavSidebar = () => {
   );
 };
 
-export const NavigationHome = () => {
+const links = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Why Elements",
+    link: "#why-elements",
+  },
+  {
+    name: "Knowledge Base",
+    link: "#knowledge-base",
+  },
+  {
+    name: "Pricing",
+    link: "/pricing",
+  },
+  {
+    name: "Our Team",
+    link: "/heroes",
+  },
+];
+
+export const NavigationHome = ({ whitebg = false }) => {
   const [openNavigation, setOpenNavigation] = useState(false);
   const location = useLocation();
   const { pathname } = location;
@@ -200,27 +223,23 @@ export const NavigationHome = () => {
 
   const ModalNavigation = (
     <animated.ul style={animation} className={classes.modalnav}>
-      <li>
-        <NavLink to="/" activeClassName={classes.active} exact>
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <a href={pathname !== "/" ? "/#why-elements" : "#why-elements"}>
-          Why Elements?
-        </a>
-      </li>
-      <li>
-        <a href={pathname !== "/" ? "/#knowledge-base" : "#knowledge-base"}>
-          Knowledge Base
-        </a>
-      </li>
-      <li>
-        <a href="/pricing">Pricing</a>
-      </li>
-      <li>
-        <a href="/heroes">Our Team</a>
-      </li>
+      {links.map((link) => (
+        <li>
+          <a
+            key={link.name}
+            href={
+              link.link.includes("#")
+                ? pathname !== "/"
+                  ? "/" + link.link
+                  : link.link
+                : link.link
+            }
+            className={pathname === link.link ? classes.active : ""}
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
       <li
         className={classes.close}
         onClick={() => setOpenNavigation(!openNavigation)}
@@ -241,37 +260,55 @@ export const NavigationHome = () => {
           ></path>
         </svg>
       </li>
+      {pathname !== "/login" && (
+        <li>
+          <a href="/login" className={classes.button}>
+            Login
+          </a>
+        </li>
+      )}
     </animated.ul>
   );
 
   return (
     <>
-      <nav>
+      <nav
+        className={[
+          classes.navigation_home,
+          whitebg ? classes.whitebg : "",
+        ].join(" ")}
+      >
         <NavLink to="/" className="mr-10">
-          <img src={icons.logoWhite} alt="Logo Elements" />
+          <img
+            src={whitebg ? images.Logo : icons.logoWhite}
+            alt="Logo Elements"
+          />
         </NavLink>
         <ul>
-          <li>
-            <NavLink to="/" activeClassName={classes.active} exact>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <a href={pathname !== "/" ? "/#why-elements" : "#why-elements"}>
-              Why Elements?
-            </a>
-          </li>
-          <li>
-            <a href={pathname !== "/" ? "/#knowledge-base" : "#knowledge-base"}>
-              Knowledge Base
-            </a>
-          </li>
-          <li>
-            <a href="/pricing">Pricing</a>
-          </li>
-          <li>
-            <a href="/heroes">Our Team</a>
-          </li>
+          {links.map((link) => (
+            <li>
+              <a
+                key={link.name}
+                href={
+                  link.link.includes("#")
+                    ? pathname !== "/"
+                      ? "/" + link.link
+                      : link.link
+                    : link.link
+                }
+                className={pathname === link.link ? classes.active : ""}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+          {pathname !== "/login" && (
+            <li>
+              <a href="/login" className={classes.button}>
+                Login
+              </a>
+            </li>
+          )}
         </ul>
         {openNavigation ? (
           <svg

@@ -3,35 +3,6 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  nav {
-    @apply px-3 py-8 flex items-center justify-between mb-12 md:px-12 w-full relative;
-
-    ul {
-      @apply flex items-center list-none;
-
-      li {
-        @apply mx-5;
-
-        a {
-          font-family: "Fivo Sans";
-          color: #fff;
-        }
-
-        .active {
-          font-weight: bold;
-        }
-      }
-
-      .header_logo {
-        @apply ml-0 mr-7;
-      }
-    }
-
-    ul {
-      @apply hidden lg:flex;
-    }
-  }
-
   .hero {
     @apply w-11/12 flex items-start md:w-10/12 mx-auto justify-between flex-col lg:flex-row;
 

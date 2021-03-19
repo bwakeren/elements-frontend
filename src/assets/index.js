@@ -39,6 +39,8 @@ import backgroundPricing from "./images/bg-pricing.png";
 import pricingFree from "./images/pricing-free.png";
 import pricingPremium from "./images/pricing-premium.png";
 
+import IllustrationLogin from "./images/illustration_login.svg";
+
 export const images = {
   Logo,
   BG,
@@ -61,6 +63,7 @@ export const images = {
   backgroundPricing,
   pricingFree,
   pricingPremium,
+  IllustrationLogin,
 };
 
 export const icons = {
