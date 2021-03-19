@@ -13,6 +13,7 @@ const Login = lazy(() => import("./containers/Auth/Login"));
 
 function App() {
   useEffect(() => {
+    axios.defaults.withCredentials = true;
     axios
       .get("/sanctum/csrf-cookie")
       .then((res) => {
