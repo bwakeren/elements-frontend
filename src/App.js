@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import { lazy, Suspense } from "react";
-import { Switch, Route, useLocation } from "react-router";
+import { Switch, Route } from "react-router";
 import { Loading } from "./components";
 import Landing from "./containers/Landing/Landing";
-import axios from "./axios_db";
 
 const Main = lazy(() => import("./containers/Main/Main"));
 const Goodluck = lazy(() => import("./containers/Goodluck/Goodluck"));
@@ -12,23 +10,6 @@ const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
 const Login = lazy(() => import("./containers/Auth/Login"));
 
 function App() {
-  const { hash, pathname } = useLocation();
-
-  useEffect(() => {
-    console.log(hash);
-    console.log(pathname);
-
-    axios.defaults.withCredentials = true;
-    axios
-      .get("/sanctum/csrf-cookie")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, [hash, pathname]);
-
   return (
     <Suspense fallback={<Loading />}>
       <Switch>
