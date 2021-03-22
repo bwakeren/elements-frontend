@@ -1,7 +1,5 @@
 import { Head, NavigationHome } from "../../components";
 import { images } from "../../assets";
-import axios from "../../axios_db";
-import { useEffect } from "react";
 
 import classes from "./Login.module.scss";
 
@@ -40,17 +38,6 @@ const googleLogo = (
 );
 
 const Login = () => {
-  useEffect(() => {
-    axios
-      .get("/sanctum/csrf-cookie")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
-
   const loginHandler = () => {
     const a = document.createElement("a");
     a.setAttribute(
@@ -76,7 +63,7 @@ const Login = () => {
         <div className="flex flex-col self-center">
           <h1>Masuk / Daftar ke Elements</h1>
           <p>Dapatkan akses untuk membangun website yang lebih professional</p>
-          <button onClick={loginHandler}>
+          <button onClick={loginHandler} disabled>
             {googleLogo} Sign In with Google
           </button>
         </div>
