@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Switch, Route } from "react-router";
 import { Loading } from "./components";
 import Landing from "./containers/Landing/Landing";
@@ -10,6 +10,20 @@ const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
 const Login = lazy(() => import("./containers/Auth/Login"));
 
 function App() {
+  useEffect(() => {
+    window.addEventListener("message", onMessage, false);
+
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
+  const onMessage = (e) => {
+    if (e.origin !== window.origin || !e.data.token) {
+      return;
+    }
+    console.log(e);
+    // localStorage.setItem("user", e.data.name);
+  };
+
   return (
     <Suspense fallback={<Loading />}>
       <Switch>
@@ -22,7 +36,7 @@ function App() {
         />
         <Route path="/create" render={(props) => <Main {...props} />} />
         <Route path="/" exact component={Landing} />
-        <Route path="*" component={Landing} />
+        <Route path="*" exact component={Landing} />
       </Switch>
     </Suspense>
   );

@@ -39,12 +39,49 @@ const googleLogo = (
 
 const Login = () => {
   const loginHandler = () => {
-    const a = document.createElement("a");
-    a.setAttribute(
-      "href",
-      "https://api.elements.buildwithangga.com/sign-in/google"
-    );
-    a.click();
+    const newWindow = openWindow("", "message");
+    newWindow.location.href =
+      "https://api.elements.buildwithangga.com/sign-in/google";
+  };
+
+  const openWindow = (url, title, options = {}) => {
+    if (typeof url === "object") {
+      options = url;
+      url = "";
+    }
+
+    options = { url, title, width: 600, height: 720, ...options };
+
+    const dualScreenLeft =
+      window.screenLeft !== undefined ? window.screenLeft : window.screen.left;
+    const dualScreenTop =
+      window.screenTop !== undefined ? window.screenTop : window.screen.top;
+    const width =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      window.screen.width;
+    const height =
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      window.screen.height;
+
+    options.left = width / 2 - options.width / 2 + dualScreenLeft;
+    options.top = height / 2 - options.height / 2 + dualScreenTop;
+
+    const optionsStr = Object.keys(options)
+      .reduce((acc, key) => {
+        acc.push(`${key}=${options[key]}`);
+        return acc;
+      }, [])
+      .join(",");
+
+    const newWindow = window.open(url, title, optionsStr);
+
+    if (window.focus) {
+      newWindow.focus();
+    }
+
+    return newWindow;
   };
 
   return (
@@ -63,7 +100,7 @@ const Login = () => {
         <div className="flex flex-col self-center">
           <h1>Masuk / Daftar ke Elements</h1>
           <p>Dapatkan akses untuk membangun website yang lebih professional</p>
-          <button onClick={loginHandler} disabled>
+          <button onClick={loginHandler}>
             {googleLogo} Sign In with Google
           </button>
         </div>
