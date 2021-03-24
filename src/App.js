@@ -11,19 +11,21 @@ const Login = lazy(() => import("./containers/Auth/Login"));
 
 function App() {
   useEffect(() => {
+    const onMessage = (e) => {
+      // if (e.origin !== window.origin || !e.data.token) {
+      //   return;
+      // }
+      // console.log(e);
+      console.log(e.data);
+      // localStorage.setItem("user", e.data.name);
+
+      // document.location.href = "/";
+    };
+
     window.addEventListener("message", onMessage, false);
 
     return () => window.removeEventListener("message", onMessage);
   }, []);
-
-  const onMessage = (e) => {
-    if (e.origin !== window.origin || !e.data.token) {
-      return;
-    }
-    console.log(e);
-    console.log(e.data);
-    // localStorage.setItem("user", e.data.name);
-  };
 
   return (
     <Suspense fallback={<Loading />}>
