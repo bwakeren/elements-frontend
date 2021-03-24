@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
 import { Head, NavigationHome } from "../../components";
 import { images } from "../../assets";
 
@@ -41,42 +38,6 @@ const googleLogo = (
 );
 
 const Login = () => {
-  const redirectPath = useSelector(
-    (state) => state.authentication.authRedirectPath
-  );
-  const history = useHistory();
-
-  useEffect(() => {
-    const onMessage = (e) => {
-      if (!e.data.token) {
-        return;
-      }
-
-      // const data = {
-      //   avatar:
-      //     "https://lh4.googleusercontent.com/-7Uehx5jgh5E/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmOiDY5HOUtan0eobrBenCjA7oNVQ/s96-c/photo.jpg",
-      //   email: "purwanto.adi.1999@gmail.com",
-      //   name: "Muhammad Yusuf Adi Purwanto",
-      //   provider_id: "100137382991333708073",
-      //   role: "user",
-      // };
-      // const token = "114|8qrCtZtf4kGfX3xZb103NCMwiyJqSfwyelKHEU3z";
-      const data = e.data;
-      const token = e.data.token;
-
-      delete data.token;
-
-      localStorage.setItem("elements_user", JSON.stringify(data));
-      localStorage.setItem("elements_token", JSON.stringify(token));
-
-      history.push(redirectPath);
-    };
-
-    window.addEventListener("message", onMessage, false);
-
-    return () => window.removeEventListener("message", onMessage);
-  }, [history, redirectPath]);
-
   const loginHandler = () => {
     const newWindow = openWindow("", "message");
     newWindow.location.href =

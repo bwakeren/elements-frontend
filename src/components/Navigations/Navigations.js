@@ -19,6 +19,9 @@ export const Navigation = ({
   navigation,
 }) => {
   const [dropwDown, setDropDown] = useState(false);
+  const isAuthentication = useSelector(
+    (state) => state.authentication.token !== null
+  );
 
   const animation = useSpring({
     opacity: dropwDown ? 1 : 0,
@@ -50,7 +53,7 @@ export const Navigation = ({
         src={images.Logo}
         alt="Elements"
       />
-      {disabled ? (
+      {disabled || !isAuthentication ? (
         button && <Link to={navigation}>{button}</Link>
       ) : (
         <div>

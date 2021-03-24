@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Switch, Route } from "react-router";
+import { Switch, Route, useHistory, Redirect } from "react-router";
 import { Loading } from "./components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { checkAutoAuth, authRedirectPath } from "./store/actions";
 import Landing from "./containers/Landing/Landing";
 
@@ -12,13 +12,46 @@ const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
 const Login = lazy(() => import("./containers/Auth/Login"));
 
 function App() {
+  const history = useHistory();
   const dispatch = useDispatch();
+  const redirectPath = useSelector(
+    (state) => state.authentication.authRedirectPath
+  );
+  const isAuthentication = useSelector((state) => state.authentication.token);
+
+  useEffect(() => {
+    const onMessage = (e) => {
+      if (!e.data.token) {
+        return;
+      }
+
+      const data = e.data;
+      const token = e.data.token;
+
+      delete data.token;
+
+      localStorage.setItem("elements_user", JSON.stringify(data));
+      localStorage.setItem("elements_token", JSON.stringify(token));
+
+      dispatch(authRedirectPath("/create"));
+    };
+
+    window.addEventListener("message", onMessage, false);
+
+    return () => window.removeEventListener("message", onMessage);
+  }, [history, redirectPath, dispatch]);
 
   useEffect(() => {
     dispatch(checkAutoAuth());
 
     dispatch(authRedirectPath("/create"));
-  }, [dispatch]);
+  }, [dispatch, redirectPath]);
+
+  const redirect = "";
+
+  if (isAuthentication) {
+    <Redirect to={redirectPath} />;
+  }
 
   return (
     <Suspense fallback={<Loading />}>
@@ -33,6 +66,7 @@ function App() {
         <Route path="/create" render={(props) => <Main {...props} />} />
         <Route path="/" exact component={Landing} />
         <Route path="*" exact component={Landing} />
+        {redirect}
       </Switch>
     </Suspense>
   );
