@@ -39,23 +39,23 @@ const googleLogo = (
 );
 
 const Login = () => {
-  // useEffect(() => {
-  //   const onMessage = (e) => {
-  //     // if (e.origin !== window.origin || !e.data.token) {
-  //     //   return;
-  //     // }
-  //     // console.log(e);
-  //     console.log(e);
-  //     console.log(e.data);
-  //     // localStorage.setItem("user", e.data.name);
+  useEffect(() => {
+    const onMessage = (e) => {
+      // if (e.origin !== window.origin || !e.data.token) {
+      //   return;
+      // }
+      // console.log(e);
+      console.log(e);
+      console.log(e.data);
+      // localStorage.setItem("user", e.data.name);
 
-  //     // document.location.href = "/";
-  //   };
+      // document.location.href = "/";
+    };
 
-  //   window.addEventListener("message", onMessage, false);
+    window.addEventListener("message", onMessage, false);
 
-  //   return () => window.removeEventListener("message", onMessage);
-  // }, []);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
 
   const loginHandler = () => {
     const newWindow = openWindow("", "message");
