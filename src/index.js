@@ -12,6 +12,7 @@ import productsReducer from "./store/reducers/products";
 import contentsReducer from "./store/reducers/contents";
 import categoriesReducer from "./store/reducers/categories";
 import downloadReducer from "./store/reducers/download";
+import authenticationReducer from "./store/reducers/authentication";
 
 const composeEnhancers =
   process.env.NODE_ENV === "development"
@@ -23,6 +24,7 @@ const reducers = combineReducers({
   content: contentsReducer,
   category: categoriesReducer,
   download: downloadReducer,
+  authentication: authenticationReducer,
 });
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));

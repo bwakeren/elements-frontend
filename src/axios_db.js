@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instances = axios.create({
-  baseURL: "https://api.elements.buildwithangga.com",
+  baseURL: process.env.REACT_APP_API_URL,
   withCredentials: true,
 });
 

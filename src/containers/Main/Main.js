@@ -3,6 +3,7 @@ import { NavSidebar, Content, Head } from "../../components";
 import { images } from "../../assets";
 import Layout from "../../hoc/Layout/Layout";
 import classes from "./Main.module.scss";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const Main = () => {
@@ -28,8 +29,15 @@ const Main = () => {
       });
   }, [width]);
 
+  const isAuthentication = useSelector(
+    (state) => state.authentication.token !== null
+  );
+
   return window.innerWidth >= 1280 && width ? (
-    <Layout button="Download">
+    <Layout
+      button="Download"
+      navigation={!isAuthentication ? "/login" : "/create"}
+    >
       <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
       <main className="py-9 px-10 flex items-start w-full justify-end">
         <NavSidebar />

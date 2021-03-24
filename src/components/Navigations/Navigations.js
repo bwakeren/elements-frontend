@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { fetchCategory, categorySuccess } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
-import { STORAGE } from "../../shared/utility";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import axios from "../../axios_db";
@@ -154,7 +153,7 @@ export const NavSidebar = () => {
               <SidebarItems
                 key={data.id}
                 id={data.id}
-                icon={STORAGE.toString() + data.icon}
+                icon={process.env.REACT_APP_STORAGE + data.icon}
                 title={data.categories_name}
                 loading={loading}
                 click={(event) => handlerOpen(event, data.id)}
@@ -215,6 +214,9 @@ export const NavigationHome = ({ whitebg = false }) => {
   const [openNavigation, setOpenNavigation] = useState(false);
   const location = useLocation();
   const { pathname } = location;
+  const isAuthentication = useSelector(
+    (state) => state.authentication.token !== null
+  );
 
   const animation = useSpring({
     opacity: openNavigation ? 1 : 0,
@@ -260,7 +262,7 @@ export const NavigationHome = ({ whitebg = false }) => {
           ></path>
         </svg>
       </li>
-      {pathname !== "/login" && (
+      {pathname !== "/login" && !isAuthentication && (
         <li>
           <a href="/login" className={classes.button}>
             Login
@@ -302,7 +304,7 @@ export const NavigationHome = ({ whitebg = false }) => {
               </a>
             </li>
           ))}
-          {pathname !== "/login" && (
+          {pathname !== "/login" && !isAuthentication && (
             <li>
               <a href="/login" className={classes.button}>
                 Login
