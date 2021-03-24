@@ -100,7 +100,7 @@ const Login = () => {
         <div className="flex flex-col self-center">
           <h1>Masuk / Daftar ke Elements</h1>
           <p>Dapatkan akses untuk membangun website yang lebih professional</p>
-          <button onClick={loginHandler} disabled>
+          <button onClick={loginHandler}>
             {googleLogo} Sign In with Google
           </button>
         </div>
