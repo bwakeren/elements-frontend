@@ -17,8 +17,17 @@ function App() {
       if (!e.data.token) {
         return;
       }
-      console.log(e.data);
-      localStorage.setItem("elements_user", { ...e.data });
+
+      const data = {
+        avatar: e.data.avatar,
+        email: e.data.email,
+        name: e.data.name,
+        provider_id: e.data.provider_id,
+        role: e.data.role,
+        token: e.data.token,
+      };
+
+      localStorage.setItem("elements_user", data);
 
       history.push("/");
     };
