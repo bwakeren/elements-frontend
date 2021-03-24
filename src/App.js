@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Switch, Route, useHistory, Redirect } from "react-router";
+import { Switch, Route, useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 import { Loading } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAutoAuth, authRedirectPath } from "./store/actions";
@@ -47,10 +48,10 @@ function App() {
     dispatch(authRedirectPath("/create"));
   }, [dispatch, redirectPath]);
 
-  const redirect = "";
+  let redirect = "";
 
   if (isAuthentication) {
-    <Redirect to={redirectPath} />;
+    redirect = <Redirect to={redirectPath} />;
   }
 
   return (
@@ -65,7 +66,6 @@ function App() {
         />
         <Route path="/create" render={(props) => <Main {...props} />} />
         <Route path="/" exact component={Landing} />
-        <Route path="*" exact component={Landing} />
         {redirect}
       </Switch>
     </Suspense>
