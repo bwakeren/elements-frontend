@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Switch, Route } from "react-router";
+import { Switch, Route, useHistory } from "react-router";
 import { Loading } from "./components";
 import Landing from "./containers/Landing/Landing";
 
@@ -10,22 +10,22 @@ const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
 const Login = lazy(() => import("./containers/Auth/Login"));
 
 function App() {
+  const history = useHistory();
+
   useEffect(() => {
     const onMessage = (e) => {
-      // if (e.origin !== window.origin || !e.data.token) {
-      //   return;
-      // }
-      // console.log(e);
-      console.log(e.data);
-      // localStorage.setItem("user", e.data.name);
+      if (!e.data.token) {
+        return;
+      }
+      localStorage.setItem("user", e.data);
 
-      // document.location.href = "/";
+      history.push("/");
     };
 
     window.addEventListener("message", onMessage, false);
 
     return () => window.removeEventListener("message", onMessage);
-  }, []);
+  }, [history]);
 
   return (
     <Suspense fallback={<Loading />}>
