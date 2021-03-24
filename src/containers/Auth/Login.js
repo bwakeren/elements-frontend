@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Head, NavigationHome } from "../../components";
 import { images } from "../../assets";
 
@@ -39,24 +38,6 @@ const googleLogo = (
 );
 
 const Login = () => {
-  useEffect(() => {
-    const onMessage = (e) => {
-      // if (e.origin !== window.origin || !e.data.token) {
-      //   return;
-      // }
-      // console.log(e);
-      console.log(e);
-      console.log(e.data);
-      // localStorage.setItem("user", e.data.name);
-
-      // document.location.href = "/";
-    };
-
-    window.addEventListener("message", onMessage, false);
-
-    return () => window.removeEventListener("message", onMessage);
-  }, []);
-
   const loginHandler = () => {
     const newWindow = openWindow("", "message");
     newWindow.location.href =
@@ -119,7 +100,7 @@ const Login = () => {
         <div className="flex flex-col self-center">
           <h1>Masuk / Daftar ke Elements</h1>
           <p>Dapatkan akses untuk membangun website yang lebih professional</p>
-          <button onClick={loginHandler}>
+          <button onClick={loginHandler} disabled>
             {googleLogo} Sign In with Google
           </button>
         </div>
