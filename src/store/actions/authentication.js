@@ -10,6 +10,13 @@ export const authSuccess = (data, token) => ({
 
 export const authFail = (error) => ({ type: actionTypes.AUTH_FAIL, error });
 
+export const authLogin = (data, token) => {
+  return (dispatch) => {
+    dispatch(authStart());
+    dispatch(authSuccess(data, token));
+  };
+};
+
 export const authLogout = () => {
   localStorage.removeItem("elements_user");
   return {

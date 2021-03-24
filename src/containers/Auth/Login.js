@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { authRedirectPath } from "../../store/actions";
+import { authLogin, authRedirectPath } from "../../store/actions";
 import { Head, NavigationHome } from "../../components";
 import { images } from "../../assets";
 
@@ -62,9 +62,11 @@ const Login = () => {
       localStorage.setItem("elements_user", JSON.stringify(data));
       localStorage.setItem("elements_token", JSON.stringify(token));
 
+      dispatch(authLogin(data, token));
+
       dispatch(authRedirectPath("/create"));
 
-      document.location.href = redirectPath;
+      history.replace(redirectPath);
     };
 
     window.addEventListener("message", onMessage, false);
