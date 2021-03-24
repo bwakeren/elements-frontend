@@ -17,6 +17,7 @@ function App() {
       if (!e.data.token) {
         return;
       }
+      console.log(e.data);
       localStorage.setItem("elements_user", { ...e.data });
 
       history.push("/");
