@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { authRedirectPath } from "../../store/actions";
 import { Head, NavigationHome } from "../../components";
 import { images } from "../../assets";
 
@@ -38,6 +42,36 @@ const googleLogo = (
 );
 
 const Login = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const redirectPath = useSelector(
+    (state) => state.authentication.authRedirectPath
+  );
+
+  useEffect(() => {
+    const onMessage = (e) => {
+      if (!e.data.token) {
+        return;
+      }
+
+      const data = e.data;
+      const token = e.data.token;
+
+      delete data.token;
+
+      localStorage.setItem("elements_user", JSON.stringify(data));
+      localStorage.setItem("elements_token", JSON.stringify(token));
+
+      dispatch(authRedirectPath("/create"));
+
+      history.push(redirectPath);
+    };
+
+    window.addEventListener("message", onMessage, false);
+
+    return () => window.removeEventListener("message", onMessage);
+  }, [history, redirectPath, dispatch]);
+
   const loginHandler = () => {
     const newWindow = openWindow("", "message");
     newWindow.location.href =
