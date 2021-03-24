@@ -21,6 +21,7 @@ function App() {
       return;
     }
     console.log(e);
+    console.log(e.data);
     // localStorage.setItem("user", e.data.name);
   };
 
