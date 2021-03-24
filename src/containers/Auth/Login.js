@@ -64,7 +64,7 @@ const Login = () => {
 
       dispatch(authRedirectPath("/create"));
 
-      history.push(redirectPath);
+      document.location.href = redirectPath;
     };
 
     window.addEventListener("message", onMessage, false);
