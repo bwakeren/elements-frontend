@@ -4,7 +4,11 @@ import { images, icons } from "../../assets";
 import { SidebarItems } from "./NavigationItem/NavigationItem";
 import { Products } from "../Products/Products";
 import { Link } from "react-router-dom";
-import { fetchCategory, categorySuccess } from "../../store/actions";
+import {
+  fetchCategory,
+  categorySuccess,
+  authLogout,
+} from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -215,16 +219,27 @@ const links = [
 
 export const NavigationHome = ({ whitebg = false }) => {
   const [openNavigation, setOpenNavigation] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
   const location = useLocation();
+  const history = useHistory();
   const { pathname } = location;
   const isAuthentication = useSelector(
     (state) => state.authentication.token !== null
   );
 
+  const user = useSelector((state) => state.authentication.user);
+
+  const dispatch = useDispatch();
+
   const animation = useSpring({
     opacity: openNavigation ? 1 : 0,
     transform: openNavigation ? "translateX(0)" : "translateX(200%)",
   });
+
+  const logoutHandler = () => {
+    dispatch(authLogout());
+    history.push("/login");
+  };
 
   const ModalNavigation = (
     <animated.ul style={animation} className={classes.modalnav}>
@@ -307,6 +322,28 @@ export const NavigationHome = ({ whitebg = false }) => {
               </a>
             </li>
           ))}
+          {isAuthentication && (
+            <li className={classes.profile}>
+              <p onClick={() => setDropdown(!dropdown)}>
+                Halo, {user.name.split(" ")[0]}
+              </p>
+              <img
+                src={user.avatar}
+                alt={user.name}
+                onClick={() => setDropdown(!dropdown)}
+              />
+              {dropdown && (
+                <ul className={classes.dropdown}>
+                  <li>
+                    Download(<span>0</span>)
+                  </li>
+                  <li>Subscribes</li>
+                  <li>Settings</li>
+                  <li onClick={logoutHandler}>Logout</li>
+                </ul>
+              )}
+            </li>
+          )}
           {pathname !== "/login" && !isAuthentication && (
             <li>
               <a href="/login" className={classes.button}>

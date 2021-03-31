@@ -53,19 +53,11 @@ const Login = () => {
       if (!e.data.token) {
         return;
       }
-
-      const data = e.data;
       const token = e.data.token;
 
-      delete data.token;
-
-      localStorage.setItem("elements_user", JSON.stringify(data));
       localStorage.setItem("elements_token", JSON.stringify(token));
-
-      dispatch(authLogin(data, token));
-
+      dispatch(authLogin(token));
       dispatch(authRedirectPath("/create"));
-
       history.replace(redirectPath);
     };
 

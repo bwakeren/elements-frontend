@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import axios from "../../axios_db";
 
 export const authStart = () => ({ type: actionTypes.AUTH_START });
 
@@ -10,15 +11,25 @@ export const authSuccess = (data, token) => ({
 
 export const authFail = (error) => ({ type: actionTypes.AUTH_FAIL, error });
 
-export const authLogin = (data, token) => {
+export const authLogin = (token) => {
   return (dispatch) => {
     dispatch(authStart());
-    dispatch(authSuccess(data, token));
+    axios
+      .get("/api/user_data/", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        dispatch(authSuccess(response.data.data, token));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // dispatch(authSuccess(data, token));
   };
 };
 
 export const authLogout = () => {
-  localStorage.removeItem("elements_user");
+  localStorage.removeItem("elements_token");
   return {
     type: actionTypes.AUTH_LOGOUT,
   };
@@ -33,14 +44,11 @@ export const authRedirectPath = (path) => {
 
 export const checkAutoAuth = () => {
   return (dispatch) => {
-    const data = JSON.parse(localStorage.getItem("elements_user"));
     const token = JSON.parse(localStorage.getItem("elements_token"));
     if (!token) {
       dispatch(authLogout());
     } else {
-      delete data.token;
-
-      dispatch(authSuccess(data, token));
+      dispatch(authLogin(token));
     }
   };
 };

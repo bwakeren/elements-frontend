@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Switch, Route } from "react-router";
+import { Switch, Route, Redirect } from "react-router";
 import { Loading } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAutoAuth, authRedirectPath } from "./store/actions";
@@ -16,6 +16,9 @@ function App() {
   const redirectPath = useSelector(
     (state) => state.authentication.authRedirectPath
   );
+  const isAuthentication = useSelector(
+    (state) => state.authentication.token !== null
+  );
 
   useEffect(() => {
     dispatch(checkAutoAuth());
@@ -23,10 +26,24 @@ function App() {
     dispatch(authRedirectPath("/create"));
   }, [dispatch, redirectPath]);
 
-  return (
-    <Suspense fallback={<Loading />}>
+  let route = (
+    <Switch>
+      <Route path="/login" render={(props) => <Login {...props} />} />
+      <Route path="/pricing" render={(props) => <Pricing {...props} />} />
+      <Route path="/heroes" render={(props) => <Heroes {...props} />} />
+      <Route
+        path="/goodluck/:isframework"
+        render={(props) => <Goodluck {...props} />}
+      />
+      <Route path="/create" render={(props) => <Main {...props} />} />
+      <Route path="/" exact component={Landing} />
+      <Route path="*" exact component={Landing} />
+    </Switch>
+  );
+
+  if (isAuthentication) {
+    route = (
       <Switch>
-        <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/pricing" render={(props) => <Pricing {...props} />} />
         <Route path="/heroes" render={(props) => <Heroes {...props} />} />
         <Route
@@ -35,10 +52,12 @@ function App() {
         />
         <Route path="/create" render={(props) => <Main {...props} />} />
         <Route path="/" exact component={Landing} />
-        <Route path="*" exact component={Landing} />
+        <Redirect to="/create" />
       </Switch>
-    </Suspense>
-  );
+    );
+  }
+
+  return <Suspense fallback={<Loading />}>{route}</Suspense>;
 }
 
 export default App;
