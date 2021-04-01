@@ -73,6 +73,7 @@ export const Header = ({ button, navigation }) => {
             : geolocation.IPv4,
         region:
           Object.keys(geolocation).length === 0 ? "Jakarta" : geolocation.city,
+        user_id: user && user.id,
       };
       dispatch(postDownload(download));
     });
