@@ -32,10 +32,6 @@ function App() {
       <Route path="/login" render={(props) => <Login {...props} />} />
       <Route path="/pricing" render={(props) => <Pricing {...props} />} />
       <Route path="/heroes" render={(props) => <Heroes {...props} />} />
-      <Route
-        path="/goodluck/:isframework"
-        render={(props) => <Goodluck {...props} />}
-      />
       <Route path="/create" render={(props) => <Main {...props} />} />
       <Route path="/" exact component={Landing} />
       <Route path="*" exact component={Landing} />
