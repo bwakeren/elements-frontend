@@ -8,6 +8,7 @@ import {
   fetchCategory,
   categorySuccess,
   authLogout,
+  getDownload,
 } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useSpring, animated, config } from "react-spring";
@@ -228,8 +229,13 @@ export const NavigationHome = ({ whitebg = false }) => {
   );
 
   const user = useSelector((state) => state.authentication.user);
+  const totalDownload = useSelector((state) => state.download.download_total);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    user && dispatch(getDownload(user.id));
+  }, [user, dispatch]);
 
   const animation = useSpring({
     opacity: openNavigation ? 1 : 0,
@@ -335,10 +341,10 @@ export const NavigationHome = ({ whitebg = false }) => {
               {dropdown && (
                 <ul className={classes.dropdown}>
                   <li>
-                    Download(<span>0</span>)
+                    Download(<span>{totalDownload ? totalDownload : 0}</span>)
                   </li>
                   <li>Subscribes</li>
-                  <li>Settings</li>
+                  <li onClick={() => history.push("/setting")}>Settings</li>
                   <li onClick={logoutHandler}>Logout</li>
                 </ul>
               )}

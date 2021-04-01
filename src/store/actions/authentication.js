@@ -22,9 +22,24 @@ export const authLogin = (token) => {
         dispatch(authSuccess(response.data.data, token));
       })
       .catch((error) => {
-        console.log(error);
+        dispatch(authFail(error));
       });
-    // dispatch(authSuccess(data, token));
+  };
+};
+
+export const authEdit = (data, token) => {
+  return (dispatch) => {
+    dispatch(authStart());
+    axios
+      .post("/api/user/update", data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        dispatch(authSuccess(response.data.data, token));
+      })
+      .catch((error) => {
+        dispatch(authFail(error));
+      });
   };
 };
 

@@ -10,6 +10,7 @@ const Goodluck = lazy(() => import("./containers/Goodluck/Goodluck"));
 const Heroes = lazy(() => import("./containers/Heroes/Heroes"));
 const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
 const Login = lazy(() => import("./containers/Auth/Login"));
+const Setting = lazy(() => import("./containers/Setting/Setting"));
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ function App() {
   if (isAuthentication) {
     route = (
       <Switch>
+        <Route path="/setting" render={(props) => <Setting {...props} />} />
         <Route path="/pricing" render={(props) => <Pricing {...props} />} />
         <Route path="/heroes" render={(props) => <Heroes {...props} />} />
         <Route

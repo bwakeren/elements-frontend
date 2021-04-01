@@ -121,7 +121,6 @@
         height: 40px;
         border-radius: 50%;
         margin-left: 12px;
-        border: 1px solid #ffffff;
       }
 
       .dropdown {
@@ -180,6 +179,20 @@
   }
 
   &.whitebg {
+    .profile {
+      p {
+        color: #121155;
+      }
+
+      .dropdown {
+        background: #401782;
+
+        li {
+          color: #fff;
+        }
+      }
+    }
+
     ul {
       li {
         a {

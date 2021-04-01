@@ -31,3 +31,36 @@ export const postDownload = (data) => {
     axios.post("/api/downloaded/store", data);
   };
 };
+
+export const startDownload = () => ({ type: actionTypes.DOWNLOAD_START });
+
+export const successDownload = (download_today, download_total) => ({
+  type: actionTypes.DOWNLOAD_SUCCESS,
+  download_today,
+  download_total,
+});
+
+export const failDownload = (error) => ({
+  type: actionTypes.DOWNLOAD_FAIL,
+  error,
+});
+
+export const getDownload = (id) => {
+  return (dispatch) => {
+    dispatch(startDownload());
+    axios
+      .get(`/api/downloaded/max/${id}`)
+      .then((response) => {
+        // const download_today = response.data.data.filter((d) => {
+        //   return new Date(d.created_at).getTime() <= new Date().getTime();
+        // });
+
+        dispatch(
+          successDownload(response.data.data.length, response.data.data.length)
+        );
+      })
+      .catch((error) => {
+        dispatch(failDownload(error));
+      });
+  };
+};

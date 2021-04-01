@@ -1,0 +1,130 @@
+.setting {
+  background: #f7fafc;
+  max-width: 504px;
+  border-radius: 32px;
+  @apply block py-6 px-14 mx-auto mb-14;
+
+  h1 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: #171046;
+    text-align: center;
+  }
+
+  h2 {
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    color: #111111;
+    text-align: center;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 12px auto;
+    border: 1px solid #fff;
+  }
+
+  form {
+    margin-top: 16px;
+    border-top: 1px solid #d1daeb;
+
+    .input_container {
+      width: 100%;
+      margin-top: 16px;
+
+      label {
+        font-family: "Poppins", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: #111111;
+      }
+
+      .input_group {
+        margin-top: 12px;
+        width: 100%;
+        position: relative;
+
+        input {
+          padding: 16px;
+          width: 100%;
+          background: #e8eef8;
+          border-radius: 12px;
+          outline: none;
+          font-family: "Poppins", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 20px;
+          color: #121f39;
+
+          &::placeholder {
+            color: #6586da;
+          }
+
+          &:disabled {
+            background: #c8d5ee;
+            color: #4e73ba;
+          }
+        }
+
+        .icon {
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+
+        small {
+          display: block;
+          margin-top: 8px;
+          color: #de1306;
+          font-family: "Poppins", sans-serif;
+          font-style: normal;
+          font-weight: normal;
+        }
+      }
+    }
+
+    button {
+      font-family: "Poppins", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: #ffffff;
+      @apply w-full bg-button-primary-orange hover:bg-button-primary-hover mt-8 text-white;
+
+      &:disabled {
+        background: #5b5b5b;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+
+  @keyframes popup {
+    0% {
+      transform: scale(1);
+    }
+    80% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}

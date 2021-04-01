@@ -47,6 +47,7 @@ const Login = () => {
   const redirectPath = useSelector(
     (state) => state.authentication.authRedirectPath
   );
+  const user = useSelector((state) => state.authentication.user);
 
   useEffect(() => {
     const onMessage = (e) => {
@@ -57,14 +58,16 @@ const Login = () => {
 
       localStorage.setItem("elements_token", JSON.stringify(token));
       dispatch(authLogin(token));
-      dispatch(authRedirectPath("/create"));
+      dispatch(
+        authRedirectPath(user && user.isPassword ? "/create" : "/setting")
+      );
       history.replace(redirectPath);
     };
 
     window.addEventListener("message", onMessage, false);
 
     return () => window.removeEventListener("message", onMessage);
-  }, [history, redirectPath, dispatch]);
+  }, [history, redirectPath, dispatch, user]);
 
   const loginHandler = () => {
     const newWindow = openWindow("", "message");

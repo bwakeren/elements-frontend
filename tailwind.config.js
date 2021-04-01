@@ -16,7 +16,7 @@ module.exports = {
             hover: "#FF5525",
           },
         },
-        main: "#F6F8FE",
+        main: "#FFFFFF",
         category: "rgba(108, 93, 211, 0.05)",
         blue: "#7993E1",
       },
