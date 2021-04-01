@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Head } from "../../components";
 import { icons } from "../../assets";
 import classes from "./Goodluck.module.scss";
+import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import Layout from "../../hoc/Layout/Layout";
 import axios from "../../axios_db";
@@ -9,9 +10,6 @@ import axios from "../../axios_db";
 const Main = () => {
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState({
-    name: {
-      value: "",
-    },
     text: {
       value: "",
     },
@@ -19,6 +17,7 @@ const Main = () => {
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState(false);
   const params = useParams();
+  const user = useSelector((state) => state.authentication.user);
 
   const starSvgOutline = (
     <svg
@@ -126,7 +125,7 @@ const Main = () => {
           onSubmit={(e) => {
             e.preventDefault();
             const data = {
-              name: feedback.name.value,
+              name: user && user.name,
               message: feedback.text.value,
               rate: rating,
               status: 1,
@@ -143,19 +142,6 @@ const Main = () => {
               });
           }}
         >
-          <input
-            type="text"
-            value={feedback.name.value}
-            placeholder="Nama"
-            onChange={(e) => {
-              setFeedback({
-                ...feedback,
-                name: {
-                  value: e.target.value,
-                },
-              });
-            }}
-          />
           <textarea
             value={feedback.text.value}
             placeholder="Beri feedback untuk kami"

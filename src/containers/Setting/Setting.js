@@ -137,6 +137,7 @@ const Setting = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const notify = () => toast("Please, set your password");
+  const successPassword = () => toast("Successfully Change Your Password");
 
   useEffect(() => {
     user && !user.isPassword && notify();
@@ -221,7 +222,11 @@ const Setting = () => {
 
     dispatch(authEdit(data, token));
 
-    history.push("/create");
+    successPassword();
+
+    setTimeout(() => {
+      history.push("/create");
+    }, 1500);
   };
 
   const arrayForm = [];

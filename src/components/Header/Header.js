@@ -6,6 +6,7 @@ import { fetchGeolocation, postDownload } from "../../store/actions";
 
 export const Header = ({ button, navigation }) => {
   const contents = useSelector((state) => state.content.contents);
+  const user = useSelector((state) => state.authentication.user);
   let dataHTML = "";
   let dataHTMLBootstrap = "";
   const idContent = [];
@@ -95,6 +96,7 @@ export const Header = ({ button, navigation }) => {
             : geolocation.IPv4,
         region:
           Object.keys(geolocation).length === 0 ? "Jakarta" : geolocation.city,
+        user_id: user && user.id,
       };
       dispatch(postDownload(download));
     });
