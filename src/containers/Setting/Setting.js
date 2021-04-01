@@ -222,7 +222,7 @@ const Setting = () => {
 
     dispatch(authEdit(data, token));
 
-    successPassword();
+    user && user.isPassword && successPassword();
 
     setTimeout(() => {
       history.push("/create");
