@@ -15,6 +15,8 @@ import { useSpring, animated, config } from "react-spring";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
 import axios from "../../axios_db";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Navigation = ({
   clicked,
@@ -27,6 +29,13 @@ export const Navigation = ({
   const isAuthentication = useSelector(
     (state) => state.authentication.token !== null
   );
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.authentication.user);
+  const totalDownload = useSelector((state) => state.download.download_today);
+
+  useEffect(() => {
+    user && dispatch(getDownload(user.id));
+  }, [user, dispatch]);
 
   const animation = useSpring({
     opacity: dropwDown ? 1 : 0,
@@ -50,29 +59,56 @@ export const Navigation = ({
 
   const history = useHistory();
 
+  const notify = () => toast.info("🦄 You have limited download");
+  const selectfirst = () => toast.info("🦄 Please select element first");
+
   return (
-    <nav className={classes.nav}>
-      <img
-        onClick={() => history.push("/")}
-        style={{ cursor: "pointer" }}
-        src={images.Logo}
-        alt="Elements"
+    <>
+      <nav className={classes.nav}>
+        <img
+          onClick={() => history.push("/")}
+          style={{ cursor: "pointer" }}
+          src={images.Logo}
+          alt="Elements"
+        />
+        {disabled || !isAuthentication ? (
+          button && (
+            <Link
+              onClick={() => {
+                disabled && selectfirst();
+              }}
+              to={navigation}
+            >
+              {button}
+            </Link>
+          )
+        ) : (
+          <div>
+            <button
+              onClick={() => {
+                totalDownload && totalDownload >= 2
+                  ? notify()
+                  : setDropDown(!dropwDown);
+              }}
+            >
+              {button}
+            </button>
+            {dropdwon}
+          </div>
+        )}
+      </nav>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
       />
-      {disabled || !isAuthentication ? (
-        button && <Link to={navigation}>{button}</Link>
-      ) : (
-        <div>
-          <button
-            onClick={() => {
-              setDropDown(!dropwDown);
-            }}
-          >
-            {button}
-          </button>
-          {dropdwon}
-        </div>
-      )}
-    </nav>
+    </>
   );
 };
 
@@ -229,7 +265,7 @@ export const NavigationHome = ({ whitebg = false }) => {
   );
 
   const user = useSelector((state) => state.authentication.user);
-  const totalDownload = useSelector((state) => state.download.download_total);
+  const totalDownload = useSelector((state) => state.download.download_today);
 
   const dispatch = useDispatch();
 

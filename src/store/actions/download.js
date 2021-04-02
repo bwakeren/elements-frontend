@@ -51,12 +51,22 @@ export const getDownload = (id) => {
     axios
       .get(`/api/downloaded/max/${id}`)
       .then((response) => {
-        // const download_today = response.data.data.filter((d) => {
-        //   return new Date(d.created_at).getTime() <= new Date().getTime();
-        // });
+        const count = {};
+
+        response.data.data.forEach((a, i) => {
+          const dt = new Date(a.created_at).getTime();
+          const inputDate = new Date(a.created_at);
+          const todaysDate = new Date();
+
+          if (
+            inputDate.setHours(0, 0, 0, 0) === todaysDate.setHours(0, 0, 0, 0)
+          ) {
+            count[dt] = (count[dt] || 0) + 1;
+          }
+        });
 
         dispatch(
-          successDownload(response.data.data.length, response.data.data.length)
+          successDownload(Object.keys(count).length, response.data.data.length)
         );
       })
       .catch((error) => {
