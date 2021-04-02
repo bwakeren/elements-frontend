@@ -59,7 +59,7 @@ const Login = () => {
       localStorage.setItem("elements_token", JSON.stringify(token));
       dispatch(authLogin(token));
       dispatch(
-        authRedirectPath(user && user.isPassword ? "/create" : "/setting")
+        authRedirectPath(user && !user.isPassword ? "/create" : "/setting")
       );
       history.replace(redirectPath);
     };

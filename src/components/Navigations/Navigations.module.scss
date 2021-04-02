@@ -105,53 +105,6 @@
   ul {
     @apply flex items-center list-none;
 
-    .profile {
-      @apply flex items-center justify-center relative;
-
-      p {
-        cursor: pointer;
-        font-family: "Fivo Sans";
-        color: #fff;
-        margin-bottom: 0;
-      }
-
-      img {
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-left: 12px;
-      }
-
-      .dropdown {
-        position: absolute;
-        top: 35px;
-        right: 0;
-        background: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 155px;
-        padding: 12px 20px;
-        border-radius: 20px;
-
-        li {
-          cursor: pointer;
-          margin: 8px 0;
-          font-family: "Poppins", sans-serif;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 14px;
-          line-height: 20px;
-          color: #401782;
-
-          span {
-            color: #e6337e;
-          }
-        }
-      }
-    }
-
     li {
       @apply mx-5;
 
@@ -179,20 +132,6 @@
   }
 
   &.whitebg {
-    .profile {
-      p {
-        color: #121155;
-      }
-
-      .dropdown {
-        background: #401782;
-
-        li {
-          color: #fff;
-        }
-      }
-    }
-
     ul {
       li {
         a {

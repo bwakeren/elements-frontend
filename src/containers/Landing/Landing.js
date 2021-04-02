@@ -3,6 +3,7 @@ import classes from "./Landing.module.scss";
 import { updateObject } from "../../shared/utility";
 import { images, icons } from "../../assets";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Head, Footer, NavigationHome } from "../../components";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
@@ -58,6 +59,9 @@ const Landing = () => {
   });
 
   const history = useHistory();
+  const isAuthentication = useSelector(
+    (state) => state.authentication.token !== null
+  );
 
   const [loading, setLoading] = useState(false);
 
@@ -151,7 +155,9 @@ const Landing = () => {
               Design a promising website to scale your business better and
               bigger. Elements is here to provide all you need.
             </p>
-            <button onClick={gotoCreate}>Try it free</button>
+            <button onClick={gotoCreate}>
+              {isAuthentication ? "Get started" : "Try it free"}
+            </button>
           </div>
           <img src={images.headerHero} alt="HeroImage" />
         </div>
@@ -290,7 +296,9 @@ const Landing = () => {
             <span></span>
             <p>Less Effort</p>
           </div>
-          <button onClick={gotoCreate}>Try Elements</button>
+          <button onClick={gotoCreate}>
+            {isAuthentication ? "Get started" : "Try it free"}
+          </button>
         </section>
       </main>
       <Footer />

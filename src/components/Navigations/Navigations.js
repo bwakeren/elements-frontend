@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import {
   fetchCategory,
   categorySuccess,
-  authLogout,
   getDownload,
 } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +16,7 @@ import { NavLink, useHistory, useLocation } from "react-router-dom";
 import axios from "../../axios_db";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Profile } from "./Profile/Profile";
 
 export const Navigation = ({
   clicked,
@@ -71,31 +71,36 @@ export const Navigation = ({
           src={images.Logo}
           alt="Elements"
         />
-        {disabled || !isAuthentication ? (
-          button && (
-            <Link
-              onClick={() => {
-                disabled && selectfirst();
-              }}
-              to={navigation}
-            >
-              {button}
-            </Link>
-          )
-        ) : (
-          <div>
-            <button
-              onClick={() => {
-                totalDownload && totalDownload >= 2
-                  ? notify()
-                  : setDropDown(!dropwDown);
-              }}
-            >
-              {button}
-            </button>
-            {dropdwon}
-          </div>
-        )}
+        <div className="flex items-center">
+          {isAuthentication && (
+            <Profile whitebg={true} noname={true} style={{ marginRight: 20 }} />
+          )}
+          {disabled || !isAuthentication ? (
+            button && (
+              <Link
+                onClick={() => {
+                  disabled && selectfirst();
+                }}
+                to={navigation}
+              >
+                {button}
+              </Link>
+            )
+          ) : (
+            <div>
+              <button
+                onClick={() => {
+                  totalDownload && totalDownload >= 2
+                    ? notify()
+                    : setDropDown(!dropwDown);
+                }}
+              >
+                {button}
+              </button>
+              {dropdwon}
+            </div>
+          )}
+        </div>
       </nav>
       <ToastContainer
         position="bottom-right"
@@ -256,16 +261,13 @@ const links = [
 
 export const NavigationHome = ({ whitebg = false }) => {
   const [openNavigation, setOpenNavigation] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
   const location = useLocation();
-  const history = useHistory();
   const { pathname } = location;
   const isAuthentication = useSelector(
     (state) => state.authentication.token !== null
   );
 
   const user = useSelector((state) => state.authentication.user);
-  const totalDownload = useSelector((state) => state.download.download_today);
 
   const dispatch = useDispatch();
 
@@ -277,11 +279,6 @@ export const NavigationHome = ({ whitebg = false }) => {
     opacity: openNavigation ? 1 : 0,
     transform: openNavigation ? "translateX(0)" : "translateX(200%)",
   });
-
-  const logoutHandler = () => {
-    dispatch(authLogout());
-    history.push("/login");
-  };
 
   const ModalNavigation = (
     <animated.ul style={animation} className={classes.modalnav}>
@@ -364,28 +361,7 @@ export const NavigationHome = ({ whitebg = false }) => {
               </a>
             </li>
           ))}
-          {isAuthentication && (
-            <li className={classes.profile}>
-              <p onClick={() => setDropdown(!dropdown)}>
-                Halo, {user.name.split(" ")[0]}
-              </p>
-              <img
-                src={user.avatar}
-                alt={user.name}
-                onClick={() => setDropdown(!dropdown)}
-              />
-              {dropdown && (
-                <ul className={classes.dropdown}>
-                  <li>
-                    Download(<span>{totalDownload ? totalDownload : 0}</span>)
-                  </li>
-                  <li>Subscribes</li>
-                  <li onClick={() => history.push("/setting")}>Settings</li>
-                  <li onClick={logoutHandler}>Logout</li>
-                </ul>
-              )}
-            </li>
-          )}
+          {isAuthentication && <Profile whitebg={whitebg} />}
           {pathname !== "/login" && !isAuthentication && (
             <li>
               <a href="/login" className={classes.button}>
