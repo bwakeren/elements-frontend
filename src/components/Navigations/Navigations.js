@@ -59,7 +59,6 @@ export const Navigation = ({
 
   const history = useHistory();
 
-  const notify = () => toast.info("🦄 You have limited download");
   const selectfirst = () => toast.info("🦄 Please select element first");
 
   return (
@@ -91,7 +90,7 @@ export const Navigation = ({
               <button
                 onClick={() => {
                   totalDownload && totalDownload >= 2
-                    ? notify()
+                    ? history.push("/download/failed")
                     : setDropDown(!dropwDown);
                 }}
               >

@@ -11,6 +11,7 @@ const Heroes = lazy(() => import("./containers/Heroes/Heroes"));
 const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
 const Login = lazy(() => import("./containers/Auth/Login"));
 const Setting = lazy(() => import("./containers/Setting/Setting"));
+const DownloadLimit = lazy(() => import("./containers/Download/Limit/Limit"));
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,10 @@ function App() {
   if (isAuthentication) {
     route = (
       <Switch>
+        <Route
+          path="/download/failed"
+          render={(props) => <DownloadLimit {...props} />}
+        />
         <Route path="/setting" render={(props) => <Setting {...props} />} />
         <Route path="/pricing" render={(props) => <Pricing {...props} />} />
         <Route path="/heroes" render={(props) => <Heroes {...props} />} />
