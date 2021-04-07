@@ -256,7 +256,7 @@ const Limit = () => {
           dukung karya anak bangsa dengan upgrade ke Premium.
         </p>
         <button
-          className="bg-button-primary-orange hover:bg-button-primary-hover text-white mt-5 font-semibold text-base"
+          className="bg-button-primary-orange hover:bg-button-primary-hover text-white mt-10 font-semibold text-base"
           onClick={() => history.push("/pricing")}
         >
           Upgrade Premium
