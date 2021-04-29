@@ -11,6 +11,7 @@ export const ProductItem = ({
   idProd,
   premium,
   htmlBootstrap,
+  userPremium,
 }) => {
   const [action, setAction] = useState(false);
   const dispatch = useDispatch();
@@ -166,8 +167,8 @@ export const ProductItem = ({
           onMouseLeave={() => setAction(false)}
         />
       )}
-      {premium && crown}
-      {premium
+      {!userPremium && premium && crown}
+      {!userPremium && premium
         ? block
         : contents.length !== 0
         ? contents[0].title !== title

@@ -8,6 +8,7 @@ module.exports = {
         categoryHover: "#1657FF",
         primary: "#121212",
         secondary: "#5B5B5B",
+        blue: "#121155",
       },
       colors: {
         button: {
@@ -22,6 +23,7 @@ module.exports = {
       },
       fontFamily: {
         primary: ["Nunito", "sans-serif"],
+        secondary: ["Poppins", "sans-serif"],
       },
       fill: {
         category: "#1657FF",

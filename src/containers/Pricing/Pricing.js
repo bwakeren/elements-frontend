@@ -1,9 +1,30 @@
+import { useEffect, useState } from "react";
 import classes from "./Pricing.module.scss";
 import { Head, Footer, NavigationHome } from "../../components";
 import { images } from "../../assets";
 import { useHistory } from "react-router-dom";
+import { numberThausand } from "../../shared/utility";
+import { useSelector } from "react-redux";
+import axios from "../../axios_db";
 
 const Pricing = () => {
+  const [packagePrice, setPackagePrice] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("/api/package/show")
+      .then((response) => {
+        setPackagePrice(response.data.data[0]);
+      })
+      .catch((error) => error);
+  }, []);
+
+  const isAuthentication = useSelector(
+    (state) => state.authentication.token !== null
+  );
+
+  const user = useSelector((state) => state.authentication.user);
+
   const history = useHistory();
 
   const checklist = (
@@ -21,30 +42,6 @@ const Pricing = () => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-      />
-    </svg>
-  );
-
-  const xlist = (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="10" cy="10" r="10" fill="#EB7E7E" />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M13.5 6.5C13.7761 6.77614 13.7761 7.22386 13.5 7.5L7.49999 13.5C7.22385 13.7762 6.77613 13.7762 6.49999 13.5C6.22385 13.2239 6.22385 12.7762 6.49999 12.5L12.5 6.5C12.7761 6.22386 13.2239 6.22386 13.5 6.5Z"
-        fill="white"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M6.5 6.5C6.77614 6.22386 7.22386 6.22386 7.5 6.5L13.5 12.5C13.7762 12.7762 13.7762 13.2239 13.5 13.5C13.2239 13.7762 12.7762 13.7762 12.5 13.5L6.5 7.5C6.22386 7.22386 6.22386 6.77614 6.5 6.5Z"
-        fill="white"
       />
     </svg>
   );
@@ -68,6 +65,9 @@ const Pricing = () => {
             <h6>Free</h6>
             <img src={images.pricingFree} alt="Free" className="mb-8 w-72" />
             <ul>
+              <li>
+                {checklist} <span>Download Maximum 2 per Day</span>
+              </li>
               <li>
                 {checklist} <span>Customizable</span>
               </li>
@@ -104,21 +104,6 @@ const Pricing = () => {
               <li>
                 {checklist} <span>SEO Ready</span>
               </li>
-              <li>
-                {xlist} <span>Unlock 1,000+ Design</span>
-              </li>
-              <li>
-                {xlist} <span>Mobile-First Design</span>
-              </li>
-              <li>
-                {xlist} <span>Private Group</span>
-              </li>
-              <li>
-                {xlist} <span>Free Design Update</span>
-              </li>
-              <li>
-                {xlist} <span>Free Consultation</span>
-              </li>
             </ul>
             <button
               onClick={() => history.push("/create")}
@@ -129,13 +114,20 @@ const Pricing = () => {
           </div>
           <div className={classes.card}>
             <h3>Premium</h3>
+            <h5 className="line-through text-center text-secondary font-semibold text-xl">
+              IDR 150.000/bulan
+            </h5>
             <h6>
-              IDR 150.000<span>/bulan</span>
+              IDR {packagePrice && numberThausand(packagePrice.price)}
+              <span>/bulan</span>
             </h6>
             <img src={images.pricingPremium} alt="Free" className="mb-8 w-72" />
             <ul>
               <li>
-                {checklist} <span>Unlock 1,000+ Design</span>
+                {checklist} <span>No Limit Downloads per Day</span>
+              </li>
+              <li>
+                {checklist} <span>Unlock Premium Contents</span>
               </li>
               <li>
                 {checklist} <span>Customizable</span>
@@ -189,17 +181,24 @@ const Pricing = () => {
             <button
               className={classes.btn_premium}
               onClick={() => {
-                const element = document.createElement("a");
-                element.setAttribute(
-                  "href",
-                  "https://wa.me/6289604535310?text=Saya+tertarik+upgrade+akun+Elements+ke+Premium+Bagaimana+Caranya?+Terima+kasih."
-                );
-                element.setAttribute("target", "_blank");
-                element.setAttribute("rel", "noreferrer");
-                element.click();
+                if (isAuthentication) {
+                  const a = document.createElement("a");
+                  if (user && !user.isPremium) {
+                    a.setAttribute("href", "/pricing/checkout");
+                  } else {
+                    a.setAttribute("href", "/create");
+                  }
+                  a.click();
+                } else {
+                  history.push("/login");
+                }
               }}
             >
-              Subscribe
+              {isAuthentication
+                ? user && !user.isPremium
+                  ? "Subscribe"
+                  : "Create"
+                : "Subscribe"}
             </button>
           </div>
         </div>

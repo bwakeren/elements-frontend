@@ -1,10 +1,10 @@
-import { Head, Teams } from "../../components";
-import Layout from "../../hoc/Layout/Layout";
+import { Head, Teams, NavigationHome } from "../../components";
 
 const Main = () => {
   return (
-    <Layout button="Try it Free" navigation="/create">
+    <>
       <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <NavigationHome whitebg={true} />
       <main className="py-9 px-10 flex items-center flex-col">
         <h1
           className="font-extrabold text-6xl text-center"
@@ -20,7 +20,7 @@ const Main = () => {
         </p>
         <Teams />
       </main>
-    </Layout>
+    </>
   );
 };
 

@@ -89,7 +89,7 @@ export const Navigation = ({
             <div>
               <button
                 onClick={() => {
-                  totalDownload && totalDownload >= 2
+                  user && !user.isPremium && totalDownload && totalDownload >= 2
                     ? history.push("/download/failed")
                     : setDropDown(!dropwDown);
                 }}

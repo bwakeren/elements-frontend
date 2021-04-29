@@ -40,6 +40,9 @@ import pricingFree from "./images/pricing-free.png";
 import pricingPremium from "./images/pricing-premium.png";
 
 import IllustrationLogin from "./images/illustration_login.svg";
+import illustrationPremium from "./images/Illustration_Premium.svg";
+import mandiriIcon from "./icons/mandiri.png";
+import orderComplete from "./images/order_completed.svg";
 
 export const images = {
   Logo,
@@ -64,6 +67,8 @@ export const images = {
   pricingFree,
   pricingPremium,
   IllustrationLogin,
+  illustrationPremium,
+  orderComplete,
 };
 
 export const icons = {
@@ -79,6 +84,7 @@ export const icons = {
   knowCustom,
   knowDeveloper,
   IcTrash,
+  mandiriIcon,
 };
 
 export const favicon = {

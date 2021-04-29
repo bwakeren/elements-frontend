@@ -30,7 +30,7 @@
   }
 
   .pricing_cat {
-    @apply flex items-center lg:items-start flex-col justify-center lg:flex-row;
+    @apply flex items-center lg:items-start lg:items-start flex-col justify-center lg:flex-row;
 
     .card {
       @apply mx-8 py-8 px-7 lg:px-11 bg-white rounded-xl my-8 lg:my-0;

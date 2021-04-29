@@ -12,6 +12,10 @@ const Pricing = lazy(() => import("./containers/Pricing/Pricing"));
 const Login = lazy(() => import("./containers/Auth/Login"));
 const Setting = lazy(() => import("./containers/Setting/Setting"));
 const DownloadLimit = lazy(() => import("./containers/Download/Limit/Limit"));
+const Checkout = lazy(() => import("./containers/Checkout/Checkout"));
+const SuccessCheckout = lazy(() =>
+  import("./containers/Checkout/Success/Success")
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +51,14 @@ function App() {
           render={(props) => <DownloadLimit {...props} />}
         />
         <Route path="/setting" render={(props) => <Setting {...props} />} />
+        <Route
+          path="/pricing/checkout/success"
+          render={(props) => <SuccessCheckout {...props} />}
+        />
+        <Route
+          path="/pricing/checkout"
+          render={(props) => <Checkout {...props} />}
+        />
         <Route path="/pricing" render={(props) => <Pricing {...props} />} />
         <Route path="/heroes" render={(props) => <Heroes {...props} />} />
         <Route

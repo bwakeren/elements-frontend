@@ -22,6 +22,7 @@ export const Products = ({ show, category, clicked, subCategory }) => {
   );
 
   const loading = useSelector((state) => state.product.loading);
+  const user = useSelector((state) => state.authentication.user);
 
   const props = useSpring({
     opacity: show ? 1 : 0,
@@ -54,6 +55,7 @@ export const Products = ({ show, category, clicked, subCategory }) => {
               htmlBootstrap={data.code_bootstrap}
               clicked={clicked}
               premium={data.type === "premium"}
+              userPremium={user && user.isPremium}
             />
           ))
         )}

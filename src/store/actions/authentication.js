@@ -19,7 +19,25 @@ export const authLogin = (token) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        dispatch(authSuccess(response.data.data, token));
+        axios
+          .get(`/api/subscribe/get_subs/${response.data.data.id}`)
+          .then((res) => {
+            dispatch(
+              authSuccess(
+                {
+                  ...response.data.data,
+                  isPremium:
+                    res.data.data === null
+                      ? false
+                      : res.data.data.status === "2",
+                },
+                token
+              )
+            );
+          })
+          .catch((error) => {
+            dispatch(authFail(error));
+          });
       })
       .catch((error) => {
         dispatch(authFail(error));
@@ -35,7 +53,25 @@ export const authEdit = (data, token) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        dispatch(authSuccess(response.data.data, token));
+        axios
+          .get(`/api/subscribe/get_subs/${response.data.data.id}`)
+          .then((res) => {
+            dispatch(
+              authSuccess(
+                {
+                  ...response.data.data,
+                  isPremium:
+                    res.data.data === null
+                      ? false
+                      : res.data.data.status === "2",
+                },
+                token
+              )
+            );
+          })
+          .catch((error) => {
+            dispatch(authFail(error));
+          });
       })
       .catch((error) => {
         dispatch(authFail(error));
