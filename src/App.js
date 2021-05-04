@@ -16,6 +16,9 @@ const Checkout = lazy(() => import("./containers/Checkout/Checkout"));
 const SuccessCheckout = lazy(() =>
   import("./containers/Checkout/Success/Success")
 );
+const ProcessCheckout = lazy(() =>
+  import("./containers/Checkout/Process/Process")
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +54,10 @@ function App() {
           render={(props) => <DownloadLimit {...props} />}
         />
         <Route path="/setting" render={(props) => <Setting {...props} />} />
+        <Route
+          path="/pricing/checkout/process"
+          render={(props) => <ProcessCheckout {...props} />}
+        />
         <Route
           path="/pricing/checkout/success"
           render={(props) => <SuccessCheckout {...props} />}

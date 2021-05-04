@@ -75,7 +75,7 @@ export const Profile = ({ whitebg, noname, style }) => {
               }
             }}
           >
-            {user && !user.isPremium ? "Subscribes" : "Create"}
+            {user && !user.isPremium ? "Go Premium" : "Create"}
           </li>
           <li onClick={() => history.push("/setting")}>Settings</li>
           <li onClick={logoutHandler}>Logout</li>

@@ -69,31 +69,13 @@ const Pricing = () => {
                 {checklist} <span>Download Maximum 2 per Day</span>
               </li>
               <li>
+                {checklist} <span>Unlock Starter Contents</span>
+              </li>
+              <li>
                 {checklist} <span>Customizable</span>
               </li>
               <li>
-                {checklist} <span>Navbar Sections Limited</span>
-              </li>
-              <li>
-                {checklist} <span>Header Sections Limited</span>
-              </li>
-              <li>
-                {checklist} <span>Content Sections Limited</span>
-              </li>
-              <li>
-                {checklist} <span>Footer Sections Limited</span>
-              </li>
-              <li>
-                {checklist} <span>Empty State Sections Limited</span>
-              </li>
-              <li>
-                {checklist} <span>Export to Bootstrap Limited</span>
-              </li>
-              <li>
-                {checklist} <span>Export to Tailwind Limited</span>
-              </li>
-              <li>
-                {checklist} <span>Responsive Design Limited</span>
+                {checklist} <span>Responsive Design</span>
               </li>
               <li>
                 {checklist} <span>Clean Code</span>

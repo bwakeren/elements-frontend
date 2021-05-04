@@ -43,6 +43,8 @@ import IllustrationLogin from "./images/illustration_login.svg";
 import illustrationPremium from "./images/Illustration_Premium.svg";
 import mandiriIcon from "./icons/mandiri.png";
 import orderComplete from "./images/order_completed.svg";
+import processCheckout from "./images/process_checkout.svg";
+import successCheckout from "./images/success_checkout.svg";
 
 export const images = {
   Logo,
@@ -69,6 +71,8 @@ export const images = {
   IllustrationLogin,
   illustrationPremium,
   orderComplete,
+  processCheckout,
+  successCheckout,
 };
 
 export const icons = {

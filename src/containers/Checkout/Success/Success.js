@@ -9,7 +9,7 @@ const Success = () => {
       <NavigationHome whitebg={true} />
       <main className="flex flex-col items-center mb-20">
         <img
-          src={images.orderComplete}
+          src={images.successCheckout}
           alt="Order Complete"
           className="mb-12"
         />
@@ -19,12 +19,20 @@ const Success = () => {
         <p className="text-xl text-center text-black font-secondary">
           Kamu berhasil upgrade menjadi premium.
         </p>
-        <Link
-          to="/create"
-          className="bg-button-primary-orange hover:bg-button-primary-hover text-white px-14 py-6 font-secondary rounded-xl text-base mt-20"
-        >
-          Kembali
-        </Link>
+        <div className="mt-20 flex items-center">
+          <Link
+            to="/"
+            className="hover:bg-button-primary-hover mx-2 border-button-primary-orange border-2 border-solid text-button-primary-orange font-semibold hover:text-white px-14 py-6 font-secondary rounded-xl text-base transition-all"
+          >
+            Kembali
+          </Link>
+          <Link
+            to="/create"
+            className="bg-button-primary-orange mx-2 hover:bg-button-primary-hover text-white px-14 py-6 font-secondary rounded-xl text-base font-semibold transition-all"
+          >
+            Start Design
+          </Link>
+        </div>
       </main>
       <Footer />
     </div>
