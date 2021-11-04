@@ -48,7 +48,7 @@ const Checkout = () => {
         const element = document.createElement("a");
         element.setAttribute(
           "href",
-          `https://wa.me/6287775945663?text=Halo,+Saya+${
+          `https://wa.me/6281385202498?text=Halo,+Saya+${
             user.name
           }+dengan+email+${
             user.email
@@ -74,29 +74,29 @@ const Checkout = () => {
       <NavigationHome whitebg={true} />
       {user && (
         <main className={classes.checkout}>
-          <h1 className="font-bold text-5xl capitalize text-blue text-center mb-8">
+          <h1 className="mb-8 text-5xl font-bold text-center capitalize text-blue">
             Go Premium
           </h1>
           <p className="text-xl text-center text-blue font-secondary">
             Bergabung dengan kami untuk mendapatkan akses premium Elements
           </p>
-          <div className="flex flex-col sm:flex-row mt-6 sm:mt-12 items-start">
+          <div className="flex flex-col items-start mt-6 sm:flex-row sm:mt-12">
             <img
               src={images.illustrationPremium}
               alt="Illustration Premium"
-              className="w-full sm:w-1/3 sm:mr-11 transition-all"
+              className="w-full transition-all sm:w-1/3 sm:mr-11"
             />
             <div className="w-full sm:w-2/3">
-              <div className="w-full rounded-xl bg-white p-11 transition-all">
+              <div className="w-full transition-all bg-white rounded-xl p-11">
                 <div className="mb-9">
-                  <h5 className="font-bold font-secondary text-base text-black mb-5">
+                  <h5 className="mb-5 text-base font-bold text-black font-secondary">
                     Main Benefits
                   </h5>
-                  <ul className="list-disc ml-5">
+                  <ul className="ml-5 list-disc">
                     {benefits.map((benefit) => (
                       <li
                         key={benefit}
-                        className="mb-4 w-full text-base font-secondary text-gray-900"
+                        className="w-full mb-4 text-base text-gray-900 font-secondary"
                       >
                         {benefit}
                       </li>
@@ -104,20 +104,20 @@ const Checkout = () => {
                   </ul>
                 </div>
                 <div className="mb-9">
-                  <h5 className="font-bold font-secondary text-base text-black mb-5">
+                  <h5 className="mb-5 text-base font-bold text-black font-secondary">
                     Payment Detail
                   </h5>
-                  <ul className="list-disc ml-5">
+                  <ul className="ml-5 list-disc">
                     {paymentDetails.map((payment) => (
                       <li
                         key={payment.title}
-                        className="mb-4 w-full text-base font-secondary text-gray-900"
+                        className="w-full mb-4 text-base text-gray-900 font-secondary"
                       >
-                        <p className="w-full flex justify-between items-center">
+                        <p className="flex items-center justify-between w-full">
                           <span>
                             {payment.title}{" "}
                             {payment.title === "Harga" && (
-                              <span className="text-xs bg-button-primary-orange text-white px-1 rounded-lg">
+                              <span className="px-1 text-xs text-white rounded-lg bg-button-primary-orange">
                                 Discount
                               </span>
                             )}
@@ -136,8 +136,8 @@ const Checkout = () => {
                         </p>
                       </li>
                     ))}
-                    <li className="mb-4 w-full text-base font-secondary text-gray-900">
-                      <p className="w-full flex justify-between items-center">
+                    <li className="w-full mb-4 text-base text-gray-900 font-secondary">
+                      <p className="flex items-center justify-between w-full">
                         <span>Total transfer</span>
                         <span className="font-semibold">
                           Rp{" "}
@@ -150,7 +150,7 @@ const Checkout = () => {
                   </ul>
                 </div>
                 <div className="mb-9">
-                  <h5 className="font-bold font-secondary text-base text-black mb-5">
+                  <h5 className="mb-5 text-base font-bold text-black font-secondary">
                     Transfer Pembayaran
                   </h5>
                   <img
@@ -159,15 +159,15 @@ const Checkout = () => {
                     style={{ width: 95, height: 30 }}
                     className="mb-5"
                   />
-                  <p className="mb-4 text-base font-secondary text-gray-900">
+                  <p className="mb-4 text-base text-gray-900 font-secondary">
                     PT Angga Membangun Indonesia
                   </p>
-                  <p className="mb-4 text-base font-secondary font-bold text-gray-900">
+                  <p className="mb-4 text-base font-bold text-gray-900 font-secondary">
                     1030007801844
                   </p>
                 </div>
                 <div className="mb-4">
-                  <h5 className="font-bold font-secondary text-base text-black mb-5">
+                  <h5 className="mb-5 text-base font-bold text-black font-secondary">
                     User Information
                   </h5>
                   <div className="flex items-center">
@@ -175,9 +175,9 @@ const Checkout = () => {
                       src={user.avatar}
                       alt="mandiri"
                       style={{ borderRadius: "50%" }}
-                      className="mr-5 h-14 w-14 object-cover object-center"
+                      className="object-cover object-center mr-5 h-14 w-14"
                     />
-                    <p className="text-base font-secondary text-gray-900">
+                    <p className="text-base text-gray-900 font-secondary">
                       {user.name}
                     </p>
                   </div>
@@ -185,37 +185,37 @@ const Checkout = () => {
                 <button
                   type="button"
                   onClick={buttonCheckoutHandler}
-                  className="bg-button-primary-orange hover:bg-button-primary-hover text-white w-full py-6 font-secondary text-base mt-9"
+                  className="w-full py-6 text-base text-white bg-button-primary-orange hover:bg-button-primary-hover font-secondary mt-9"
                 >
                   Konfirmasi Pembayaran
                 </button>
               </div>
-              <div className="w-full rounded-xl bg-white p-11 transition-all mt-9">
+              <div className="w-full transition-all bg-white rounded-xl p-11 mt-9">
                 <div className="mb-9">
-                  <h5 className="font-bold font-secondary text-base text-black mb-5">
+                  <h5 className="mb-5 text-base font-bold text-black font-secondary">
                     Informasi penting
                   </h5>
-                  <p className="mb-4 text-base font-secondary text-gray-900">
-                    Proses konfirmasi pembayaran kelas akan membutuhkan waktu
-                    sekitar 20 menit (dari pesan WhatsApp dikirim). Mohon
+                  <p className="mb-4 text-base text-gray-900 font-secondary">
+                    Proses konfirmasi pembayaran elements akan membutuhkan waktu
+                    sekitar 1x24 jam (dari pesan WhatsApp dikirim). Mohon
                     menunggu dengan sabar dan terima kasih.
                   </p>
                 </div>
                 <div>
-                  <h5 className="font-bold font-secondary text-base text-black mb-5">
+                  <h5 className="mb-5 text-base font-bold text-black font-secondary">
                     Butuh bantuan? hubungi kami
                   </h5>
-                  <ul className="list-disc ml-5">
-                    <li className="mb-4 w-full text-base font-secondary text-gray-900">
-                      <p className="w-full flex justify-between items-center">
+                  <ul className="ml-5 list-disc">
+                    <li className="w-full mb-4 text-base text-gray-900 font-secondary">
+                      <p className="flex items-center justify-between w-full">
                         <span>Admin</span>
-                        <span>Vina</span>
+                        <span>Niva</span>
                       </p>
                     </li>
-                    <li className="mb-4 w-full text-base font-secondary text-gray-900">
-                      <p className="w-full flex justify-between items-center">
+                    <li className="w-full mb-4 text-base text-gray-900 font-secondary">
+                      <p className="flex items-center justify-between w-full">
                         <span>No. Whatsapp</span>
-                        <span className="font-semibold">+6289604535310</span>
+                        <span className="font-semibold">+62 813 8520 2498</span>
                       </p>
                     </li>
                   </ul>
