@@ -68,7 +68,7 @@ export const Navigation = ({
           onClick={() => history.push("/")}
           style={{ cursor: "pointer" }}
           src={images.Logo}
-          alt="Elements"
+          alt="GetShayna"
         />
         <div className="flex items-center">
           {isAuthentication && (
@@ -241,7 +241,7 @@ const links = [
     link: "/",
   },
   {
-    name: "Why Elements",
+    name: "Why GetShayna",
     link: "#why-elements",
   },
   {
@@ -339,7 +339,7 @@ export const NavigationHome = ({ whitebg = false }) => {
         <NavLink to="/" className="mr-10">
           <img
             src={whitebg ? images.Logo : icons.logoWhite}
-            alt="Logo Elements"
+            alt="Logo GetShayna"
           />
         </NavLink>
         <ul>

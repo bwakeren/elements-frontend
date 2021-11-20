@@ -32,7 +32,7 @@ export const Header = ({ button, navigation }) => {
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Elements by BuildWith Angga</title>
+      <title>GetShayna by BuildWith Angga</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" />
       <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer ></script> 
     </head>
@@ -50,7 +50,7 @@ export const Header = ({ button, navigation }) => {
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Elements by BuildWith Angga</title>
+      <title>GetShayna by BuildWith Angga</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     </head>
     <body>
@@ -82,7 +82,7 @@ export const Header = ({ button, navigation }) => {
       "href",
       `data:html/text;charset=utf-8,${encodeURIComponent(html.join(" "))}`
     );
-    element.setAttribute("download", "ElementsbyBWA.html");
+    element.setAttribute("download", "GetShaynabyBWA.html");
     element.click();
   };
 
@@ -108,7 +108,7 @@ export const Header = ({ button, navigation }) => {
         htmlBootstrap.join(" ")
       )}`
     );
-    element.setAttribute("download", "ElementsbyBWA.html");
+    element.setAttribute("download", "GetShaynabyBWA.html");
     element.click();
   };
 

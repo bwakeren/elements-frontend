@@ -108,13 +108,13 @@ const Main = () => {
 
   return (
     <Layout>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <div className={classes.success}>
         <img src={icons.Success} alt="Download" className="w-52 h-52" />
         <h1>Success Download!</h1>
         <p className={classes.description}>
           Gunakanlah design asset sebijaksana mungkin and Goodluck! Jangan lupa
-          beri kami nilai untuk Elements
+          beri kami nilai untuk GetShayna
         </p>
         <div className={classes.rating}>
           <input type="radio" id="none" onClick={() => setRating(0)} />

@@ -38,7 +38,7 @@ const Main = () => {
       button="Download"
       navigation={!isAuthentication ? "/login" : "/create"}
     >
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <main className="py-9 px-10 flex items-start w-full justify-end">
         <NavSidebar />
         <Content />
@@ -46,12 +46,12 @@ const Main = () => {
     </Layout>
   ) : (
     <>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <div className={classes.nosupport}>
         <img src={images.noPhone} alt="NoSupport" />
         <h1>Oops! Sayang sekali, Tidak bisa digunakan untuk Mobile</h1>
         <p>
-          Untuk pengalaman terbaik, disarankan menggunakan website Elements pada
+          Untuk pengalaman terbaik, disarankan menggunakan website GetShayna pada
           ukuran layar 1280px atau lebih lebar yaa...
         </p>
         <button onClick={() => history.goBack()}>Kembali</button>

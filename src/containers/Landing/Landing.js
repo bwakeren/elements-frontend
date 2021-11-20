@@ -34,27 +34,27 @@ const Landing = () => {
   const [dataFAQ, setDataFAQ] = useState({
     1: {
       isActive: true,
-      title: "Kenapa Elements bagus untuk bisnis?",
+      title: "Kenapa GetShayna bagus untuk bisnis?",
       text:
-        "Dengan menggunakan Elements maka kita tidak perlu menghabiskan banyak uang, tenaga, dan juga waktu berharga. Semua bagian dari website yang professional telah kami sediakan dan bisa digunakan dengan instan.",
+        "Dengan menggunakan GetShayna maka kita tidak perlu menghabiskan banyak uang, tenaga, dan juga waktu berharga. Semua bagian dari website yang professional telah kami sediakan dan bisa digunakan dengan instan.",
     },
     2: {
       isActive: true,
-      title: "Elements dibangun untuk siapa saja?",
+      title: "GetShayna dibangun untuk siapa saja?",
       text:
-        "Kami membangun Elements untuk semua kalangan yang ingin memiliki website dengan design menarik dan professional tanpa harus memiliki background IT terutama di bidang programming.",
+        "Kami membangun GetShayna untuk semua kalangan yang ingin memiliki website dengan design menarik dan professional tanpa harus memiliki background IT terutama di bidang programming.",
     },
     3: {
       isActive: false,
       title: "Apakah bisa mendapatkan bantuan khusus?",
       text:
-        "Tim developer kami siap membantu Anda apabila ada kesulitan dalam mengubah konten pada design website yang telah Anda buat menggunakan Elements sebelumnya. Pelayanan ini hanya tersedia pada paket Premium.",
+        "Tim developer kami siap membantu Anda apabila ada kesulitan dalam mengubah konten pada design website yang telah Anda buat menggunakan GetShayna sebelumnya. Pelayanan ini hanya tersedia pada paket Premium.",
     },
     4: {
       isActive: false,
       title: "Apakah bisa dijual kembali?",
       text:
-        "Kami mengizinkan seluruh pengguna kami untuk menggunakan Elements dalam membangun sebuah website. Kami juga memperbolehkan pengguna kami untuk menjual kembali hasil template dari Elements (free commercial use).",
+        "Kami mengizinkan seluruh pengguna kami untuk menggunakan GetShayna dalam membangun sebuah website. Kami juga memperbolehkan pengguna kami untuk menjual kembali hasil template dari GetShayna (free commercial use).",
     },
   });
 
@@ -137,7 +137,7 @@ const Landing = () => {
 
   return (
     <>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <header
         className={classes.header}
         style={{ backgroundImage: `url(${images.headerBack})` }}
@@ -153,7 +153,7 @@ const Landing = () => {
             </h1>
             <p>
               Design a promising website to scale your business better and
-              bigger. Elements is here to provide all you need.
+              bigger. GetShayna is here to provide all you need.
             </p>
             <button onClick={gotoCreate}>
               {isAuthentication ? "Get started" : "Try it free"}
@@ -168,7 +168,7 @@ const Landing = () => {
           style={{ backgroundImage: `url(${images.whyBack})` }}
           id="why-elements"
         >
-          <h2>Why Elements ?</h2>
+          <h2>Why GetShayna ?</h2>
           <div>
             <p>Beginners Friendly</p>
             <span></span>
@@ -212,18 +212,18 @@ const Landing = () => {
             </div>
           ))}
         </section>
-        <section
+        <sectionox
           className={classes.knowledge}
           style={{ backgroundImage: `url(${images.knowledgeBase})` }}
           id="knowledge-base"
         >
           <h2>Knowledge Base</h2>
-          <div className="flex items-start w-full justify-between flex-col lg:flex-row">
+          <div className="flex flex-col items-start justify-between w-full lg:flex-row">
             <div className={classes.knowledge_component}>
               <img src={icons.knowCommercial} alt="Commercial" />
               <h6>Free Commercial Use</h6>
               <p>
-                Don't worry ... You can use the website from Elements again and
+                Don't worry ... You can use the website from GetShayna again and
                 can be commercialized.
               </p>
             </div>
@@ -235,6 +235,7 @@ const Landing = () => {
                 that can design your own customization.
               </p>
             </div>
+
             <div className={classes.knowledge_component}>
               <img src={icons.knowDeveloper} alt="Developer" />
               <h6>For Developer</h6>
@@ -244,13 +245,13 @@ const Landing = () => {
               </p>
             </div>
           </div>
-        </section>
+        </sectionox>
         <section
           className={classes.faq}
           style={{ backgroundImage: `url(${images.faqLanding})` }}
         >
           <h2>Frequently Asked Questions</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {dataFAQArray.map((data) => (
               <div key={data.id} className={classes.faq_component}>
                 <h6

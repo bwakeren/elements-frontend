@@ -52,7 +52,7 @@ const Checkout = () => {
             user.name
           }+dengan+email+${
             user.email
-          }+ingin+mengkonfirmasi+pembayaran+Elements+Premium+saya+sebesar+Rp+${numberThausand(
+          }+ingin+mengkonfirmasi+pembayaran+GetShayna+Premium+saya+sebesar+Rp+${numberThausand(
             paymentDetails[1].text + paymentDetails[2].text
           )}.+Berikut+saya+lampirkan+bukti+pembayaran+saya.`
         );
@@ -70,7 +70,7 @@ const Checkout = () => {
 
   return (
     <div style={{ background: "#E9DDFF" }}>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <NavigationHome whitebg={true} />
       {user && (
         <main className={classes.checkout}>
@@ -78,7 +78,7 @@ const Checkout = () => {
             Go Premium
           </h1>
           <p className="text-xl text-center text-blue font-secondary">
-            Bergabung dengan kami untuk mendapatkan akses premium Elements
+            Bergabung dengan kami untuk mendapatkan akses premium GetShayna
           </p>
           <div className="flex flex-col items-start mt-6 sm:flex-row sm:mt-12">
             <img

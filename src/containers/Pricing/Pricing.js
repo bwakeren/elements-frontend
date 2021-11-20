@@ -48,7 +48,7 @@ const Pricing = () => {
 
   return (
     <>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <main
         className={classes.pricing_container}
         style={{ backgroundImage: `url(${images.backgroundPricing})` }}

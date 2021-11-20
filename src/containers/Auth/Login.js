@@ -117,7 +117,7 @@ const Login = () => {
 
   return (
     <>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <header>
         <NavigationHome whitebg={true} />
       </header>
@@ -129,7 +129,7 @@ const Login = () => {
           title="Login Illustration"
         />
         <div className="flex flex-col self-center">
-          <h1>Masuk / Daftar ke Elements</h1>
+          <h1>Masuk / Daftar ke GetShayna</h1>
           <p>Dapatkan akses untuk membangun website yang lebih professional</p>
           <button onClick={loginHandler}>
             {googleLogo} Sign In with Google

@@ -5,7 +5,7 @@ import { images } from "../../../assets";
 const Success = () => {
   return (
     <div style={{ background: "#E9DDFF" }}>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <NavigationHome whitebg={true} />
       <main className="flex flex-col items-center mb-20">
         <img

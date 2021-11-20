@@ -3,7 +3,7 @@ import { Head, Teams, NavigationHome } from "../../components";
 const Main = () => {
   return (
     <>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <NavigationHome whitebg={true} />
       <main className="py-9 px-10 flex items-center flex-col">
         <h1

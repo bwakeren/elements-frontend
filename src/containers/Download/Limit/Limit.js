@@ -233,7 +233,7 @@ const Limit = () => {
 
   return (
     <>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <header>
         <NavigationHome whitebg={true} />
       </header>

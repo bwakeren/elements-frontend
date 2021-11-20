@@ -241,7 +241,7 @@ const Setting = () => {
 
   return (
     <>
-      <Head title="Cara Zaman Now Design Sebuah Website — Elements by BuildWith Angga" />
+      <Head title="Cara Zaman Now Design Sebuah Website — GetShayna by BuildWith Angga" />
       <NavigationHome whitebg={true} />
       <main className={classes.setting}>
         <h1>Welcome,</h1>
