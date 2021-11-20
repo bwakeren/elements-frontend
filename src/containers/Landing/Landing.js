@@ -231,7 +231,7 @@ const Landing = () => {
               <img src={icons.knowCustom} alt="Costumization" />
               <h6>Customization</h6>
               <p>
-                Bored with it that's it? Element website has many components
+                Bored with it that's it? GetShayna website has many components
                 that can design your own customization.
               </p>
             </div>
