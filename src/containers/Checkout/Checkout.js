@@ -20,11 +20,11 @@ const Checkout = () => {
   const paymentDetails = [
     {
       title: "Harga normal",
-      text: 150000,
+      text: 399000,
     },
     {
       title: "Harga",
-      text: 50000,
+      text: 99000,
     },
     {
       title: "Kode unik",
