@@ -48,7 +48,7 @@ const Checkout = () => {
         const element = document.createElement("a");
         element.setAttribute(
           "href",
-          `https://wa.me/6281385202498?text=Halo,+Saya+${
+          `https://wa.me/6285694854964?text=Halo,+Saya+${
             user.name
           }+dengan+email+${
             user.email
@@ -209,13 +209,13 @@ const Checkout = () => {
                     <li className="w-full mb-4 text-base text-gray-900 font-secondary">
                       <p className="flex items-center justify-between w-full">
                         <span>Admin</span>
-                        <span>Niva</span>
+                        <span>Shalsa</span>
                       </p>
                     </li>
                     <li className="w-full mb-4 text-base text-gray-900 font-secondary">
                       <p className="flex items-center justify-between w-full">
                         <span>No. Whatsapp</span>
-                        <span className="font-semibold">+62 813 8520 2498</span>
+                        <span className="font-semibold">+62 856-9485-4964</span>
                       </p>
                     </li>
                   </ul>
