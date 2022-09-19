@@ -97,7 +97,7 @@ const Pricing = () => {
           <div className={classes.card}>
             <h3>Premium</h3>
             <h5 className="text-xl font-semibold text-center line-through text-secondary">
-              IDR 399.000/bulan
+              IDR 899.000/bulan
             </h5>
             <h6>
               IDR {packagePrice && numberThausand(packagePrice.price)}
