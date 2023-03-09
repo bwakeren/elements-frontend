@@ -24,7 +24,7 @@ const Checkout = () => {
     },
     {
       title: "Harga",
-      text: 99000,
+      text: 299000,
     },
     {
       title: "Kode unik",
